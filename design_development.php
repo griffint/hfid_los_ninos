@@ -38,5 +38,6 @@
 
     </div>
   </body>
+  <script src="photo-gallery.js"></script>
 </html>
 
