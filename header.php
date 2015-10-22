@@ -3,10 +3,11 @@
 	<head>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/website.css" rel="stylesheet">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<link href="style.css" rel="stylesheet">
 		<script src="js/bootstrap.min.js"></script>
 		<link href="css/needsanalysis.css" rel="stylesheet">
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		
 		
 
 	</head>
