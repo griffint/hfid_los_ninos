@@ -21,6 +21,7 @@
 					<li><a href="idesigns.php">Inspirational Designs</a></li>
 					<li><a href="needsanalysis.php">Needs Analysis</a></li> 
 					<li><a href="work_distribution.php">Work Distribution</a></li>
+					<li><a href="design_development.php">Design Development</a></li>
 			      </ul>
 			 </div>
 		</nav>
