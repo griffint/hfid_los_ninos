@@ -19,8 +19,8 @@
         }
         }
         images("imgs/initialdesigns/");
-        images("imgs/paperproto1");
-        images("imgs/paperproto2");
+        images("imgs/paperproto1/");
+        images("imgs/paperproto2/");
       ?>
       </ul>
 
