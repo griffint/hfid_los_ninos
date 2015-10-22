@@ -15,7 +15,7 @@
         foreach ($files1 as $x=>$value)
         {
 
-            echo "<li class=\"col-md-4\"><img class=\"img-responsive\" src=\"$dir$value\"></li>";
+            echo "<li class=\"col-md-6\"><img class=\"img-responsive\" src=\"$dir$value\"></li>";
         }
         }
         images("imgs/initialdesigns/");
