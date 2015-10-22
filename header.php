@@ -3,6 +3,7 @@
 	<head>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/website.css" rel="stylesheet">
+		<link href="style.css" rel="stylesheet">
 	</head>
 	<body>
 		<nav class="navbar navbar-default navbar-static-top">
