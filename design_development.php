@@ -15,10 +15,12 @@
         foreach ($files1 as $x=>$value)
         {
 
-            echo "<li class=\"col-md-2\"><img src=\"$dir$value\"></li>";
+            echo "<li class=\"col-md-2\"><img class=\"img-responsive\" src=\"$dir$value\"></li>";
         }
         }
         images("imgs/initialdesigns/");
+        images("imgs/paperproto1");
+        images("imgs/paperproto2");
       ?>
       </ul>
 
