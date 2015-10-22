@@ -5,7 +5,7 @@
       <ul class="row">
       <?php
         function images($dir) {
-        $files1 = scandir($dir/);
+        $files1 = scandir($dir);
         foreach ($files1 as $x=>$value)
         {
             if ($value == "." || $value == ".."){
@@ -15,10 +15,10 @@
         foreach ($files1 as $x=>$value)
         {
 
-            echo "<li class=\"col-md-2\"><img src=\"$dir/$value\"></li>";
+            echo "<li class=\"col-md-2\"><img src=\"$dir$value\"></li>";
         }
         }
-        images(imgs/initialdesigns);
+        images("imgs/initialdesigns/");
       ?>
       </ul>
 
