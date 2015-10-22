@@ -3,24 +3,23 @@
     <div>
       <div class="body">Our design development page is here</div>
       <ul class="row">
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-          <img class="img-responsive" src="1.jpg">
-        </li>
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-          <img class="img-responsive" src="2.jpg">
-        </li>
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-          <img class="img-responsive" src="3.jpg">
-        </li>
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-          <img class="img-responsive" src="4.jpg">
-        </li>
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-          <img class="img-responsive" src="5.jpg">
-        </li>
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-          <img class="img-responsive" src="6.jpg">
-        </li>
+      <?php
+        function images($dir) {
+        $files1 = scandir($dir/);
+        foreach ($files1 as $x=>$value)
+        {
+            if ($value == "." || $value == ".."){
+                unset($files1[$x]);
+            }
+        }
+        foreach ($files1 as $x=>$value)
+        {
+
+            echo "<li class=\"col-md-2\"><img src=\"$dir/$value\"></li>";
+        }
+        }
+        images(imgs/initialdesigns);
+      ?>
       </ul>
 
       <div class="modal fade" id="my<a href="http://www.jqueryscript.net/tags.php?/Modal/">Modal</a>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
