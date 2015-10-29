@@ -1,6 +1,6 @@
 // routes.js
 
-app.config(function ($stateProvider) {
+myApp.config(function ($stateProvider) {
 
   $stateProvider
     .state('welcome', {
