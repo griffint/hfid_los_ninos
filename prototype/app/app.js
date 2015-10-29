@@ -1,7 +1,6 @@
+var app=angular.module('single-page-app',['ui.router']);
 
-var app = angular.module('myApp', ['ui.router']);
-
-app.run(function ($rootScope) {
+/*app.run(function ($rootScope) {
 
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
     var requireLogin = toState.data.requireLogin;
@@ -69,5 +68,4 @@ app.config(function ($httpProvider) {
     };
   });
 
-});
-
+});*/
