@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/website.css" rel="stylesheet">
-	</head>
-	<body>
-		<nav class="navbar navbar-default navbar-static-top">
-			<div class = "container-fluid"> 
-				<a class="navbar-brand" href="#">Los Ninos</a>
-			</div>
-			<div>
-				<ul class="nav navbar-nav">
-					<li><a href="index.html">Home</a></li>
-					<li class="active"><a href="projectbrief.html">Project Brief</a></li>
-					<li><a href="idesigns.html">Inspirational Designs</a></li>
-					<li><a href="needsanalysis.html">Needs Analysis</a></li> 
-					<li><a href="work_distribution.html">Work Distribution</a></li>
-			      </ul>
-			 </div>
-		</nav>
+<?php include 'header.php';
+?>
 		<div class="body">
 			<h1 class="title">Project Proposal</h1>
 			<h3>The Problem:</h3> <p>How would you go about finding your ideal roommate? If you don't already have a roommate pairing, then finding roommates can be time-consuming task and very difficult. Ideally, people would like to room with people that they are compatible with, such as friends, who are people that they know and can trust. Unfortunately, for those without the option of rooming with their friend, the most commonly used interface is to inquire with friends about rooming situations posting listings on Craigslist.</p>

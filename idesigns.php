@@ -1,25 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/website.css" rel="stylesheet">
-		<link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="css/needsanalysis.css">
-	</head>
-	<body>
-		<nav class="navbar navbar-default navbar-static-top">
-			<div class = "container-fluid"> 
-				<a class="navbar-brand" href="#">Los Ninos</a>
-			</div>
-			<div>
-				<ul class="nav navbar-nav">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="projectbrief.html">Project Brief</a></li>
-					<li class="active"><a href="idesigns.html">Inspirational Designs</a></li>
-					<li><a href="needsanalysis.html">Needs Analysis</a></li> 
-			    </ul>
-			</div>
-		</nav>
+<?php include 'header.php';
+?>
 		<div class ="body-border">
 			<h1>Los Ninos Team - Redesigning the roommate finding experience </h1>
 			<h3>List of Inspiration ideas</h3>

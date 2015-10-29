@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/website.css" rel="stylesheet">
-	</head>
-	<body>
-		<nav class="navbar navbar-default navbar-static-top">
-			<div class = "container-fluid"> 
-				<a class="navbar-brand" href="#">Los Ninos</a>
-			</div>
-			<div>
-				<ul class="nav navbar-nav">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="projectbrief.html">Project Brief</a></li>
-					<li><a href="idesigns.html">Inspirational Designs</a></li>
-					<li class="active"><a href="needsanalysis.html">Needs Analysis</a></li> 
-					<li><a href="work_distribution.html">Work Distribution</a></li>
-			    </ul>
-			</div>
-		</nav>
+<?php include 'header.php';
+?>
 		<div class="body">
 			<h1>Needs Analysis</h1>
 			<h2>Introduction:</h2> <p>In our HFID project, we are exploring how to design a service to improve the roommate searching process. We want to enable people to find the best roommates and housing for them, whether they have an empty room available or are looking for people to rent an apartment with. This section details the process and results of our exploratory phase, where we interviewed users, synthesized data from the interviews and our research, and came up with the main needs and requirements we need to fulfill for our users. </p>
