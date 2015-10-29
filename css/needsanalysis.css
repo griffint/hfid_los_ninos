@@ -14,6 +14,9 @@ img.full_host{
     margin-right: auto;
 }
 body{
-	font-family: 'Droid Sans', sans-serif;
 	font-size: 1.5em;
+}
+.body-border{
+	margin-left: 200px;
+	margin-right: 200px;
 }
