@@ -7,6 +7,7 @@ app.config( function($urlRouterProvider, $stateProvider){
       templateUrl: 'home.html',
       controller: function($scope) {
         $scope.test = ['a123','b456','c789'];
+        console.log($scope.test);
       }
     })
 

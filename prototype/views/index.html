@@ -16,14 +16,20 @@
 <body ng-app="single-page-app">
   <!-- Our App -->
   <div>
-  <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
-         <ul class="nav navbar-nav">
+    <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
+      <ul class="nav navbar-nav">
         <li class="active"><a href="#/">Home<span class="sr-only">(current)</span></a></li>
-        <li><a href="#/about">About us</a></li>
-        <li><a href="#/about">Read tutorial</a></li>
+        <li><a href="#/map">Map</a></li>
+        <li><a href="#/bookmarks">Bookmarks</a></li>
+        <li><a href="#/contacts">Contacts</a></li>
+        <li><a href="#/group">Group</a></li>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#/notifications">Notifications</a></li>
+        <li><a href="#/profile">Profile</a></li>
       </ul>
-</nav>
-</div>
+    </nav>
+  </div>
   <br/>
   <div ui-view>
   <!--
