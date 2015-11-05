@@ -10,14 +10,6 @@ app.config( function($urlRouterProvider, $stateProvider){
       }
     })
 
-    /*.state('login', {
-      url: '/login',
-      templateUrl: 'templates/login.html',
-      data: {
-        requreLogin: false
-      }
-    })*/
-
     .state('map', {
       url: '/map',
       templateUrl: 'templates/map.html',
@@ -61,7 +53,6 @@ app.config( function($urlRouterProvider, $stateProvider){
       }
     )
 });
-
     /*      
     Here you can handle controller for specific route as well.
     */
