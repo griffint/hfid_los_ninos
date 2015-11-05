@@ -33,7 +33,6 @@ html, body {
 }
 .badgeContainer{
 	height: 128px;
-	overflow:hidden;
 }
 
 .fl{
