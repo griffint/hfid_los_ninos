@@ -26,6 +26,11 @@ app.config( function($urlRouterProvider, $stateProvider){
       }
     })
 
+    .state('map.sidebar', {
+      url:'/sidebar',
+      templateUrl: 
+    })
+
     .state('bookmarks', {
       url: '/bookmarks',
       templateUrl: 'bookmarks.html',
