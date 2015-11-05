@@ -10,20 +10,17 @@ app.config( function($urlRouterProvider, $stateProvider){
       }
     })
 
-    /*.state('login', {
-      url: '/login',
-      templateUrl: 'templates/login.html',
-      data: {
-        requreLogin: false
-      }
-    })*/
-
     .state('map', {
       url: '/map',
       templateUrl: 'templates/map.html',
       controller: function($scope){
         $scope.cards = [{ id: 0, name: "Timothy"}, {id: 1, name: "Jill"}];
       }
+    })
+
+    .state('map.cards', {
+      url: '/cards',
+      templateUrl: 'partials/map.cards.html'
     })
 
     .state('bookmarks', {
@@ -56,7 +53,6 @@ app.config( function($urlRouterProvider, $stateProvider){
       }
     )
 });
-
     /*      
     Here you can handle controller for specific route as well.
     */
