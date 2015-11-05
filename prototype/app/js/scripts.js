@@ -2,62 +2,57 @@ app.config( function($urlRouterProvider, $stateProvider){
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('/about', {
-      url: '/about',
-      templateUrl: 'views/about.html',
-      controller: function($scope) {
-        $scope.test = ['a123','b456','c789'];
+    .state('home', {
+      url: '/home',
+      templateUrl: 'views/home.html',
+      data: {
+        requreLogin: false
       }
     })
 
-    .state('/map', {
-      url: '/map',
-      templateUrl: 'views/map.html',
-      controller: function($scope) {
-        $scope.test = ['a123','b456','c789'];
+    .state('login', {
+      url: '/login',
+      templateUrl: 'views/login.html',
+      data: {
+        requreLogin: false
       }
     })
+
+    .state('map', {
+      url: '/map',
+      templateUrl: 'views/map.html',
+      }
+    )
 
     .state('bookmarks', {
       url: '/bookmarks',
       templateUrl: 'views/bookmarks.html',
-      controller: function($scope) {
-        $scope.test = ['a123','b456','c789'];
       }
-    })
+    )
 
     .state('contacts', {
       url: '/contacts',
       templateUrl: 'views/contacts.html',
-      controller: function($scope) {
-        $scope.test = ['a123','b456','c789'];
       }
-    })
+    )
 
     .state('group', {
       url: '/group',
       templateUrl: 'views/group.html',
-      controller: function($scope) {
-        $scope.test = ['a123','b456','c789'];
       }
-    })
+    )
 
     .state('notifications', {
       url: '/notifcations',
       templateUrl: 'views/notifications.html',
-      controller: function($scope) {
-        $scope.test = ['a123','b456','c789'];
       }
-    })
+    )
 
     .state('profile', {
       url: '/profile',
       templateUrl: 'views/profile.html',
-      controller: function($scope) {
-        $scope.test = ['a123','b456','c789'];
       }
-    })
-
+    )
 });
 
     /*      
