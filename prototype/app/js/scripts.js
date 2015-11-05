@@ -4,53 +4,55 @@ app.config( function($urlRouterProvider, $stateProvider){
   $stateProvider
     .state('home', {
       url: '/home',
-      templateUrl: 'views/home.html',
+      templateUrl: 'templates/home.html',
       data: {
         requreLogin: false
       }
     })
 
-    .state('login', {
+    /*.state('login', {
       url: '/login',
-      templateUrl: 'views/login.html',
+      templateUrl: 'templates/login.html',
       data: {
         requreLogin: false
       }
-    })
+    })*/
 
     .state('map', {
       url: '/map',
-      templateUrl: 'views/map.html',
+      templateUrl: 'templates/map.html',
+      controller: function($scope){
+        $scope.cards = [{ id: 0, name: "Timothy"}, {id: 1, name: "Jill"}];
       }
-    )
+    })
 
     .state('bookmarks', {
       url: '/bookmarks',
-      templateUrl: 'views/bookmarks.html',
+      templateUrl: 'templates/bookmarks.html',
       }
     )
 
     .state('contacts', {
       url: '/contacts',
-      templateUrl: 'views/contacts.html',
+      templateUrl: 'templates/contacts.html',
       }
     )
 
     .state('group', {
       url: '/group',
-      templateUrl: 'views/group.html',
+      templateUrl: 'templates/group.html',
       }
     )
 
     .state('notifications', {
       url: '/notifcations',
-      templateUrl: 'views/notifications.html',
+      templateUrl: 'templates/notifications.html',
       }
     )
 
     .state('profile', {
       url: '/profile',
-      templateUrl: 'views/profile.html',
+      templateUrl: 'templates/profile.html',
       }
     )
 });
