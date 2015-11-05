@@ -3,26 +3,26 @@ app.config( function($urlRouterProvider, $stateProvider){
 
   $stateProvider
     .state('home', {
-      url: '/',
-      templateUrl: 'home.html',
-      controller: function($scope) {
-        $scope.test = ['a123','b456','c789'];
+      url: '/home',
+      templateUrl: 'templates/home.html',
+      data: {
+        requreLogin: false
       }
     })
 
-    .state('about', {
-      url: '/about',
-      templateUrl: 'about.html',
-      controller: function($scope) {
-        $scope.test = ['a123','b456','c789'];
+    /*.state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      data: {
+        requreLogin: false
       }
-    })
+    })*/
 
     .state('map', {
       url: '/map',
-      templateUrl: 'map.html',
-      controller: function($scope) {
-        $scope.test = ['a123','b456','c789'];
+      templateUrl: 'templates/map.html',
+      controller: function($scope){
+        $scope.cards = [{ id: 0, name: "Timothy"}, {id: 1, name: "Jill"}];
       }
     })
 
@@ -33,36 +33,33 @@ app.config( function($urlRouterProvider, $stateProvider){
 
     .state('bookmarks', {
       url: '/bookmarks',
-      templateUrl: 'bookmarks.html',
-      controller: function($scope) {
-        $scope.test = ['a123','b456','c789'];
+      templateUrl: 'templates/bookmarks.html',
       }
-    })
+    )
+
+    .state('contacts', {
+      url: '/contacts',
+      templateUrl: 'templates/contacts.html',
+      }
+    )
 
     .state('group', {
       url: '/group',
-      templateUrl: 'group.html',
-      controller: function($scope) {
-        $scope.test = ['a123','b456','c789'];
+      templateUrl: 'templates/group.html',
       }
-    })
+    )
 
     .state('notifications', {
       url: '/notifcations',
-      templateUrl: 'notifications.html',
-      controller: function($scope) {
-        $scope.test = ['a123','b456','c789'];
+      templateUrl: 'templates/notifications.html',
       }
-    })
+    )
 
     .state('profile', {
       url: '/profile',
-      templateUrl: 'profile.html',
-      controller: function($scope) {
-        $scope.test = ['a123','b456','c789'];
+      templateUrl: 'templates/profile.html',
       }
-    })
-
+    )
 });
 
     /*      
