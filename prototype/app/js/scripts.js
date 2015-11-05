@@ -26,6 +26,11 @@ app.config( function($urlRouterProvider, $stateProvider){
       }
     })
 
+    .state('map.cards', {
+      url: '/cards',
+      templateUrl: 'partials/map.cards.html'
+    })
+
     .state('bookmarks', {
       url: '/bookmarks',
       templateUrl: 'templates/bookmarks.html',
