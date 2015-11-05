@@ -24,7 +24,7 @@ app.config( function($urlRouterProvider, $stateProvider){
       views: {
         '': {templateUrl: 'templates/map.html'},
         'sidebar@map': {
-          templateUrl: 'partials/map_sidebar.html',
+          templateUrl: 'partials/map.cards.html',
           controller: 'mapSidebarCtrl'
         }
       }
