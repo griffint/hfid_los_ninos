@@ -20,15 +20,15 @@ app.config( function($urlRouterProvider, $stateProvider){
 
     .state('map', {
       url: '/map',
-      templateUrl: 'templates/map.html',
-      controller: function($scope){
-        $scope.cards = [{ id: 0, name: "Timothy"}, {id: 1, name: "Jill"}];
+      //we can use the below to have multiple views on the same page
+      views: {
+        '': {templateUrl: 'templates/map.html'},
+        'sidebar@map': {
+          templateUrl: 'partials/map_sidebar.html',
+          controller: 'mapSidebarCtrl'
+        }
       }
-    })
-
-    .state('map.sidebar', {
-      url:'/sidebar',
-      templateUrl: 
+   
     })
 
     .state('bookmarks', {

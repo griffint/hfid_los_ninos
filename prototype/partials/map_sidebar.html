@@ -1,0 +1,44 @@
+	<h2>cards will go here</h2>
+	<div class="col-md-3 cardcontainer container-fluid" ng-controller="mapSidebarCtrl" ng-app="single-page-app">	
+		<!--CARD STARTS HERE-->
+		<div class="panel panel-default card"   ng-repeat="user in cards">
+		  <!-- Default panel contents -->
+		  
+		  <div class="panel-body">
+			<div class="media">
+				<div class="media-left">
+					<a href="#">
+					  <img class="media-object avatar" src="http://puu.sh/l74WX/2677ae32d7.jpg" alt="...">
+					</a>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading">{{ user.Name }},{{ user.Age }}</h4>
+					<p>Software Engineer</p>
+				</div>
+			</div>
+		  </div>
+
+		  <!-- List group -->
+		  <ul class="list-group">
+			<li class="list-group-item badgeContainer">
+				<h4>Badges</h4>
+				<a href="#" class="thumbnail farbadge">
+				  <img src="https://jasminepicha.files.wordpress.com/2013/04/5.png" alt="Site Veteran">
+				</a>
+				<a href="#" class="thumbnail farbadge">
+				  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" alt="Connected to Facebook">
+				</a>
+				<a href="#" class="thumbnail farbadge">
+				  <img src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/matte-white-square-icons-alphanumeric/124273-matte-white-square-icon-alphanumeric-letter-g.png" alt="In Group">
+				</a>
+				<a href="#" class="thumbnail farbadge">
+				  <img src="http://www.clker.com/cliparts/D/z/C/2/q/E/check-mark-md.png" alt="Verified ID">
+				</a>					
+			</li>
+
+			<a href='#'><li class="list-group-item cardbutton">Bookmark</li></a>
+			<a href='#'><li class="list-group-item cardbutton">More Info</li></a>
+		  </ul>
+		</div>
+		<!--CARD ENDS HERE-->
+	</div>
