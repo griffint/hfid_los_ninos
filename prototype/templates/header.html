@@ -2,8 +2,9 @@
 <html lang="en">
 	<head>
 		<link href="../styles/bootstrap.min.css" rel="stylesheet">
-		<!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script-->
-		<script src="../js/bootstrap.min.js"></script>
+		<link href="../styles/header.css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="../app/js/bootstrap.min.js"></script>
 	</head>
 	<body style="margin: 0; height: 100%; overflow: hidden">
 		<nav class="navbar navbar-default">
@@ -15,8 +16,41 @@
 					<li><a href="group.html">Group</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Notifications</a></li>
-					<li><a href="profile.html">Profile</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notifications</a>
+						<ul class="dropdown-menu">
+							<div class="container notificationcontainer scrollbar">
+							<button class="btn btn-lg btn-block notification" type="submit">1 New Group Request</button>
+							<button class="btn btn-lg btn-block notification" type="submit">1 New Contact</button>
+							<button class="btn btn-lg btn-block notification" type="submit">1 New Group Request</button>
+							<button class="btn btn-lg btn-block notification" type="submit">1 New Group Request</button>
+							<button class="btn btn-lg btn-block notification" type="submit">1 New Group Request</button>
+							</div>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
+						<ul class="dropdown-menu">
+						<div class="container logincontainer">
+							<h2 class="form-signin-heading">Don't have an account?</h2>
+							<button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+							<form class="form-signin">
+								<h2 class="form-signin-heading">Have an account?</h2>
+								<label for="inputEmail" class="sr-only">Email address</label>
+								<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+								<label for="inputPassword" class="sr-only">Password</label>
+								<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" value="remember-me"> Remember me
+									</label>
+								</div>
+								<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+							</form>
+							<p>Forgot your password? <a href="#">click here</a></p>
+						</div>
+						</ul>
+					</li>
 				</ul>
 			 </div>
 		</nav>
