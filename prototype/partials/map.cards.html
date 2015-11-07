@@ -1,0 +1,56 @@
+<div ng-repeat = "card in cards">		
+	<div class="panel panel-default card">
+		<!-- Default panel contents -->
+
+		<div class="panel-body">
+			<div class="media">
+				<div class="media-left">
+					<a href="#">
+						<img class="media-object avatar" src="http://puu.sh/l74WX/2677ae32d7.jpg" alt="...">
+					</a>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading">{{card.name}}, {{card.age}} {{card.gender}}</h4>
+					<p>{{card.occupation}}</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- List group -->
+		<ul class="list-group">
+			<li class="list-group-item badgeContainer">
+				<h4>Badges</h4>
+				<a href="#" class="thumbnail farbadge">
+					<img src="https://jasminepicha.files.wordpress.com/2013/04/5.png" alt="Site Veteran">
+				</a>
+				<a href="#" class="thumbnail farbadge">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" alt="Connected to Facebook">
+				</a>
+				<a href="#" class="thumbnail farbadge">
+					<img src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/matte-white-square-icons-alphanumeric/124273-matte-white-square-icon-alphanumeric-letter-g.png" alt="In Group">
+				</a>
+				<a href="#" class="thumbnail farbadge">
+					<img src="http://www.clker.com/cliparts/D/z/C/2/q/E/check-mark-md.png" alt="Verified ID">
+				</a>					
+			</li>
+
+			<a href='#'><li class="list-group-item cardbutton">Bookmark</li></a>
+			<div ng-controller="ModalCtrl">
+				<script type="text/ng-template" id="profiledetails.html">
+					<div class="modal-header">
+						<h2 class="modal-title"> Timothy</h2>
+					<div class = "modal-body">
+						<h4> This doesnt work yet needs to sync with firebase. </h4>
+					</div>
+					<div class="modal-footer">
+			            <button class="btn btn-primary" type="button" ng-click="ok(lg)">OK</button>
+			        </div>
+			    </script>
+
+				<a ng-click="open()">
+					<li class="list-group-item cardbutton">More Info</li>
+				</a>
+			</div>
+		</ul>
+	</div>
+</div>

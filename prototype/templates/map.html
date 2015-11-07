@@ -1,15 +1,36 @@
 <div style="padding-left:0px;padding-right:0px;">
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-9" style="overflow: hidden">
-			<img src='http://puu.sh/l2lrq/f8b88d7755.jpg'>
+	<div class="container-fluid">
+		<div class="btn-group" uib-dropdown is-open="status.isopen">
+			<!-- filter -->
+			<button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+				Filter by ... <span class="caret"></span>
+			</button>
+			<ul class="uib-dropdown-menu" role="menu" aria-labelledby="single-button">
+				<li role="menuitem">Age</li>
+				<li role="menuitem">Gender</li>
+				<div class="checkbox">
+					<span>
+						Male
+						<input type="checkbox">
+					</span>
+				</div>
+				<div class="checkbox">
+					Female
+					<input type="checkbox">
+				</div>
+
+				<li role="menuitem">Verified User</li>
+				<li class="divider"></li>
+				<li role="menuitem">Separated link</li>
+				<li role="menuitem">Price
+				</li>
+			</ul>
 		</div>
-	<div class="col-md-3">
-		<a ui-sref='map.cards'>Click me!</a>
-		<h2>Your cards:</h2>
-		<div ui-view></div>
-		<!--<div ng-repeat = "card in cards">
-			{{card.name}}
-		</div>-->
-	</div>
-</div>
+		<div class="row">
+			<div class="col-md-9" style="overflow: hidden">	
+				<img src='http://puu.sh/l2lrq/f8b88d7755.jpg'>
+			</div>
+			<div class="col-md-3">
+				<div ui-view="sidebar"></div>
+			</div>
+		</div>
