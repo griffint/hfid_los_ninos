@@ -10,14 +10,6 @@ app.config( function($urlRouterProvider, $stateProvider){
       }
     })
 
-    /*.state('login', {
-      url: '/login',
-      templateUrl: 'templates/login.html',
-      data: {
-        requreLogin: false
-      }
-    })*/
-
     .state('map', {
       url: '/map',
       //we can use the below to have multiple views on the same page
@@ -29,6 +21,11 @@ app.config( function($urlRouterProvider, $stateProvider){
         }
       }
    
+    })
+
+    .state('map.cards', {
+      url: '/cards',
+      templateUrl: 'partials/map.cards.html'
     })
 
     .state('bookmarks', {
@@ -61,7 +58,6 @@ app.config( function($urlRouterProvider, $stateProvider){
       }
     )
 });
-
     /*      
     Here you can handle controller for specific route as well.
     */
