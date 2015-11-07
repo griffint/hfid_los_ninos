@@ -10,8 +10,8 @@
 					</a>
 				</div>
 				<div class="media-body">
-					<h4 class="media-heading">{{card.name}}, 23 M</h4>
-					<p>Software Engineer</p>
+					<h4 class="media-heading">{{card.name}}, {{card.age}} {{card.gender}}</h4>
+					<p>{{card.occupation}}</p>
 				</div>
 			</div>
 		</div>
@@ -35,7 +35,22 @@
 			</li>
 
 			<a href='#'><li class="list-group-item cardbutton">Bookmark</li></a>
-			<a href='#'><li class="list-group-item cardbutton">More Info</li></a>
+			<div ng-controller="ModalCtrl">
+				<script type="text/ng-template" id="profiledetails.html">
+					<div class="modal-header">
+						<h2 class="modal-title"> Timothy</h2>
+					<div class = "modal-body">
+						<h4> This doesnt work yet needs to sync with firebase. </h4>
+					</div>
+					<div class="modal-footer">
+			            <button class="btn btn-primary" type="button" ng-click="ok(lg)">OK</button>
+			        </div>
+			    </script>
+
+				<a ng-click="open()">
+					<li class="list-group-item cardbutton">More Info</li>
+				</a>
+			</div>
 		</ul>
 	</div>
 </div>

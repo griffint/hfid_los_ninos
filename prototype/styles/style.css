@@ -44,3 +44,7 @@ float:left;
 	background-color: #BBBBFF;
 }
 
+.dropdown-menu{
+	min-width: 300px;
+}
+
