@@ -103,22 +103,23 @@ app.controller("LoginCtrl", ["$scope", "Auth",
   }
 ]);
 
-app.controller('BasicCtrl', ["$scope", "$firebaseObject", "Auth",
-	//pass the smallcardsinfo factory into this controller for the sidebar
-	function($scope, $firebaseObject, Auth) {
-		$scope.updateUserInfo = function(userinfo){
-			var ref = new Firebase("https://hfid-los-ninos.firebaseio.com/Profiles");
-			var testObj = {};
-
-			testObj[authdata.uid] = {
-				name: 'Jasper',
-				age: '21'
-			};
-			
-			ref.set(testObj);
-		}
+app.factory("Profile", ["$scope","$firebaseObject", "Auth",
+	function($scope, $firebaseObject, $firebaseAuth, Auth) {
+	return function(){
+		var ref = new Firebase("https://hfid-los-ninos.firebaseio.com/Profiles");
+		var profileRef = ref.child(Auth.uid);
+		return $firebaseObject(profileRef)
+	}
 	}
 ]);
+
+app.controller("BasicCtrl", ["$scope", "Profile",
+  function($scope, Profile) {
+    // create a three-way binding to our Profile as $scope.profile
+    Profile().$bindTo($scope, "profile");
+  }
+]);
+
 /*app.controller('AuthCtrl', [
   '$scope', '$rootScope', '$firebaseAuth', function($scope, $rootScope, $firebaseAuth) {
     var ref = new Firebase('https://hfid-los-ninos.firebaseio.com/');
