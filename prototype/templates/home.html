@@ -1,9 +1,40 @@
 <div style="padding-left:130px;padding-right:200px;">
-	<h1>Welcome to Hey Roomie!</h1>
+	<h1> Welcome to Hey Roomie!</h1>
 	<h3> We are the premier service for helping people find roommates.</h3>
-	<ul>
-		<li> Search in San Francisco</li>
-		<li> Sign Up</li>
-		<li> Sign In</li>
-	</ul>
+
+	<!--<div ng-controller="ButtonsCtrl">
+		<button type="button" class="btn btn-primary" ng-model="singleModel" ng-click="login()"> Login Anonymously </button>
+		<p ng-if="authData"> Welcome! You are logged in anonymously. <strong> {{authData.uid}}</strong></p>
+		<p np-if="error"> Error: <strong> {{error}} </strong></p>
+	</div>-->
+	<form ng-app="sampleApp" ng-controller="LoginCtrl">
+		<fieldset ng-hide="auth">
+			<div class="form-group">
+				<input type="email" class="form-control" ng-model="email" placeholder="email"/>
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" placeholder="password" ng-model="password" />
+			</div>
+			<button type="submit" class="btn btn-default" ng-click="signIn()">Sign In / Sign Up</button>
+		</fieldset>
+		<span ng-show="auth">
+			<button type="submit" class="btn btn-default" ng-click="auth.$logout()">Sign Out</button>
+		</span>
+	</form>
+	<p id="signed_in_as" class="navbar-text navbar-right" ng-show="auth">Signed in as {{email}}</p>
+<!--
+			Password: <input type="password" ng-model="password" placeholder="Password">
+
+			<br><br>
+
+			<button ng-click="signIn()">Create User</button>
+
+			<br><br>
+
+			<button ng-click="removeUser()">Remove User</button>
+
+		<p ng-if="message">Message: <strong>{{ message }}</strong></p>
+		<p ng-if="error">Error: <strong>{{ error }}</strong></p>
+	</div>
+-->
 </div>
