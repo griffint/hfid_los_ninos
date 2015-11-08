@@ -2,7 +2,7 @@ angular.module('single-page-app')
 app.controller('mapSidebarCtrl', ["$scope", "$firebaseArray",
 	//pass the smallcardsinfo factory into this controller for the sidebar
 	function($scope, $firebaseArray) {
-		var ref = new Firebase("https://hfid-los-ninos.firebaseio.com/Users")
+		var ref = new Firebase("https://hfid-los-ninos.firebaseio.com/Profiles")
 		//$scope.cards = $firebaseArray(ref);
 		$scope.cards = [{ id: 0, name: "Timothy", age: "22", title: "Chef", gender: "M"}, {id: 1, name: "Jill", title: "Writer", age: "23", gender: "F"}];
 		//console.log($ref.cards);
@@ -103,6 +103,22 @@ app.controller("LoginCtrl", ["$scope", "Auth",
   }
 ]);
 
+app.controller('BasicCtrl', ["$scope", "$firebaseObject", "Auth",
+	//pass the smallcardsinfo factory into this controller for the sidebar
+	function($scope, $firebaseObject, Auth) {
+		$scope.updateUserInfo = function(userinfo){
+			var ref = new Firebase("https://hfid-los-ninos.firebaseio.com/Profiles");
+			var testObj = {};
+
+			testObj[authdata.uid] = {
+				name: 'Jasper',
+				age: '21'
+			};
+			
+			ref.set(testObj);
+		}
+	}
+]);
 /*app.controller('AuthCtrl', [
   '$scope', '$rootScope', '$firebaseAuth', function($scope, $rootScope, $firebaseAuth) {
     var ref = new Firebase('https://hfid-los-ninos.firebaseio.com/');

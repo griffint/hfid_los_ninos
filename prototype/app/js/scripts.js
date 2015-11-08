@@ -52,9 +52,14 @@ app.config( function($urlRouterProvider, $stateProvider){
       }
     )
 
-    .state('profile', {
-      url: '/profile',
-      templateUrl: 'templates/profile.html',
+    .state('basic-profile', {
+      url: '/basic-profile',
+      templateUrl: 'templates/basic-profile.html',
+      }
+    )
+    .state('advanced-profile', {
+      url: '/advanced-profile',
+      templateUrl: 'templates/advanced-profile.html',
       }
     )
 });

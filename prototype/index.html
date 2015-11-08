@@ -44,8 +44,17 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#/">Notifications</a></li>
-          <li><a href="#">Login</a></li>
-          <li><a href="#">Profile</a></li>
+          <li>
+            <div class="dropdown">
+              <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-hasapopup="true" aria-expanded="true">
+                Profile
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#/basic-profile">Basic</a></li>
+                <li><a href="#/advanced-profile">Advanced</a></li>
+              </ul>
+          </li>
         </ul>
        </div>
     </nav>
