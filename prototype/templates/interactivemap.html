@@ -23,7 +23,7 @@
 <script>
 var canvas = new fabric.Canvas('canvas');
 
-var testjson = '{ "people": { "1": { "id": 1, "x": 80, "y": 600, "avatar": "http://i.imgur.com/N4fpSXx.jpg", "name": "Alan, 57, M", "occupation": "Stay at home Dad" }, "2": { "id": 2, "x": 150, "y": 700, "avatar": "http://i.imgur.com/nG6Ws.jpg", "name": "Sarah, 22, F", "occupation": "Chemical Engineer" } }, "places": { "1": { "id": 1, "x": 90, "y": 800, "avatar": "https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG", "price": "$1000/Room Per Month", "roomBath": "2 Rooms 2 Baths", "description": "Cozy tenderloin disctrict house" }, "2": { "id": 2, "x": 170, "y": 800, "avatar": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Historic_House_in_Fall2006.JPG", "price": "$800/Room Per Month", "roomBath": "3 Rooms 5 Baths", "description": "Mansion next to SFO" } } }';
+var testjson = ' { "people": { "1": { "id": 1, "x": 80, "y": 600, "avatar": "http://i.imgur.com/N4fpSXx.jpg", "name": "Alan", "age": 57, "sex": "M", "occupation": "Stay at home Dad", "description": "The worlds coolest software engineer is looking for a room in the Tenderloin district. I have 3 cats and they are staying with us.", "badgelist": "1,2,3", "hobbylist": "1,3,4", "sleepTime": 22, "wakeTime": 8, "cleanliness": 8, "noisiness": 3 }, "2": { "id": 2, "x": 80, "y": 600, "avatar": "http://i.imgur.com/N4fpSXx.jpg", "name": "Alan", "age": 57, "sex": "M", "occupation": "Stay at home Dad", "description": "The worlds coolest software engineer is looking for a room in the Tenderloin district. I have 3 cats and they are staying with us.", "badgelist": "1,2,3", "hobbylist": "1,3,4", "sleepTime": 22, "wakeTime": 8, "cleanliness": 8, "noisiness": 3 } }, "places": { "1": { "id": 1, "x": 90, "y": 800, "avatar": "https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG", "price": 1000, "rooms": 3, "baths": 2, "description": "Cozy tenderloin disctrict house" }, "2": { "id": 2, "x": 30, "y": 900, "avatar": "https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG", "price": 1000, "rooms": 3, "baths": 2, "description": "Cozy tenderloin disctrict house" } } }';
 
 
 function initializeMap(){
@@ -90,11 +90,11 @@ function createHouseCard(cardHouse){
 			mediaBody.className = "media-body";
 				var price = document.createElement("h4");
 					price.className = "media-heading";
-					price.innerHTML = cardHouse.price;
+					price.innerHTML = "$" + cardHouse.price + "/Room Per Month";
 				mediaBody.appendChild(price);
 				var roomBath = document.createElement("h4");
 					roomBath.className = "media-heading";
-					roomBath.innerHTML = cardHouse.roomBath;
+					roomBath.innerHTML = cardHouse.rooms + " Rooms, " + cardHouse.rooms + " Baths";
 				mediaBody.appendChild(roomBath);
 			media.appendChild(mediaBody);
 		cardBody.appendChild(media);
@@ -126,7 +126,10 @@ function createHouseCard(cardHouse){
 					var li2 = document.createElement("li");
 					var tempButton = document.createElement("button");
 					tempButton.innerHTML = "Add Myself";
-					//Add Myself INTERACTION GOES HERE IN THE TEMPBUTTON FUNCTIN
+					tempButton.onclick = function(){
+						this.innerHTML = "Added Self";
+					};
+					//Add Myself done kinda
 					tempButton.className = "btn btn-default";
 					li2.appendChild(tempButton);
 					ipContents2.appendChild(li2);
@@ -180,7 +183,7 @@ function createPersonCard(cardPerson){
 			mediaBody.className = "media-body";
 				var name = document.createElement("h4");
 					name.className = "media-heading";
-					name.innerHTML = cardPerson.name;
+					name.innerHTML = cardPerson.name + ", " + cardPerson.age.toString() + ", " + cardPerson.sex;
 				mediaBody.appendChild(name);
 				var occupation = document.createElement("p");
 					occupation.className = "media-heading";
