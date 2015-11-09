@@ -11,12 +11,11 @@ app.config( function($urlRouterProvider, $stateProvider){
       url: '/map',
       //we can use the below to have multiple views on the same page
       views: {
-        '': {templateUrl: 'templates/map.html'},
+        '': {templateUrl: 'templates/map.html'}}/*,
         'sidebar@map': {
           templateUrl: 'partials/map.cards.html',
           controller: 'mapSidebarCtrl'
-        }
-      }
+        }*/
    
     })
 
