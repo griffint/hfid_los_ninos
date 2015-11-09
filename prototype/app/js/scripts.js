@@ -5,9 +5,6 @@ app.config( function($urlRouterProvider, $stateProvider){
     .state('home', {
       url: '/home',
       templateUrl: 'templates/home.html',
-      data: {
-        requreLogin: false
-      }
     })
 
     .state('map', {
