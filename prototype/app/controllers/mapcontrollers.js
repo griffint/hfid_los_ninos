@@ -46,14 +46,15 @@ app.factory("Auth", ["$firebaseAuth",
 
 app.controller("LoginCtrl", ["$scope", "Auth",
   function($scope, Auth) {
-  	$scope.auth = null;
-
+    $scope.alert = {};
+  	$scope.auth = false; //hack only for prototype
 
   	$scope.signIn = function () {
       Auth.$authWithPassword({
         email: $scope.email,
         password: $scope.password
       }).then(function(authData) {
+      	$scope.auth = true; //hack only for prototype
         console.log("Logged in as", authData.uid);//Auth.alert.message = '';
       }).catch(function(error) {
         if (error = 'INVALID_EMAIL') {
@@ -70,11 +71,17 @@ app.controller("LoginCtrl", ["$scope", "Auth",
     $scope.createUser = function() {
       $scope.message = null;
       $scope.error = null;
+      $scope.alert = {};
+
 
       Auth.$createUser({
         email: $scope.email,
         password: $scope.password
       }).then(function(userData) {
+        $scope.alertcheck = true; //hack
+        $scope.alert.class= 'success';
+        $scope.alert.message = 'You are now be able to find roommates. To better optimize your roommate pairing experience, please update your profile.'
+      	$scope.auth = true; //hack only for prototype
         $scope.message = "User created with uid: " + userData.uid;
         var profileObj = {};
         profileObj[userData.uid] = {
@@ -82,8 +89,13 @@ app.controller("LoginCtrl", ["$scope", "Auth",
         }
         var profileRef = new Firebase("https://hfid-los-ninos.firebaseio.com/Profiles");
         profileRef.set(profileObj);
+        console.log('account made');
       }).catch(function(error) {
+        console.log('uh-oh');
         $scope.error = error;
+        $scope.alertcheck = true;
+        $scope.alert.class = 'danger';
+        $scope.alert.message = 'The username and password combination you entered is invalid.'
       });
     };
 
@@ -95,14 +107,17 @@ app.controller("LoginCtrl", ["$scope", "Auth",
         email: $scope.email,
         password: $scope.password
       }).then(function() {
+        $scope.alertcheck = false; //hack
+      	$scope.auth = false; //hack only for prototype
         $scope.message = "User removed";
       }).catch(function(error) {
         $scope.error = error;
       });
 
-     $scope.auth.$onAuth(function(authData){
+     /*$scope.auth.$onAuth(function(authData){
      	$scope.authData = authData;
      })
+*/
     };
   }
 ]);
