@@ -33,13 +33,13 @@ app.config( function($urlRouterProvider, $stateProvider){
 
     .state('contacts', {
       url: '/contacts',
-      templateUrl: 'templates/contacts.html',
+      templateUrl: 'templates/contacted.html',
       }
     )
 
     .state('group', {
       url: '/group',
-      templateUrl: 'templates/group.html',
+      templateUrl: 'templates/groups.html',
       }
     )
 

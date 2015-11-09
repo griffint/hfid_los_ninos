@@ -48,3 +48,6 @@ float:left;
 	min-width: 300px;
 }
 
+.app-modal-window .modal-dialog {
+  width: 800px;
+}
