@@ -7,11 +7,6 @@ app.controller('mapSidebarCtrl', ["$scope", "$firebaseArray",
 		$scope.cards = [{ id: 0, name: "Timothy", age: "22", title: "Chef", gender: "M"}, {id: 1, name: "Jill", title: "Writer", age: "23", gender: "F"}];
 		//console.log($ref.cards);
 	}
-	/*
-	function($scope){
-		$scope.cards = [{ id: 0, name: "Timothy", age: "22", title: "Chef", gender: "M"}, {id: 1, name: "Jill", title: "Writer", age: "23", gender: "F"}];
-	}*/
-
 ]);
 
 app.controller('ModalCtrl', function($scope, $uibModal, $log) {
@@ -51,14 +46,14 @@ app.factory("Auth", ["$firebaseAuth",
 
 app.controller("LoginCtrl", ["$scope", "Auth",
   function($scope, Auth) {
-  	$scope.auth = false;
+  	$scope.auth = null;
+
 
   	$scope.signIn = function () {
       Auth.$authWithPassword({
         email: $scope.email,
         password: $scope.password
       }).then(function(authData) {
-      	$scope.auth = true;
         console.log("Logged in as", authData.uid);//Auth.alert.message = '';
       }).catch(function(error) {
         if (error = 'INVALID_EMAIL') {
@@ -80,8 +75,13 @@ app.controller("LoginCtrl", ["$scope", "Auth",
         email: $scope.email,
         password: $scope.password
       }).then(function(userData) {
-      	$scope.auth = true;
         $scope.message = "User created with uid: " + userData.uid;
+        var profileObj = {};
+        profileObj[userData.uid] = {
+        	email: $scope.email
+        }
+        var profileRef = new Firebase("https://hfid-los-ninos.firebaseio.com/Profiles");
+        profileRef.set(profileObj);
       }).catch(function(error) {
         $scope.error = error;
       });
@@ -99,24 +99,36 @@ app.controller("LoginCtrl", ["$scope", "Auth",
       }).catch(function(error) {
         $scope.error = error;
       });
+
+     $scope.auth.$onAuth(function(authData){
+     	$scope.authData = authData;
+     })
     };
   }
 ]);
 
-app.factory("Profile", ["$scope","$firebaseObject", "Auth",
-	function($scope, $firebaseObject, $firebaseAuth, Auth) {
-	return function(){
+/*app.factory("Profile", ["$scope","$firebaseObject",
+	function($scope, $firebaseObject, $firebaseAuth) {
+	return function(userid){
 		var ref = new Firebase("https://hfid-los-ninos.firebaseio.com/Profiles");
-		var profileRef = ref.child(Auth.uid);
+		var profileRef = ref.child(userid);
 		return $firebaseObject(profileRef)
 	}
 	}
-]);
+]);*/
 
-app.controller("BasicCtrl", ["$scope", "Profile",
-  function($scope, Profile) {
+app.controller("BasicCtrl", ["$scope", "Auth",
+  function($scope, Auth) {
     // create a three-way binding to our Profile as $scope.profile
-    Profile().$bindTo($scope, "profile");
+    var ref = new Firebase("https://hfid-los-ninos.firebaseio.com/Profiles")
+    var profileRef = ref.child(Auth.uid);
+    var profileObj = {};
+
+    profileRef.update({
+    	name: 'Griff',
+    	age: '19',
+    });
+    //Profile(Auth.uid).$bindTo($scope, "profile");
   }
 ]);
 
