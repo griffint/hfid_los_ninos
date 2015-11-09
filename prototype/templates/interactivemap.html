@@ -1,0 +1,229 @@
+<link href="../styles/bootstrap.min.css" rel="stylesheet">
+<link href="../styles/cards.css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<div style="padding-left:0px;padding-right:0px;">
+<img src="../app/images/house.png" id="house" style="display: none;">
+<img src="../app/images/person.png" id="person" style="display: none;">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-9" style="overflow: hidden">	
+				<div style="position: relative; left: 0; top: 0;">
+					<img src="../app/images/map.jpg" style="position: absolute; top: 0px; left: 0px;"/>
+					<canvas id="canvas" width="1919" height="975" style="border: 0px solid black; position: relative; top: 0; left: 0;"></canvas>
+				</div>
+			</div>
+			<div id = "cardArea" class="col-md-3">
+				<div ui-view="sidebar"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="../app/js/fabric/dist/fabric.js"></script>
+<script>
+var canvas = new fabric.Canvas('canvas');
+var testjson = '{ "people": { "1": { "id": 1, "x": 80, "y": 600, "avatar": "http://i.imgur.com/N4fpSXx.jpg", "name": "Alan, 57, M", "occupation": "Stay at home Dad" }, "2": { "id": 2, "x": 150, "y": 700, "avatar": "http://i.imgur.com/nG6Ws.jpg", "name": "Sarah, 22, F", "occupation": "Chemical Engineer" } }, "places": { "1": { "id": 1, "x": 90, "y": 800, "avatar": "https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG", "price": "$1000/Room Per Month", "roomBath": "2 Rooms 2 Baths", "description": "Cozy tenderloin disctrict house" }, "2": { "id": 2, "x": 170, "y": 800, "avatar": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Historic_House_in_Fall2006.JPG", "price": "$800/Room Per Month", "roomBath": "3 Rooms 5 Baths", "description": "Mansion next to SFO" } } }';
+
+
+function initializeMap(){
+	var locations = JSON.parse(testjson);
+	$.each(locations.people, function(index, value) {
+		addIcon(value,"person");
+	}); 
+	canvas.renderAll();
+	$.each(locations.places, function(index, value) {
+		addIcon(value,"house");
+	}); 
+	canvas.renderAll();
+	console.log("done");
+}
+
+
+function addIcon(value, type){ 
+	canvas.add(new fabric.Image(document.getElementById(type),{
+		top : value.y,
+		left : value.x,
+		FARid : value.id,
+		hasControls: false,
+		hasBorders: false,
+		lockMovementX: true,
+		lockMovementY: true,
+		FARtype: type,
+		FARinfo: value
+	}));
+}
+initializeMap();
+
+canvas.on('object:selected', function(options) {
+	current = canvas.getActiveObject();
+	var myNode = document.getElementById("cardArea");
+	while (myNode.firstChild) {
+		myNode.removeChild(myNode.firstChild);
+	}
+	var newcard;
+	if (current.FARtype == "person"){
+		newcard = createPersonCard(current.FARinfo);
+	}
+	else if (current.FARtype == "house"){
+		newcard = createHouseCard(current.FARinfo);
+	}
+	document.getElementById("cardArea").appendChild(newcard);
+});
+
+function createHouseCard(cardHouse){
+	var cardContainer = document.createElement("div");
+	cardContainer.className = "panel panel-default card";
+	
+	var cardBody = document.createElement("div");
+	cardBody.className = "panel-body";
+		var media = document.createElement("div");
+		media.className = "media";
+			var mediaLeft = document.createElement("div");
+			mediaLeft.className = "media-left";
+				var avatar = document.createElement("img");
+					avatar.className = "media-object avatar";
+					avatar.src = cardHouse.avatar;
+				mediaLeft.appendChild(avatar);
+			media.appendChild(mediaLeft);
+			var mediaBody = document.createElement("div");
+			mediaBody.className = "media-body";
+				var price = document.createElement("h4");
+					price.className = "media-heading";
+					price.innerHTML = cardHouse.price;
+				mediaBody.appendChild(price);
+				var roomBath = document.createElement("h4");
+					roomBath.className = "media-heading";
+					roomBath.innerHTML = cardHouse.roomBath;
+				mediaBody.appendChild(roomBath);
+			media.appendChild(mediaBody);
+		cardBody.appendChild(media);
+	cardContainer.appendChild(cardBody);
+	
+	
+	
+	var listGroup = document.createElement("ul");
+	listGroup.className = "list-group";
+		var desc = document.createElement("li");
+		desc.className = "list-group-item";
+			var descContent = document.createElement("h4");
+			descContent.innerHTML = cardHouse.description;
+			desc.appendChild(descContent);
+		listGroup.appendChild(desc);
+		var interestedPeople = document.createElement("li");
+		interestedPeople.className = "list-group-item badgeContainer";
+			var ipTop = document.createElement("div");
+			ipTop.className = "container-fluid";
+				var ipContents = document.createElement("ul");
+				ipContents.className = "nav navbar-nav navbar-left";
+					var temph4 = document.createElement("h4");
+					var li = document.createElement("li");
+					temph4.innerHTML = "Interested People";
+					li.appendChild(temph4);
+					ipContents.appendChild(li);
+				var ipContents2 = document.createElement("ul");
+				ipContents2.className = "nav navbar-nav navbar-right";
+					var li2 = document.createElement("li");
+					var tempButton = document.createElement("button");
+					tempButton.innerHTML = "Add Myself";
+					//BOOKMARK INTERACTION GOES HERE IN THE TEMPBUTTON FUNCTIN
+					tempButton.className = "btn btn-default";
+					li2.appendChild(tempButton);
+					ipContents2.appendChild(li2);
+				ipTop.appendChild(ipContents);
+				ipTop.appendChild(ipContents2);
+			interestedPeople.appendChild(ipTop);
+			//GET INTERESTED PEOPLE GOES HERE WHEN IT IS FINISHED
+			var placeHolderBadge = document.createElement("img");
+			placeHolderBadge.className = "thumbnail farbadge";
+			placeHolderBadge.src = "http://puu.sh/l74WX/2677ae32d7.jpg";
+			interestedPeople.appendChild(placeHolderBadge);
+		listGroup.appendChild(interestedPeople);
+	cardContainer.appendChild(listGroup);
+	
+	var bookmarkLink = document.createElement("a");
+		bookmarkLink.href = "#"; //BOOKMARK INTERACTION GOES HERE
+		var bookmarkText = document.createElement("li");
+			bookmarkText.className = "list-group-item cardbutton";
+			bookmarkText.innerHTML = "Bookmark";
+		bookmarkLink.appendChild(bookmarkText);
+	cardContainer.appendChild(bookmarkLink);
+	
+	var moreInfoLink = document.createElement("a");
+		moreInfoLink.href = "#"; //MORE INFO  INTERACTION
+		var moreInfoText = document.createElement("li");
+			moreInfoText.className = "list-group-item cardbutton";
+			moreInfoText.innerHTML = "More Info";
+			bookmarkLink.appendChild(moreInfoText);
+	cardContainer.appendChild(moreInfoLink);
+	
+	return cardContainer;
+			
+}
+
+function createPersonCard(cardPerson){
+	var cardContainer = document.createElement("div");
+	cardContainer.className = "panel panel-default card";
+	
+	var cardBody = document.createElement("div");
+	cardBody.className = "panel-body";
+		var media = document.createElement("div");
+		media.className = "media";
+			var mediaLeft = document.createElement("div");
+			mediaLeft.className = "media-left";
+				var avatar = document.createElement("img");
+					avatar.className = "media-object avatar";
+					avatar.src = cardPerson.avatar;
+				mediaLeft.appendChild(avatar);
+			media.appendChild(mediaLeft);
+			var mediaBody = document.createElement("div");
+			mediaBody.className = "media-body";
+				var name = document.createElement("h4");
+					name.className = "media-heading";
+					name.innerHTML = cardPerson.name;
+				mediaBody.appendChild(name);
+				var occupation = document.createElement("p");
+					occupation.className = "media-heading";
+					occupation.innerHTML = cardPerson.occupation;
+				mediaBody.appendChild(occupation);
+			media.appendChild(mediaBody);
+		cardBody.appendChild(media);
+	cardContainer.appendChild(cardBody);
+	
+	
+	
+	var listGroup = document.createElement("ul");
+	listGroup.className = "list-group";
+		var badgeContainer = document.createElement("li");
+		badgeContainer.className = "list-group-item badgeContainer";
+			var badgesLabel = document.createElement("h4");
+				badgesLabel.innerHTML = "Badges";
+			badgeContainer.appendChild(badgesLabel);
+			//GET INTERESTED PEOPLE GOES HERE WHEN IT IS FINISHED
+			var placeHolderBadge = document.createElement("img");
+				placeHolderBadge.className = "thumbnail farbadge";
+				placeHolderBadge.src = "https://jasminepicha.files.wordpress.com/2013/04/5.png";
+			badgeContainer.appendChild(placeHolderBadge);
+		listGroup.appendChild(badgeContainer);
+	cardContainer.appendChild(listGroup);
+	
+	var bookmarkLink = document.createElement("a");
+		bookmarkLink.href = "#"; //BOOKMARK INTERACTION GOES HERE
+		var bookmarkText = document.createElement("li");
+			bookmarkText.className = "list-group-item cardbutton";
+			bookmarkText.innerHTML = "Bookmark";
+		bookmarkLink.appendChild(bookmarkText);
+	cardContainer.appendChild(bookmarkLink);
+	
+	var moreInfoLink = document.createElement("a");
+		moreInfoLink.href = "#"; //MORE INFO  INTERACTION
+		var moreInfoText = document.createElement("li");
+			moreInfoText.className = "list-group-item cardbutton";
+			moreInfoText.innerHTML = "More Info";
+			bookmarkLink.appendChild(moreInfoText);
+	cardContainer.appendChild(moreInfoLink);
+	
+	return cardContainer;
+			
+}
+
+</script>
