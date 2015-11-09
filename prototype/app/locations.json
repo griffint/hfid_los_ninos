@@ -2,11 +2,11 @@
     "people": {
         "1": {
             "id": 1,
-            "x": 80,
+            "x": 280,
             "y": 600,
-            "avatar": "http://i.imgur.com/N4fpSXx.jpg",
+            "avatar": "https://pbs.twimg.com/profile_images/2711772111/5579fa8742299df69b02af2c7a2a9c51.png",
             "name": "Alan",
-            "age": 57,
+            "age": 45,
             "sex": "M",
             "occupation": "Stay at home Dad",
             "description": "The worlds coolest software engineer is looking for a room in the Tenderloin district. I have 3 cats and they are staying with us.",
@@ -19,20 +19,71 @@
         },
         "2": {
             "id": 2,
-            "x": 40,
+            "x": 800,
             "y": 400,
             "avatar": "http://i.imgur.com/N4fpSXx.jpg",
-            "name": "Alan",
-            "age": 57,
+            "name": "Bill",
+            "age": 22,
             "sex": "M",
-            "occupation": "Stay at home Dad",
-            "description": "The worlds coolest software engineer is looking for a room in the Tenderloin district. I have 3 cats and they are staying with us.",
-            "badgelist": "1,2",
-            "hobbylist": "1,3,4",
+            "occupation": "Ditch Digger",
+            "description": "Looking for cool roommates who don't mind me tracking some dirt somewhere",
+            "badgelist": "2",
+            "hobbylist": "1,3,4,5",
             "sleepTime": 22,
-            "wakeTime": 8,
+            "wakeTime": 6,
+            "cleanliness": 3,
+            "noisiness": 5
+        },
+        "3": {
+            "id": 3,
+            "x": 550,
+            "y": 480,
+            "avatar": "https://pbs.twimg.com/profile_images/628269265947389952/aadqQFDO.png",
+            "name": "Brianna",
+            "age": 29,
+            "sex": "F",
+            "occupation": "Private Security",
+            "description": "Looking for a solid, well built home where I can protect my boss in peace.",
+            "badgelist": "3,4",
+            "hobbylist": "1,3",
+            "sleepTime": 20,
+            "wakeTime": 5,
             "cleanliness": 8,
-            "noisiness": 3
+            "noisiness": 7
+        }
+        "4": {
+            "id": 4,
+            "x": 550,
+            "y": 480,
+            "avatar": "https://carlyforpresident.com/img/hp-history.jpg",
+            "name":"Carly",
+            "age": 40,
+            "sex": "F",
+            "occupation": "Politician, Former Executive",
+            "description": "I want to make this country great again. Sorry, I need a bedroom and am willing to share bathroom",
+            "badgelist": "3,4,5",
+            "hobbylist": "1,3,5",
+            "sleepTime": 23,
+            "wakeTime": 7,
+            "cleanliness": 8,
+            "noisiness": 2
+        }
+        "5": {
+            "id": 5,
+            "x": 550,
+            "y": 480,
+            "avatar": "https://38.media.tumblr.com/avatar_23300ab3279a_96.png",
+            "name":"Jared",
+            "age": 27,
+            "sex": "M",
+            "occupation": "Product Manager",
+            "description": "I want to make this country great again. Sorry, I need a bedroom and am willing to share bathroom",
+            "badgelist": "3,4,5",
+            "hobbylist": "1,3,5",
+            "sleepTime": 23,
+            "wakeTime": 8,
+            "cleanliness": 10,
+            "noisiness": 1
         }
     },
     "places": {
@@ -77,6 +128,16 @@
             "id": 2,
             "hoverText": "Verified - User has sent us verification",
             "image": "http://www.clker.com/cliparts/D/z/C/2/q/E/check-mark-md.png"
+        },
+        "3": {
+            "id": 3,
+            "hoverText": "You have mutual facebook friends with this person!",
+            "image": "http://1.bp.blogspot.com/-p6boeGo2dWQ/UqLh5tA2mcI/AAAAAAAAAjA/uNuD4PlUH9U/s1600/facebook-logo-3.png"
+        },
+        "4": {
+            "id": 4,
+            "hoverText": "Alma mater - this person went to your college!",
+            "image": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR5vWbRyeHtPj79YLTnmHDAYOoAgKx437nRfO8cb5kCz0CHGrjmvxJRQVc"
         }
     },
     "hobbies": {
