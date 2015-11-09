@@ -3,8 +3,8 @@ app.config( function($urlRouterProvider, $stateProvider){
 
   $stateProvider
     .state('/', {
-      url: '/home',
-      templateUrl: 'templates/home.html',
+      url: '/',
+      templateUrl: 'templates/home_template.html',
     })
 
     .state('map', {
@@ -30,15 +30,15 @@ app.config( function($urlRouterProvider, $stateProvider){
       }
     )
 
-    .state('contacts', {
-      url: '/contacts',
-      templateUrl: 'templates/contacts.html',
+    .state('contacted', {
+      url: '/contacted',
+      templateUrl: 'templates/contacted.html',
       }
     )
 
-    .state('group', {
-      url: '/group',
-      templateUrl: 'templates/group.html',
+    .state('groups', {
+      url: '/groups',
+      templateUrl: 'templates/groups.html',
       }
     )
 
