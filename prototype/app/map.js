@@ -1,5 +1,6 @@
 var canvas = 0;
-$( window ).load(function() {
+
+window.onload = function(){
 	canvas = new fabric.Canvas('canvas');
 	initializeMap();
 	canvas.on('object:selected', function(options) {
@@ -17,35 +18,35 @@ $( window ).load(function() {
 		}
 		document.getElementById("cardArea").appendChild(newcard);
 	});
-})
+	canvas.renderAll();
+}
 
-function addIcon(value, type){ 
-	canvas.add(new fabric.Image(document.getElementById(type),{
-		top : value.y,
-		left : value.x,
-		FARid : value.id,
-		hasControls: false,
-		hasBorders: false,
-		lockMovementX: true,
-		lockMovementY: true,
-		FARtype: type,
-		FARinfo: value
+function test(){
+	canvas.add(new fabric.Rect({
+	  left: 250,
+	  top: 250,
+	  fill: 'red',
+	  width: 20,
+	  height: 20
 	}));
+	canvas.renderAll();
+	console.log(canvas.getObjects());
 }
 
 function initializeMap(){
-	var locations = JSON.parse(testjson);
-	$.each(locations.people, function(index, value) {
-		addIcon(value,"person");
-		console.log(value, "person");
-	}); 
-	canvas.renderAll();
-	$.each(locations.places, function(index, value) {
-		addIcon(value,"house");
-		console.log(value,"house");
-	}); 
-	canvas.renderAll();
-	console.log("done");
+	var locations = [];
+	$.getJSON("./app/locations.json", function(json) {
+		locations = json;
+		$.each(locations.people, function(index, value) {
+			addIcon(value,"person");
+		}); 
+		canvas.renderAll();
+		$.each(locations.places, function(index, value) {
+			addIcon(value,"house");
+		});
+		canvas.renderAll();
+		console.log(canvas.getObjects());
+	});
 }
 
 function rerender(){
@@ -53,7 +54,6 @@ function rerender(){
 }
 
 var testjson = '{ "people": { "1": { "id": 1, "x": 230, "y": 350, "avatar": "http://i.imgur.com/N4fpSXx.jpg", "name": "Alan", "age": 57, "sex": "M", "occupation": "Stay at home Dad", "description": "The worlds coolest software engineer is looking for a room in the Tenderloin district. I have 3 cats and they are staying with us.", "badgelist": "1,2", "hobbylist": "1,3,4", "sleepTime": 22, "wakeTime": 8, "cleanliness": 8, "noisiness": 3 }, "2": { "id": 2, "x": 900, "y": 350, "avatar": "http://i.imgur.com/N4fpSXx.jpg", "name": "Alan", "age": 57, "sex": "M", "occupation": "Stay at home Dad", "description": "The worlds coolest software engineer is looking for a room in the Tenderloin district. I have 3 cats and they are staying with us.", "badgelist": "1,2", "hobbylist": "1,3,4", "sleepTime": 22, "wakeTime": 8, "cleanliness": 8, "noisiness": 3 } }, "places": { "1": { "id": 1, "x": 230, "y": 700, "avatar": "https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG", "price": 1000, "rooms": 3, "baths": 2, "description": "Cozy tenderloin disctrict house", "interestedPeople": "1,2,5,6", "badgelist": "11,12", "bigDescription": "Private location near downtown. Cozy 2 bed 1 bath perfect for two interested people. I own the apartment but I do not live there, so you would have the place all to your own. 2 private parking spots included. Big kitchen!", "owner": "Dave is a retired market analyst who owns several apartments in the San Fransisco area. He enjoys local food and drink and goes on hikes with his dog. He loves to travel and has been to 30 different countries.", "ownercontact": "bigdog123@olin.edu" }, "2": { "id": 2, "x": 900, "y": 700, "avatar": "https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG", "price": 1000, "rooms": 3, "baths": 2, "description": "Cozy tenderloin disctrict house", "interestedPeople": "1,2,5,6", "badgelist": "11,12", "bigDescription": "Private location near downtown. Cozy 2 bed 1 bath perfect for two interested people. I own the apartment but I do not live there, so you would have the place all to your own. 2 private parking spots included. Big kitchen!", "owner": "Dave is a retired market analyst who owns several apartments in the San Fransisco area. He enjoys local food and drink and goes on hikes with his dog. He loves to travel and has been to 30 different countries.", "ownercontact": "bigdog123@olin.edu" } }, "badges": { "1": { "id": 1, "hoverText": "Site Veteran - Used the site to get a roommate before", "image": "https://jasminepicha.files.wordpress.com/2013/04/5.png" }, "2": { "id": 2, "hoverText": "Verified - User has sent us verification", "image": "http://www.clker.com/cliparts/D/z/C/2/q/E/check-mark-md.png" } }, "hobbies": { "1": "Sports", "2": "Gaming", "3": "Bar Hopping", "4": "Movies", "5": "Creative Arts" } }';
-
 
 function createBadge(badgeObject){
 	var placeHolderBadge = document.createElement("img");
