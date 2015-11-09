@@ -19,9 +19,10 @@
 	</div>
 </div>
 
-<script src="../app/js/fabric/dist/fabric.js"></script>
+<script src="../app/js/fabric/dist/fabric.js"></script><!--- This needs to be stuck at the bottom of the page no matter what --->
 <script>
 var canvas = new fabric.Canvas('canvas');
+
 var testjson = '{ "people": { "1": { "id": 1, "x": 80, "y": 600, "avatar": "http://i.imgur.com/N4fpSXx.jpg", "name": "Alan, 57, M", "occupation": "Stay at home Dad" }, "2": { "id": 2, "x": 150, "y": 700, "avatar": "http://i.imgur.com/nG6Ws.jpg", "name": "Sarah, 22, F", "occupation": "Chemical Engineer" } }, "places": { "1": { "id": 1, "x": 90, "y": 800, "avatar": "https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG", "price": "$1000/Room Per Month", "roomBath": "2 Rooms 2 Baths", "description": "Cozy tenderloin disctrict house" }, "2": { "id": 2, "x": 170, "y": 800, "avatar": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Historic_House_in_Fall2006.JPG", "price": "$800/Room Per Month", "roomBath": "3 Rooms 5 Baths", "description": "Mansion next to SFO" } } }';
 
 
@@ -125,7 +126,7 @@ function createHouseCard(cardHouse){
 					var li2 = document.createElement("li");
 					var tempButton = document.createElement("button");
 					tempButton.innerHTML = "Add Myself";
-					//BOOKMARK INTERACTION GOES HERE IN THE TEMPBUTTON FUNCTIN
+					//Add Myself INTERACTION GOES HERE IN THE TEMPBUTTON FUNCTIN
 					tempButton.className = "btn btn-default";
 					li2.appendChild(tempButton);
 					ipContents2.appendChild(li2);
@@ -141,7 +142,7 @@ function createHouseCard(cardHouse){
 	cardContainer.appendChild(listGroup);
 	
 	var bookmarkLink = document.createElement("a");
-		bookmarkLink.href = "#"; //BOOKMARK INTERACTION GOES HERE
+		bookmarkLink.href = "#"; //BOOKMARK INTERACTION GOES HERE - modal popup?
 		var bookmarkText = document.createElement("li");
 			bookmarkText.className = "list-group-item cardbutton";
 			bookmarkText.innerHTML = "Bookmark";
@@ -149,7 +150,7 @@ function createHouseCard(cardHouse){
 	cardContainer.appendChild(bookmarkLink);
 	
 	var moreInfoLink = document.createElement("a");
-		moreInfoLink.href = "#"; //MORE INFO  INTERACTION
+		moreInfoLink.href = "#"; //MORE INFO INTERACTION - modal popup
 		var moreInfoText = document.createElement("li");
 			moreInfoText.className = "list-group-item cardbutton";
 			moreInfoText.innerHTML = "More Info";
@@ -198,7 +199,7 @@ function createPersonCard(cardPerson){
 			var badgesLabel = document.createElement("h4");
 				badgesLabel.innerHTML = "Badges";
 			badgeContainer.appendChild(badgesLabel);
-			//GET INTERESTED PEOPLE GOES HERE WHEN IT IS FINISHED
+			//BADGES GOES HERE WHEN IT IS FINISHED
 			var placeHolderBadge = document.createElement("img");
 				placeHolderBadge.className = "thumbnail farbadge";
 				placeHolderBadge.src = "https://jasminepicha.files.wordpress.com/2013/04/5.png";
