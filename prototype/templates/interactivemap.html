@@ -71,6 +71,27 @@ canvas.on('object:selected', function(options) {
 	document.getElementById("cardArea").appendChild(newcard);
 });
 
+function createBadge(badgeObject){
+	var placeHolderBadge = document.createElement("img");
+		placeHolderBadge.className = "thumbnail farbadge";
+		placeHolderBadge.src = badgeObject.image;
+		placeHolderBadge.alt = badgeObject.hoverText;
+	return placeHolderBadge;
+}
+
+function getBadges(badgeList){
+	var locations = JSON.parse(testjson);
+	var badges = locations.badges;
+	var thisbadgeList = badgeList.split(",");
+	var appendme = [];
+	$.each(badges, function(index, value) {
+		if(thisbadgeList.indexOf(value.id) > -1){
+			appendme.push(createBadge(value));
+		}
+	});
+	return appendme;
+}
+
 function createHouseCard(cardHouse){
 	var cardContainer = document.createElement("div");
 	cardContainer.className = "panel panel-default card";
@@ -202,11 +223,9 @@ function createPersonCard(cardPerson){
 			var badgesLabel = document.createElement("h4");
 				badgesLabel.innerHTML = "Badges";
 			badgeContainer.appendChild(badgesLabel);
-			//BADGES GOES HERE WHEN IT IS FINISHED
-			var placeHolderBadge = document.createElement("img");
-				placeHolderBadge.className = "thumbnail farbadge";
-				placeHolderBadge.src = "https://jasminepicha.files.wordpress.com/2013/04/5.png";
-			badgeContainer.appendChild(placeHolderBadge);
+			$.each(getBadges(cardPerson.badgelist), function(index, badge) {
+				badgeContainer.appendChild(badge);
+			});
 		listGroup.appendChild(badgeContainer);
 	cardContainer.appendChild(listGroup);
 	
