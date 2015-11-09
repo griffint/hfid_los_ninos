@@ -61,6 +61,17 @@ float:left;
 	margin: 0 auto;
 }
 
+
+.descrip {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.imgwrap:hover .descrip {
+    visibility: visible;
+    opacity: 1;
+}
+
 @media screen and (max-width: 740px) { 
   #auth button {
     width: 100%;
