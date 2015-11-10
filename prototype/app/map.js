@@ -1,9 +1,8 @@
-/*var canvas = 0;
 
-function afterTimeout(){
-	canvas = new fabric.Canvas('canvas');
-	initializeMap(activeFilter);
-	drawAllCards(activeFilter);
+var canvas = 0;
+$( window ).load(function() {
+	var canvas = new fabric.Canvas('canvas');
+	initializeMap();
 	canvas.on('object:selected', function(options) {
 		current = canvas.getActiveObject();
 		var myNode = document.getElementById("cardArea");
@@ -19,69 +18,38 @@ function afterTimeout(){
 		}
 		document.getElementById("cardArea").appendChild(newcard);
 	});
-	canvas.on('selection:cleared', function() {
-		drawAllCards(activeFilter);
-	});
-	canvas.renderAll();
-}
+})
 
-function test(){
-	canvas.add(new fabric.Rect({
-	  left: 250,
-	  top: 250,
-	  fill: 'red',
-	  width: 20,
-	  height: 20
-	}));
-	canvas.renderAll();
-	console.log(canvas.getObjects());
-}
-
-//remove bedtime, dates
-var defaultFilter = {people: true, minage:0,maxage:100, verified: false, cleanliness: 0, noise: 0, gender: "MF", places: true, minprice: 0, maxprice: 100000000, beds:"12345", baths:"12345"};
-var activeFilter = defaultFilter;
-
-function drawAllCards(filter){
-	var myNode = document.getElementById("cardArea");
-	while (myNode.firstChild) {
-		myNode.removeChild(myNode.firstChild);
+	function initializeMap(){
+		var locations = JSON.parse(testjson);
+		$.each(locations.people, function(index, value) {
+			addIcon(value,"person");
+		}); 
+		canvas.renderAll();
+		$.each(locations.places, function(index, value) {
+			addIcon(value,"house");
+		}); 
+		canvas.renderAll();
+		console.log("done");
 	}
-	$.getJSON("./app/locations.json", function(locations) {
-		$.each(locations.people, function(index, value) {
-			if(filter.people && filter.minage<value.age && filter.maxage>value.age && ((value.badgelist.indexOf("2")>-1 && filter.verified)||!(filter.verified)) && filter.cleanliness<value.cleanliness && filter.noise<value.noisiness && filter.gender.indexOf(value.sex)>-1){
-				document.getElementById("cardArea").appendChild(createPersonCard(value));
-			}
-		}); 
+	function addIcon(value, type){ 
+		canvas.add(new fabric.Image(document.getElementById(type),{
+			top : value.y,
+			left : value.x,
+			FARid : value.id,
+			hasControls: false,
+			hasBorders: false,
+			lockMovementX: true,
+			lockMovementY: true,
+			FARtype: type,
+			FARinfo: value
+		}));
+	}
+	
+	function rerender(){
 		canvas.renderAll();
-		$.each(locations.places, function(index, value) {
-			if(filter.places && filter.minprice<value.price && filter.maxprice>value.price && filter.beds.indexOf(value.rooms.toString())>-1 && filter.baths.indexOf(value.baths.toString())>-1){
-				document.getElementById("cardArea").appendChild(createHouseCard(value));
-			}
-		});
-	});
-}
-
-
-
-
-function initializeMap(filter){
-	canvas.clear();
-	$.getJSON("./app/locations.json", function(locations) {
-		$.each(locations.people, function(index, value) {
-			if(filter.people && filter.minage<value.age && filter.maxage>value.age && ((value.badgelist.indexOf("2")>-1 && filter.verified)||!(filter.verified)) && filter.cleanliness<value.cleanliness && filter.noise<value.noisiness && filter.gender.indexOf(value.sex)>-1){
-				addIcon(value,"person");
-			}
-		}); 
-		canvas.renderAll();
-		$.each(locations.places, function(index, value) {
-			if(filter.places && filter.minprice<value.price && filter.maxprice>value.price && filter.beds.indexOf(value.rooms.toString())>-1 && filter.baths.indexOf(value.baths.toString())>-1){
-				addIcon(value,"house");
-			}
-		});
-		canvas.renderAll();
-	});
-}
-
+		console.log("Rendered all");
+	}
 
 function addIcon(value, type){ 
 	canvas.add(new fabric.Image(document.getElementById(type),{
@@ -292,4 +260,3 @@ function createPersonCard(cardPerson){
 	
 	return cardContainer;
 }
-*/
