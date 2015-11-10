@@ -145,6 +145,24 @@ function afterTimeout(){
 		}
 		activeFilter.baths = bathsf;
 	});
+	$(function() {
+		$( "#dialogPerson" ).dialog({
+		  autoOpen: false,
+		  minWidth: 800
+		});
+		$( "#dialogPlace" ).dialog({
+		  autoOpen: false,
+		  minWidth: 1000
+		});
+	 
+		$( ".infoPlace" ).click(function() {
+			console.log("clicked");
+		  $( "#dialogPlace" ).dialog( "open" );
+		});
+		$( ".infoPerson" ).click(function() {
+		  $( "#dialogPerson" ).dialog( "open" );
+		});
+	  });
 }
 
 function test(){
@@ -169,7 +187,7 @@ function resetFilters(){
 	//activeFilter = defaultFilter;
 	//initializeMap(activeFilter);
 	//drawAllCards(activeFilter);
-	alert("Functionality Not Added");
+	alert("Functionality Not Added, If your filters become messed up, please refresh the page, sorry");
 }
 
 function applyFilters(){
@@ -179,9 +197,6 @@ function applyFilters(){
 	
 }
 
-function cycleStuff(){
-
-}
 
 function drawAllCards(filter){
 	var myNode = document.getElementById("cardArea");
@@ -270,8 +285,8 @@ function getBadges(badgeList){
 
 function createHouseCard(cardHouse){
 	var cardContainer = document.createElement("div");
-	cardContainer.className = "panel panel-default card";
-	
+	cardContainer.className = "panel panel-default card ng-scope";
+	cardContainer.setAttribute("ng-controller","BerkeleyModalCtrl");
 	var cardBody = document.createElement("div");
 	cardBody.className = "panel-body";
 		var media = document.createElement("div");
@@ -344,23 +359,29 @@ function createHouseCard(cardHouse){
 				});
 			});
 		listGroup.appendChild(interestedPeople);
+	
+	
+		var bookmarkLink = document.createElement("a");
+			bookmarkLink.href = "#"; //BOOKMARK INTERACTION GOES HERE - modal popup?
+			bookmarkLink.onclick = function(){
+				this.innerHTML = "Bookmarked!";
+			};
+			var bookmarkText = document.createElement("li");
+				bookmarkText.className = "list-group-item cardbutton";
+				bookmarkText.innerHTML = "Bookmark";
+			bookmarkLink.appendChild(bookmarkText);
+		listGroup.appendChild(bookmarkLink);
+		
+		var moreInfoLink = document.createElement("a");
+			moreInfoLink.onclick = function(){
+				$( "#dialogPlace" ).dialog( "open" );
+			}
+			var moreInfoText = document.createElement("li");
+				moreInfoText.className = "list-group-item cardbutton";
+				moreInfoText.innerHTML = "More Info";
+			moreInfoLink.appendChild(moreInfoText);
+		listGroup.appendChild(moreInfoLink);
 	cardContainer.appendChild(listGroup);
-	
-	var bookmarkLink = document.createElement("a");
-		bookmarkLink.href = "#"; //BOOKMARK INTERACTION GOES HERE - modal popup?
-		var bookmarkText = document.createElement("li");
-			bookmarkText.className = "list-group-item cardbutton";
-			bookmarkText.innerHTML = "Bookmark";
-		bookmarkLink.appendChild(bookmarkText);
-	cardContainer.appendChild(bookmarkLink);
-	
-	var moreInfoLink = document.createElement("a");
-		moreInfoLink.href = "#"; //MORE INFO INTERACTION - modal popup
-		var moreInfoText = document.createElement("li");
-			moreInfoText.className = "list-group-item cardbutton";
-			moreInfoText.innerHTML = "More Info";
-			bookmarkLink.appendChild(moreInfoText);
-	cardContainer.appendChild(moreInfoLink);
 	
 	return cardContainer;
 			
@@ -368,7 +389,8 @@ function createHouseCard(cardHouse){
 
 function createPersonCard(cardPerson){
 	var cardContainer = document.createElement("div");
-	cardContainer.className = "panel panel-default card";
+	cardContainer.className = "panel panel-default card ng-scope";
+	cardContainer.setAttribute("ng-controller","JaredModalCtrl");
 	
 	var cardBody = document.createElement("div");
 	cardBody.className = "panel-body";
@@ -414,23 +436,30 @@ function createPersonCard(cardPerson){
 				});
 			});
 		listGroup.appendChild(badgeContainer);
+	
+	
+		var bookmarkLink = document.createElement("a");
+			bookmarkLink.href = "#"; //BOOKMARK INTERACTION GOES HERE
+			bookmarkLink.onclick = function(){
+				this.innerHTML = "Bookmarked!";
+			};
+			var bookmarkText = document.createElement("li");
+				bookmarkText.className = "list-group-item cardbutton";
+				bookmarkText.innerHTML = "Bookmark";
+			bookmarkLink.appendChild(bookmarkText);
+		listGroup.appendChild(bookmarkLink);
+		
+		var moreInfoLink = document.createElement("a");
+			moreInfoLink.className = "infoperson";
+			moreInfoLink.onclick = function(){
+				$( "#dialogPerson" ).dialog( "open" );
+			}
+			var moreInfoText = document.createElement("li");
+				moreInfoText.className = "list-group-item cardbutton";
+				moreInfoText.innerHTML = "More Info";
+			moreInfoLink.appendChild(moreInfoText);
+		listGroup.appendChild(moreInfoLink);
 	cardContainer.appendChild(listGroup);
-	
-	var bookmarkLink = document.createElement("a");
-		bookmarkLink.href = "#"; //BOOKMARK INTERACTION GOES HERE
-		var bookmarkText = document.createElement("li");
-			bookmarkText.className = "list-group-item cardbutton";
-			bookmarkText.innerHTML = "Bookmark";
-		bookmarkLink.appendChild(bookmarkText);
-	cardContainer.appendChild(bookmarkLink);
-	
-	var moreInfoLink = document.createElement("a");
-		moreInfoLink.href = "#"; //MORE INFO  INTERACTION
-		var moreInfoText = document.createElement("li");
-			moreInfoText.className = "list-group-item cardbutton";
-			moreInfoText.innerHTML = "More Info";
-			bookmarkLink.appendChild(moreInfoText);
-	cardContainer.appendChild(moreInfoLink);
 	
 	return cardContainer;
 			
