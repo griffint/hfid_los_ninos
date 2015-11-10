@@ -1,8 +1,9 @@
-
 var canvas = 0;
-$( window ).load(function() {
-	var canvas = new fabric.Canvas('canvas');
-	initializeMap();
+
+function afterTimeout(){
+	canvas = new fabric.Canvas('canvas');
+	initializeMap(activeFilter);
+	drawAllCards(activeFilter);
 	canvas.on('object:selected', function(options) {
 		current = canvas.getActiveObject();
 		var myNode = document.getElementById("cardArea");
@@ -18,38 +19,226 @@ $( window ).load(function() {
 		}
 		document.getElementById("cardArea").appendChild(newcard);
 	});
-})
+	canvas.on('selection:cleared', function() {
+		//drawAllCards(activeFilter);
+	});
+	canvas.renderAll();
+	$("#showpeople").change(function(){
+		console.log("showpeople changed");
+		if(this.checked) {
+			activeFilter.people = true;
+		}
+		else{
+			activeFilter.people = false;
+		}
+	});
+	$("#age").change(function(){
+		console.log("age changed");
+		activeFilter.minage = this.value;
+	});
+	$("#agero").change(function(){
+		activeFilter.maxage = this.value;
+	});
+	$("#ver").change(function(){
+		if(this.checked) {
+			activeFilter.verified = true;
+		}
+		else{
+			activeFilter.verified = false;
+		}
+	});
+	$("#clean").change(function(){
+		activeFilter.cleanliness = this.value;
+	});
+	$("#noise").change(function(){
+		activeFilter.noise = this.value;
+	});
+	$("#femaleRadio").change(function(){
+		if(this.checked) {
+			if(document.getElementById("maleRadio").checked){
+				activeFilter.gender = "MF";
+			}
+			else{
+				activeFilter.gender = "F";
+			}
+		}
+		else{
+			if(document.getElementById("maleRadio").checked){
+				activeFilter.gender = "M";
+			}
+			else{
+				activeFilter.gender = "MF";
+			}
+		}
+	});
+	$("#maleRadio").change(function(){
+		if(this.checked) {
+			if(document.getElementById("femaleRadio").checked){
+				activeFilter.gender = "MF";
+			}
+			else{
+				activeFilter.gender = "M";
+			}
+		}
+		else{
+			if(document.getElementById("femaleRadio").checked){
+				activeFilter.gender = "F";
+			}
+			else{
+				activeFilter.gender = "MF";
+			}
+		}
+	});
 
-	function initializeMap(){
-		var locations = JSON.parse(testjson);
+	$("#showplaces").change(function(){
+		if(this.checked) {
+			activeFilter.places = true;
+		}
+		else{
+			activeFilter.places = false;
+		}
+	});
+
+	$("#price").change(function(){
+		activeFilter.minprice = this.value;
+	});
+	$("#pricero").change(function(){
+		activeFilter.maxprice = this.value;
+	});
+
+	$(".bedtoggler").change(function(){
+		var bedf = "";
+		if(document.getElementById("1bed").checked){
+			bedf += "1";
+		}
+		if(document.getElementById("2bed").checked){
+			bedf += "2";
+		}
+		if(document.getElementById("3bed").checked){
+			bedf += "3";
+		}
+		if(document.getElementById("4bed").checked){
+			bedf += "4";
+		}
+		if(document.getElementById("5bed").checked){
+			bedf += "5";
+		}
+		activeFilter.beds = bedf;
+	});
+
+	$(".bathtoggler").change(function(){
+		var bathsf = "";
+		if(document.getElementById("1bath").checked){
+			bathsf += "1";
+		}
+		if(document.getElementById("2bath").checked){
+			bathsf += "2";
+		}
+		if(document.getElementById("3bath").checked){
+			bathsf += "3";
+		}
+		if(document.getElementById("4bath").checked){
+			bathsf += "4";
+		}
+		if(document.getElementById("5bath").checked){
+			bathsf += "5";
+		}
+		activeFilter.baths = bathsf;
+	});
+	$(function() {
+		$( "#dialogPerson" ).dialog({
+		  autoOpen: false,
+		  minWidth: 800
+		});
+		$( "#dialogPlace" ).dialog({
+		  autoOpen: false,
+		  minWidth: 1000
+		});
+	 
+		$( ".infoPlace" ).click(function() {
+			console.log("clicked");
+		  $( "#dialogPlace" ).dialog( "open" );
+		});
+		$( ".infoPerson" ).click(function() {
+		  $( "#dialogPerson" ).dialog( "open" );
+		});
+	  });
+}
+
+function test(){
+	canvas.add(new fabric.Rect({
+	  left: 250,
+	  top: 250,
+	  fill: 'red',
+	  width: 20,
+	  height: 20
+	}));
+	canvas.renderAll();
+	console.log(canvas.getObjects());
+}
+
+//remove bedtime, dates
+var defaultFilter = {people: true, minage:0,maxage:100, verified: false, cleanliness: 0, noise: 0, gender: "MF", places: true, minprice: 0, maxprice: 100000000, beds:"12345", baths:"12345"};
+var activeFilter = defaultFilter;
+
+
+
+function resetFilters(){
+	//activeFilter = defaultFilter;
+	//initializeMap(activeFilter);
+	//drawAllCards(activeFilter);
+	alert("Functionality Not Added, If your filters become messed up, please refresh the page, sorry");
+}
+
+function applyFilters(){
+	console.log(activeFilter);
+	initializeMap(activeFilter);
+	drawAllCards(activeFilter);
+	
+}
+
+
+function drawAllCards(filter){
+	var myNode = document.getElementById("cardArea");
+	while (myNode.firstChild) {
+		myNode.removeChild(myNode.firstChild);
+	}
+	$.getJSON("./app/locations.json", function(locations) {
 		$.each(locations.people, function(index, value) {
-			addIcon(value,"person");
+			if(filter.people && filter.minage<value.age && filter.maxage>value.age && ((value.badgelist.indexOf("2")>-1 && filter.verified)||!(filter.verified)) && filter.cleanliness<value.cleanliness && filter.noise<value.noisiness && filter.gender.indexOf(value.sex)>-1){
+				document.getElementById("cardArea").appendChild(createPersonCard(value));
+			}
 		}); 
 		canvas.renderAll();
 		$.each(locations.places, function(index, value) {
-			addIcon(value,"house");
+			if(filter.places && filter.minprice<value.price && filter.maxprice>value.price && filter.beds.indexOf(value.rooms.toString())>-1 && filter.baths.indexOf(value.baths.toString())>-1){
+				document.getElementById("cardArea").appendChild(createHouseCard(value));
+			}
+		});
+	});
+}
+
+
+
+
+function initializeMap(filter){
+	canvas.clear();
+	$.getJSON("./app/locations.json", function(locations) {
+		$.each(locations.people, function(index, value) {
+			if(filter.people && filter.minage<value.age && filter.maxage>value.age && ((value.badgelist.indexOf("2")>-1 && filter.verified)||!(filter.verified)) && filter.cleanliness<value.cleanliness && filter.noise<value.noisiness && filter.gender.indexOf(value.sex)>-1){
+				addIcon(value,"person");
+			}
 		}); 
 		canvas.renderAll();
-		console.log("done");
-	}
-	function addIcon(value, type){ 
-		canvas.add(new fabric.Image(document.getElementById(type),{
-			top : value.y,
-			left : value.x,
-			FARid : value.id,
-			hasControls: false,
-			hasBorders: false,
-			lockMovementX: true,
-			lockMovementY: true,
-			FARtype: type,
-			FARinfo: value
-		}));
-	}
-	
-	function rerender(){
+		$.each(locations.places, function(index, value) {
+			if(filter.places && filter.minprice<value.price && filter.maxprice>value.price && filter.beds.indexOf(value.rooms.toString())>-1 && filter.baths.indexOf(value.baths.toString())>-1){
+				addIcon(value,"house");
+			}
+		});
 		canvas.renderAll();
-		console.log("Rendered all");
-	}
+	});
+}
+
 
 function addIcon(value, type){ 
 	canvas.add(new fabric.Image(document.getElementById(type),{
@@ -96,8 +285,8 @@ function getBadges(badgeList){
 
 function createHouseCard(cardHouse){
 	var cardContainer = document.createElement("div");
-	cardContainer.className = "panel panel-default card";
-	
+	cardContainer.className = "panel panel-default card ng-scope";
+	cardContainer.setAttribute("ng-controller","BerkeleyModalCtrl");
 	var cardBody = document.createElement("div");
 	cardBody.className = "panel-body";
 		var media = document.createElement("div");
@@ -170,23 +359,29 @@ function createHouseCard(cardHouse){
 				});
 			});
 		listGroup.appendChild(interestedPeople);
+	
+	
+		var bookmarkLink = document.createElement("a");
+			bookmarkLink.href = "#"; //BOOKMARK INTERACTION GOES HERE - modal popup?
+			bookmarkLink.onclick = function(){
+				this.innerHTML = "Bookmarked!";
+			};
+			var bookmarkText = document.createElement("li");
+				bookmarkText.className = "list-group-item cardbutton";
+				bookmarkText.innerHTML = "Bookmark";
+			bookmarkLink.appendChild(bookmarkText);
+		listGroup.appendChild(bookmarkLink);
+		
+		var moreInfoLink = document.createElement("a");
+			moreInfoLink.onclick = function(){
+				$( "#dialogPlace" ).dialog( "open" );
+			}
+			var moreInfoText = document.createElement("li");
+				moreInfoText.className = "list-group-item cardbutton";
+				moreInfoText.innerHTML = "More Info";
+			moreInfoLink.appendChild(moreInfoText);
+		listGroup.appendChild(moreInfoLink);
 	cardContainer.appendChild(listGroup);
-	
-	var bookmarkLink = document.createElement("a");
-		bookmarkLink.href = "#"; //BOOKMARK INTERACTION GOES HERE - modal popup?
-		var bookmarkText = document.createElement("li");
-			bookmarkText.className = "list-group-item cardbutton";
-			bookmarkText.innerHTML = "Bookmark";
-		bookmarkLink.appendChild(bookmarkText);
-	cardContainer.appendChild(bookmarkLink);
-	
-	var moreInfoLink = document.createElement("a");
-		moreInfoLink.href = "#"; //MORE INFO INTERACTION - modal popup
-		var moreInfoText = document.createElement("li");
-			moreInfoText.className = "list-group-item cardbutton";
-			moreInfoText.innerHTML = "More Info";
-			bookmarkLink.appendChild(moreInfoText);
-	cardContainer.appendChild(moreInfoLink);
 	
 	return cardContainer;
 			
@@ -194,7 +389,8 @@ function createHouseCard(cardHouse){
 
 function createPersonCard(cardPerson){
 	var cardContainer = document.createElement("div");
-	cardContainer.className = "panel panel-default card";
+	cardContainer.className = "panel panel-default card ng-scope";
+	cardContainer.setAttribute("ng-controller","JaredModalCtrl");
 	
 	var cardBody = document.createElement("div");
 	cardBody.className = "panel-body";
@@ -240,23 +436,31 @@ function createPersonCard(cardPerson){
 				});
 			});
 		listGroup.appendChild(badgeContainer);
+	
+	
+		var bookmarkLink = document.createElement("a");
+			bookmarkLink.href = "#"; //BOOKMARK INTERACTION GOES HERE
+			bookmarkLink.onclick = function(){
+				this.innerHTML = "Bookmarked!";
+			};
+			var bookmarkText = document.createElement("li");
+				bookmarkText.className = "list-group-item cardbutton";
+				bookmarkText.innerHTML = "Bookmark";
+			bookmarkLink.appendChild(bookmarkText);
+		listGroup.appendChild(bookmarkLink);
+		
+		var moreInfoLink = document.createElement("a");
+			moreInfoLink.className = "infoperson";
+			moreInfoLink.onclick = function(){
+				$( "#dialogPerson" ).dialog( "open" );
+			}
+			var moreInfoText = document.createElement("li");
+				moreInfoText.className = "list-group-item cardbutton";
+				moreInfoText.innerHTML = "More Info";
+			moreInfoLink.appendChild(moreInfoText);
+		listGroup.appendChild(moreInfoLink);
 	cardContainer.appendChild(listGroup);
 	
-	var bookmarkLink = document.createElement("a");
-		bookmarkLink.href = "#"; //BOOKMARK INTERACTION GOES HERE
-		var bookmarkText = document.createElement("li");
-			bookmarkText.className = "list-group-item cardbutton";
-			bookmarkText.innerHTML = "Bookmark";
-		bookmarkLink.appendChild(bookmarkText);
-	cardContainer.appendChild(bookmarkLink);
-	
-	var moreInfoLink = document.createElement("a");
-		moreInfoLink.href = "#"; //MORE INFO  INTERACTION
-		var moreInfoText = document.createElement("li");
-			moreInfoText.className = "list-group-item cardbutton";
-			moreInfoText.innerHTML = "More Info";
-			bookmarkLink.appendChild(moreInfoText);
-	cardContainer.appendChild(moreInfoLink);
-	
 	return cardContainer;
+			
 }

@@ -28,7 +28,15 @@ app.controller('BerkeleyModalCtrl', function($scope, $uibModal, $log) {
     $scope.hide = true;
   }
 });
-
+//DO NOT REMOVE THESE---------------------------------
+app.controller("MyController", function($scope, $timeout){
+    $timeout(callAtTimeout, 1);
+});
+function callAtTimeout() {
+    console.log("Timeout occurred");
+	afterTimeout();
+}
+//---------------------------------------------------
 app.controller('FinancialModalCtrl', function($scope, $uibModal, $log) {
   $scope.animationsEnabled = true;
 
@@ -90,7 +98,7 @@ app.controller('JaredModalCtrl', function($scope, $uibModal, $log) {
 
   $scope.open = function (size) {
     $scope.cards = $scope.cards;
-
+		
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,
         templateUrl: 'templates/Jareddetails.html',
