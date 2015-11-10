@@ -9,6 +9,8 @@ app.controller('mapSidebarCtrl', ["$scope", "$firebaseArray",
 	}
 ]);
 
+/* homes */
+
 app.controller('BerkeleyModalCtrl', function($scope, $uibModal, $log) {
   $scope.animationsEnabled = true;
 
@@ -44,6 +46,26 @@ app.controller('FinancialModalCtrl', function($scope, $uibModal, $log) {
     $scope.hide = true;
   }
 });
+
+app.controller('NaturalModalCtrl', function($scope, $uibModal, $log) {
+  $scope.animationsEnabled = true;
+
+  $scope.open = function (size) {
+    $scope.cards = $scope.cards;
+
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'templates/Naturaldetails.html',
+        controller: 'ModalInstanceCtrl',
+        windowClass: 'app-modal-window'
+      });
+  }
+  $scope.click = function() {
+    $scope.hide = true;
+  }
+});
+
+/*people*/
 
 app.controller('CarlyModalCtrl', function($scope, $uibModal, $log) {
 	$scope.animationsEnabled = true;
@@ -81,18 +103,129 @@ app.controller('JaredModalCtrl', function($scope, $uibModal, $log) {
   }
 });
 
-app.controller('group1ModalCtrl', function($scope, $uibModal, $log) {
+app.controller('BillModalCtrl', function($scope, $uibModal, $log) {
+  $scope.animationsEnabled = true;
+
+  $scope.open = function (size) {
+    $scope.cards = $scope.cards;
+
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'templates/Billdetails.html',
+        controller: 'ModalInstanceCtrl',
+        windowClass: 'app-modal-window'
+      });
+  }
   $scope.click = function() {
+    $scope.hide = true;
+  }
+});
+
+/*groups*/
+
+app.controller('group1ModalCtrl', function($scope, $uibModal, $log) {
+  $scope.alert = {};
+
+  $scope.accept = function() {
+   $scope.alert.class= 'success';
+   $scope.alert.message = 'Congratulations. You are now added to the group. Currently, you are unable to chat with your group.'
+   $scope.alertcheck = true;
+   $scope.hide = true;
+  }
+
+  $scope.reject = function() {
+    $scope.alert.class= 'danger';
+    $scope.alert.message = 'Okay, sorry to hear that.'
+    $scope.alertcheck = true;    
     $scope.hide = true;
   }
 });
 
 app.controller('group2ModalCtrl', function($scope, $uibModal, $log) {
+  $scope.alert = {};
+
+  $scope.accept = function() {
+   $scope.alert.class= 'success';
+   $scope.alert.message = 'Congratulations. You are now added to the group. Currently, you are unable to chat with your group.'
+   $scope.alertcheck = true;
+   $scope.hide = true;
+  }
+
+  $scope.reject = function() {
+    $scope.alert.class= 'danger';
+    $scope.alert.message = 'Okay, sorry to hear that.'
+    $scope.alertcheck = true;    
+    $scope.hide = true;
+  }
+});
+
+app.controller('InterestedModalCtrl', function($scope, $uibModal, $log) {
+  $scope.animationsEnabled = true;
+
+  $scope.open = function (size) {
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'templates/interestedctrl.html',
+        controller: 'ModalInstanceCtrl',
+        size: size,
+      });
+  }
   $scope.click = function() {
     $scope.hide = true;
   }
 });
 
+app.controller('GroupModalCtrl', function($scope, $uibModal, $log) {
+  $scope.animationsEnabled = true;
+
+  $scope.open = function (size) {
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'groupctrl.html',
+        controller: 'ModalInstanceCtrl',
+        size: size,
+      });
+  }
+});
+
+app.controller('RegisterModalCtrl', function($scope, $uibModal, $log) {
+  $scope.animationsEnabled = true;
+
+  $scope.open = function (size) {
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'registerctrl.html',
+        controller: 'ModalInstanceCtrl',
+        size: size,
+      });
+  }
+});
+
+app.controller('BadgesModalCtrl', function($scope, $uibModal, $log) {
+  $scope.animationsEnabled = true;
+
+  $scope.open = function (size) {
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'badgesctrl.html',
+        controller: 'ModalInstanceCtrl',
+        size: size,
+      });
+  }
+});
+
+app.controller('PinModalCtrl', function($scope, $uibModal, $log) {
+  $scope.animationsEnabled = true;
+
+  $scope.open = function (size) {
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'templates/pinctrl.html',
+        controller: 'ModalInstanceCtrl',
+        size: size,
+      });
+  }
+});
 
 app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
 

@@ -71,7 +71,24 @@
 			</div>
 		</div>
 		<br>
-		<button class="btn btn-primary center-block" style="width:400px">Drop area pin</button>
+
+        <div ng-controller="PinModalCtrl" class="form-group">
+            <script type="text/ng-template" id="pinctrl.html">
+                <div class="modal-header">
+                    Pin Added!
+                </div>
+                <div class="modal-body">
+                    (The pin has not yet been added to the map. This feature will be added later.)
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button> 
+                </div>
+            </script>
+
+            <div class="col-sm-9 col-sm-offset-3">
+               <button class="btn btn-primary center-block" style="width:400px" ng-click="open(lg)">Drop area pin</button>
+            </div>
+        </div>		
 
 	</div>
 </div>
