@@ -45,9 +45,38 @@ float:left;
 }
 
 .dropdown-menu{
-	min-width: 300px;
+	min-width: 450px;
+}
+
+.logincontainer{
+	max-width: 300px;
+}
+
+#auth {
+  border: none;
+}
+
+.hello {
+	width: 500px;
+	margin: 0 auto;
+}
+
+
+.descrip {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.imgwrap:hover .descrip {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media screen and (max-width: 740px) { 
+  #auth button {
+    width: 100%;
+  }
 }
 
 .app-modal-window .modal-dialog {
-  width: 800px;
-}
+  width: 1000px;

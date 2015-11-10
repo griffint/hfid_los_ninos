@@ -2,21 +2,20 @@ app.config( function($urlRouterProvider, $stateProvider){
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('home', {
-      url: '/home',
-      templateUrl: 'templates/home.html',
+    .state('/', {
+      url: '/',
+      templateUrl: 'templates/home_template.html',
     })
 
     .state('map', {
       url: '/map',
       //we can use the below to have multiple views on the same page
       views: {
-        '': {templateUrl: 'templates/map.html'},
+        '': {templateUrl: 'templates/map.html'}}/*,
         'sidebar@map': {
           templateUrl: 'partials/map.cards.html',
           controller: 'mapSidebarCtrl'
-        }
-      }
+        }*/
    
     })
 
@@ -31,14 +30,14 @@ app.config( function($urlRouterProvider, $stateProvider){
       }
     )
 
-    .state('contacts', {
-      url: '/contacts',
+    .state('contacted', {
+      url: '/contacted',
       templateUrl: 'templates/contacted.html',
       }
     )
 
-    .state('group', {
-      url: '/group',
+    .state('groups', {
+      url: '/groups',
       templateUrl: 'templates/groups.html',
       }
     )
@@ -49,9 +48,14 @@ app.config( function($urlRouterProvider, $stateProvider){
       }
     )
 
-    .state('profile', {
-      url: '/profile',
-      templateUrl: 'templates/profile.html',
+    .state('basic-profile', {
+      url: '/basic-profile',
+      templateUrl: 'templates/basic-profile.html',
+      }
+    )
+    .state('advanced-profile', {
+      url: '/advanced-profile',
+      templateUrl: 'templates/advanced-profile.html',
       }
     )
 });

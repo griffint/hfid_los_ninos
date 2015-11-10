@@ -2,59 +2,76 @@
 <html>
 <head>
   <!-- All our libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-    <script src="/app/js/angular-ui-router.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="/app/js/bootstrap.min.js"></script>
-    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
- 
-
-    <!-- Our Stuff -->
-    <script src="/app/app.js"></script>
-    <script src="/app/js/firebase_factories.js"></script>
-    <script src="/app/controllers/mapcontrollers.js"></script>
-
-    <!--<script src="/app/js/ui-bootstrap.js"></script>-->
-    <script src="/app/js/ui-bootstrap-tpls.min.js"></script>
-    <script src="/app/js/scripts.js"></script>
-
-    <!--<script src="/app/js/index.js"></script>-->
   
-    <!-- CSS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="./app/js/angular-ui-router.js"></script>
+  
+  <script src="./app/js/bootstrap.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
+  <script src='https://cdn.firebase.com/v0/firebase-simple-login.js'></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    <link href="/styles/cards.css" rel = "stylesheet">
-    <link href="/styles/bootstrap.min.css" rel="stylesheet">
-    <link href="/styles/style.css" rel ="stylesheet">
-    <link href="/styles/simple-chat.css" rel="stylesheet">
-    <!--<link rel="stylesheet" href="bower_components/angular-bootstrap-simple-chat/src/css/style.css">-->
+  <!-- Our Stuff -->
+  <script src="./app/app.js"></script>
+  <script src="./app/js/firebase_factories.js"></script>
+  <script src="./app/controllers/mapcontrollers.js"></script>
+
+  <!--<script src="/app/js/ui-bootstrap.js"></script>-->
+  <script src="./app/js/ui-bootstrap-tpls.min.js"></script>
+  <script src="./app/js/scripts.js"></script>
+  <script src="./app/js/fabric/dist/fabric.js"></script>
+  <script src="./app/map.js"></script>
+
+  <!-- CSS -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+  <link href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"  rel = "stylesheet">
+  <link href="./styles/cards.css" rel = "stylesheet">
+  <link href="./styles/bootstrap.min.css" rel="stylesheet">
+  <link href="./styles/style.css" rel ="stylesheet">
+  <link href="./styles/simple-chat.css" rel="stylesheet">
+
+  <link href="./styles/bootstrap.min.css" rel="stylesheet">
+  <link href="./styles/cards.css" rel="stylesheet">  
+
+  <!--<link rel="stylesheet" href="bower_components/angular-bootstrap-simple-chat/src/css/style.css">-->
 
 </head>
 <body ng-app="single-page-app">
   <!-- Our App -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <ul class="nav navbar-nav navbar-left">
-          <li><a href="#/home">Home</a></li>
-          <li><a href="#/map">Map</a></li>
-          <li><a href="#/bookmarks">Bookmarks</a></li>
-          <li><a href="#/contacts">Contacts</a></li> 
-          <li><a href="#/group">Group</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#/">Notifications</a></li>
-          <li><a href="#">Login</a></li>
-          <li><a href="#">Profile</a></li>
-        </ul>
-       </div>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="#/home">Home</a></li>
+        <li><a href="#/map">Map</a></li>
+        <li><a href="#/bookmarks">Bookmarks</a></li>
+        <li><a href="#/contacted">Contacts</a></li> 
+        <li><a href="#/groups">Group</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#/">Notifications</a></li>
+        <li>
+
+          <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-hasapopup="true" aria-expanded="true">
+            Profile
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#/basic-profile">Basic</a></li>
+            <li><a href="#/advanced-profile">Advanced</a></li>
+          </ul>
+        </li>
+      </ul>
     </nav>
   </body>
   <br/>
   <div ui-view>
   <!--
      This DIV loads templates depending upon route.
- -->
-  </div>
+   -->
+ </div>
 </body>
 </html>
