@@ -9,6 +9,17 @@ app.controller('mapSidebarCtrl', ["$scope", "$firebaseArray",
 	}
 ]);
 
+app.controller("MyController", function($scope, $timeout){
+
+    $timeout(callAtTimeout, 1);
+
+});
+
+function callAtTimeout() {
+    console.log("Timeout occurred");
+	afterTimeout();
+}
+
 app.controller('ModalCtrl', function($scope, $uibModal, $log) {
 	$scope.animationsEnabled = true;
 

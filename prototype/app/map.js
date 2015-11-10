@@ -1,6 +1,6 @@
 var canvas = 0;
 
-window.onload = function(){
+function afterTimeout(){
 	canvas = new fabric.Canvas('canvas');
 	initializeMap();
 	canvas.on('object:selected', function(options) {
@@ -76,16 +76,16 @@ function createBadge(badgeObject){
 }
 
 function getBadges(badgeList){
-	var locations = JSON.parse(testjson);
-	var badges = locations.badges;
-	var thisbadgeList = badgeList.split(",");
-	var appendme = [];
-	$.each(badges, function(index, value) {
-		if(thisbadgeList.indexOf(value.id.toString()) > -1){
-			appendme.push(createBadge(value));
-		}
+	$.getJSON("./app/locations.json", function(locations) {
+		var badges = locations.badges;
+		var thisbadgeList = badgeList.split(",");
+		$.each(badges, function(index, value) {
+			if(thisbadgeList.indexOf(value.id.toString()) > -1){
+				badgeContainer.appendChild(createBadge(value));
+			}
+		});
 	});
-	return appendme;
+	
 }
 
 function createHouseCard(cardHouse){
@@ -219,8 +219,14 @@ function createPersonCard(cardPerson){
 			var badgesLabel = document.createElement("h4");
 				badgesLabel.innerHTML = "Badges";
 			badgeContainer.appendChild(badgesLabel);
-			$.each(getBadges(cardPerson.badgelist), function(index, badge) {
-				badgeContainer.appendChild(badge);
+			$.getJSON("./app/locations.json", function(locations) {
+				var badges = locations.badges;
+				var thisbadgeList = cardPerson.badgelist.split(",");
+				$.each(badges, function(index, value) {
+					if(thisbadgeList.indexOf(value.id.toString()) > -1){
+						badgeContainer.appendChild(createBadge(value));
+					}
+				});
 			});
 		listGroup.appendChild(badgeContainer);
 	cardContainer.appendChild(listGroup);
