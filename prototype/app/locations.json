@@ -84,6 +84,23 @@
             "wakeTime": 8,
             "cleanliness": 10,
             "noisiness": 1
+          },
+        "6": {
+            "id": 6,
+            "x": 590,
+            "y": 580,
+            "avatar": "https://38.media.tumblr.com/avatar_23300ab3279a_96.png",
+            "name":"Jared",
+            "age": 27,
+            "sex": "M",
+            "occupation": "Product Manager",
+            "description": "I want to make this country great again. Sorry, I need a bedroom and am willing to share bathroom",
+            "badgelist": "3,4,5",
+            "hobbylist": "1,3,5",
+            "sleepTime": 23,
+            "wakeTime": 8,
+            "cleanliness": 10,
+            "noisiness": 1
         }
     },
     "places": {
