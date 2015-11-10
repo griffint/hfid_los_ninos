@@ -2,8 +2,8 @@ var canvas = 0;
 
 function afterTimeout(){
 	canvas = new fabric.Canvas('canvas');
-	initializeMap();
-	drawAllCards();
+	initializeMap(activeFilter);
+	drawAllCards(activeFilter);
 	canvas.on('object:selected', function(options) {
 		current = canvas.getActiveObject();
 		var myNode = document.getElementById("cardArea");
@@ -20,7 +20,7 @@ function afterTimeout(){
 		document.getElementById("cardArea").appendChild(newcard);
 	});
 	canvas.on('selection:cleared', function() {
-		drawAllCards();
+		drawAllCards(activeFilter);
 	});
 	canvas.renderAll();
 }
@@ -37,32 +37,46 @@ function test(){
 	console.log(canvas.getObjects());
 }
 
-function drawAllCards(){
+//remove bedtime, dates
+var defaultFilter = {people: true, minage:0,maxage:100, verified: false, cleanliness: 0, noise: 0, gender: "MF", places: true, minprice: 0, maxprice: 100000000, beds:"12345", baths:"12345"};
+var activeFilter = defaultFilter;
+
+function drawAllCards(filter){
 	var myNode = document.getElementById("cardArea");
 	while (myNode.firstChild) {
 		myNode.removeChild(myNode.firstChild);
 	}
 	$.getJSON("./app/locations.json", function(locations) {
 		$.each(locations.people, function(index, value) {
-			document.getElementById("cardArea").appendChild(createPersonCard(value));
+			if(filter.people && filter.minage<value.age && filter.maxage>value.age && ((value.badgelist.indexOf("2")>-1 && filter.verified)||!(filter.verified)) && filter.cleanliness<value.cleanliness && filter.noise<value.noisiness && filter.gender.indexOf(value.sex)>-1){
+				document.getElementById("cardArea").appendChild(createPersonCard(value));
+			}
 		}); 
 		canvas.renderAll();
 		$.each(locations.places, function(index, value) {
-			document.getElementById("cardArea").appendChild(createHouseCard(value));
+			if(filter.places && filter.minprice<value.price && filter.maxprice>value.price && filter.beds.indexOf(value.rooms.toString())>-1 && filter.baths.indexOf(value.baths.toString())>-1){
+				document.getElementById("cardArea").appendChild(createHouseCard(value));
+			}
 		});
 	});
 }
 
-function initializeMap(){
+
+
+
+function initializeMap(filter){
+	canvas.clear();
 	$.getJSON("./app/locations.json", function(locations) {
 		$.each(locations.people, function(index, value) {
-			addIcon(value,"person");
-
+			if(filter.people && filter.minage<value.age && filter.maxage>value.age && ((value.badgelist.indexOf("2")>-1 && filter.verified)||!(filter.verified)) && filter.cleanliness<value.cleanliness && filter.noise<value.noisiness && filter.gender.indexOf(value.sex)>-1){
+				addIcon(value,"person");
+			}
 		}); 
 		canvas.renderAll();
 		$.each(locations.places, function(index, value) {
-			addIcon(value,"house");
-
+			if(filter.places && filter.minprice<value.price && filter.maxprice>value.price && filter.beds.indexOf(value.rooms.toString())>-1 && filter.baths.indexOf(value.baths.toString())>-1){
+				addIcon(value,"house");
+			}
 		});
 		canvas.renderAll();
 	});
@@ -83,14 +97,19 @@ function addIcon(value, type){
 	}));
 }
 
-
-
+function createIPBadge(personObject){
+	var placeHolderBadge = document.createElement("img");
+		placeHolderBadge.className = "thumbnail farbadge";
+		placeHolderBadge.src = personObject.avatar;
+		placeHolderBadge.title = personObject.name;
+	return placeHolderBadge;
+}
 
 function createBadge(badgeObject){
 	var placeHolderBadge = document.createElement("img");
 		placeHolderBadge.className = "thumbnail farbadge";
 		placeHolderBadge.src = badgeObject.image;
-		placeHolderBadge.alt = badgeObject.hoverText;
+		placeHolderBadge.title = badgeObject.hoverText;
 	return placeHolderBadge;
 }
 
@@ -173,10 +192,15 @@ function createHouseCard(cardHouse){
 				ipTop.appendChild(ipContents2);
 			interestedPeople.appendChild(ipTop);
 			//GET INTERESTED PEOPLE GOES HERE WHEN IT IS FINISHED
-			var placeHolderBadge = document.createElement("img");
-			placeHolderBadge.className = "thumbnail farbadge";
-			placeHolderBadge.src = "http://puu.sh/l74WX/2677ae32d7.jpg";
-			interestedPeople.appendChild(placeHolderBadge);
+			$.getJSON("./app/locations.json", function(locations) {
+				var people = locations.people;
+				var thisIPList = cardHouse.interestedPeople.split(",");
+				$.each(people, function(index, value) {
+					if(thisIPList.indexOf(value.id.toString()) > -1){
+						interestedPeople.appendChild(createIPBadge(value));
+					}
+				});
+			});
 		listGroup.appendChild(interestedPeople);
 	cardContainer.appendChild(listGroup);
 	
