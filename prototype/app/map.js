@@ -3,6 +3,7 @@ var canvas = 0;
 function afterTimeout(){
 	canvas = new fabric.Canvas('canvas');
 	initializeMap();
+	drawAllCards();
 	canvas.on('object:selected', function(options) {
 		current = canvas.getActiveObject();
 		var myNode = document.getElementById("cardArea");
@@ -17,6 +18,9 @@ function afterTimeout(){
 			newcard = createHouseCard(current.FARinfo);
 		}
 		document.getElementById("cardArea").appendChild(newcard);
+	});
+	canvas.on('selection:cleared', function() {
+		drawAllCards();
 	});
 	canvas.renderAll();
 }
@@ -33,19 +37,34 @@ function test(){
 	console.log(canvas.getObjects());
 }
 
+function drawAllCards(){
+	var myNode = document.getElementById("cardArea");
+	while (myNode.firstChild) {
+		myNode.removeChild(myNode.firstChild);
+	}
+	$.getJSON("./app/locations.json", function(locations) {
+		$.each(locations.people, function(index, value) {
+			document.getElementById("cardArea").appendChild(createPersonCard(value));
+		}); 
+		canvas.renderAll();
+		$.each(locations.places, function(index, value) {
+			document.getElementById("cardArea").appendChild(createHouseCard(value));
+		});
+	});
+}
+
 function initializeMap(){
-	var locations = [];
-	$.getJSON("./app/locations.json", function(json) {
-		locations = json;
+	$.getJSON("./app/locations.json", function(locations) {
 		$.each(locations.people, function(index, value) {
 			addIcon(value,"person");
+
 		}); 
 		canvas.renderAll();
 		$.each(locations.places, function(index, value) {
 			addIcon(value,"house");
+
 		});
 		canvas.renderAll();
-		console.log(canvas.getObjects());
 	});
 }
 
