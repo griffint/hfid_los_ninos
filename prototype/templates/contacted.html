@@ -6,7 +6,7 @@
       <div class="col-md-3 col-md-offset-3" style="overflow: hidden">
         <h2 class="text-center">Contacted Places</h2>
 		<!--CARD STARTS HERE-->
-		<div class="panel panel-default card">
+		<div ng-hide="hide" ng-controller="BerkeleyModalCtrl" class="panel panel-default card">
 			<!-- Default panel contents -->
 
 			<div class="panel-body">
@@ -17,7 +17,7 @@
 						</a>
 					</div>
 					<div class="media-body">
-						<h4 class="media-heading">$1000/Room</h4>
+						<h4 class="media-heading">$1400/Room</h4>
 						<h4 class="media-heading">3 Rooms</h4>
 					</div>
 				</div>
@@ -26,7 +26,7 @@
 			<!-- List group -->
 			<ul class="list-group">
 				<li class="list-group-item">
-					<h4>Cozy home in the tenderloin district</h4>
+					<h4>Nice Financial District Apartment</h4>
 				</li>
 				<li class="list-group-item badgeContainer">
 					<div class="container-fluid">
@@ -38,26 +38,23 @@
 						</ul>
 					</div>
 					<a href="#" class="thumbnail farbadge">
-						<img src="http://puu.sh/l74WX/2677ae32d7.jpg">
+						<img src="https://pbs.twimg.com/profile_images/2711772111/5579fa8742299df69b02af2c7a2a9c51.png">
 					</a>
 					<a href="#" class="thumbnail farbadge">
-						<img src="http://puu.sh/l74WX/2677ae32d7.jpg">
-					</a>
-					<a href="#" class="thumbnail farbadge">
-						<img src="http://puu.sh/l74WX/2677ae32d7.jpg">
-					</a>
-					<a href="#" class="thumbnail farbadge">
-						<img src="http://puu.sh/l74WX/2677ae32d7.jpg">
+						<img src="http://i.imgur.com/N4fpSXx.jpg">
 					</a>
 				</li>
 
-				<a href='#'><li class="list-group-item cardbutton">Remove Bookmark</li></a>
-				<a href='#'><li class="list-group-item cardbutton">More Info</li></a>
+				<a ng-click="click()"><li class="list-group-item cardbutton">Remove Bookmark</li></a>
+				
+				<a ng-click="open()">
+					<li class="list-group-item cardbutton">More Info</li>
+				</a>
 			</ul>
 		</div>
 		<!--CARD ENDS HERE-->
 		<!--CARD STARTS HERE-->
-		<div class="panel panel-default card">
+		<div ng-hide="hide" ng-controller="BerkeleyModalCtrl" class="panel panel-default card">
 			<!-- Default panel contents -->
 
 			<div class="panel-body">
@@ -77,7 +74,7 @@
 			<!-- List group -->
 			<ul class="list-group">
 				<li class="list-group-item">
-					<h4>Cozy home in the tenderloin district</h4>
+					<h4>Nice Financial District Apartment</h4>
 				</li>
 				<li class="list-group-item badgeContainer">
 					<div class="container-fluid">
@@ -89,21 +86,18 @@
 						</ul>
 					</div>
 					<a href="#" class="thumbnail farbadge">
-						<img src="http://puu.sh/l74WX/2677ae32d7.jpg">
+						<img src="https://pbs.twimg.com/profile_images/2711772111/5579fa8742299df69b02af2c7a2a9c51.png">
 					</a>
 					<a href="#" class="thumbnail farbadge">
-						<img src="http://puu.sh/l74WX/2677ae32d7.jpg">
-					</a>
-					<a href="#" class="thumbnail farbadge">
-						<img src="http://puu.sh/l74WX/2677ae32d7.jpg">
-					</a>
-					<a href="#" class="thumbnail farbadge">
-						<img src="http://puu.sh/l74WX/2677ae32d7.jpg">
+						<img src="http://i.imgur.com/N4fpSXx.jpg">
 					</a>
 				</li>
 
-				<a href='#'><li class="list-group-item cardbutton">Remove Bookmark</li></a>
-				<a href='#'><li class="list-group-item cardbutton">More Info</li></a>
+				<a ng-click="click()"><li class="list-group-item cardbutton">Remove Bookmark</li></a>
+				
+				<a ng-click="open()">
+					<li class="list-group-item cardbutton">More Info</li>
+				</a>
 			</ul>
 		</div>
 		<!--CARD ENDS HERE-->

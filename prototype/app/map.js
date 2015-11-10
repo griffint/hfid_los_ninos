@@ -1,4 +1,4 @@
-var canvas = 0;
+/*var canvas = 0;
 
 window.onload = function(){
 	canvas = new fabric.Canvas('canvas');
@@ -230,5 +230,5 @@ function createPersonCard(cardPerson){
 	cardContainer.appendChild(moreInfoLink);
 	
 	return cardContainer;
-			
 }
+*/

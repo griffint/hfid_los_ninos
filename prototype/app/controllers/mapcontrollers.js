@@ -9,7 +9,43 @@ app.controller('mapSidebarCtrl', ["$scope", "$firebaseArray",
 	}
 ]);
 
-app.controller('ModalCtrl', function($scope, $uibModal, $log) {
+app.controller('BerkeleyModalCtrl', function($scope, $uibModal, $log) {
+  $scope.animationsEnabled = true;
+
+  $scope.open = function (size) {
+    $scope.cards = $scope.cards;
+
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'templates/Berkeleydetails.html',
+        controller: 'ModalInstanceCtrl',
+        windowClass: 'app-modal-window'
+      });
+  }
+  $scope.click = function() {
+    $scope.hide = true;
+  }
+});
+
+app.controller('FinancialModalCtrl', function($scope, $uibModal, $log) {
+  $scope.animationsEnabled = true;
+
+  $scope.open = function (size) {
+    $scope.cards = $scope.cards;
+
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'templates/Financialdetails.html',
+        controller: 'ModalInstanceCtrl',
+        windowClass: 'app-modal-window'
+      });
+  }
+  $scope.click = function() {
+    $scope.hide = true;
+  }
+});
+
+app.controller('CarlyModalCtrl', function($scope, $uibModal, $log) {
 	$scope.animationsEnabled = true;
 
 	$scope.open = function (size) {
@@ -17,12 +53,46 @@ app.controller('ModalCtrl', function($scope, $uibModal, $log) {
 
 	    var modalInstance = $uibModal.open({
 	      animation: $scope.animationsEnabled,
-	      templateUrl: 'profiledetails.html',
+	      templateUrl: 'templates/Carlydetails.html',
 	      controller: 'ModalInstanceCtrl',
-	      size: size,
+        windowClass: 'app-modal-window'
 	    });
 	}
+  $scope.click = function() {
+    $scope.hide = true;
+  }
 });
+
+app.controller('JaredModalCtrl', function($scope, $uibModal, $log) {
+  $scope.animationsEnabled = true;
+
+  $scope.open = function (size) {
+    $scope.cards = $scope.cards;
+
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'templates/Jareddetails.html',
+        controller: 'ModalInstanceCtrl',
+        windowClass: 'app-modal-window'
+      });
+  }
+  $scope.click = function() {
+    $scope.hide = true;
+  }
+});
+
+app.controller('group1ModalCtrl', function($scope, $uibModal, $log) {
+  $scope.click = function() {
+    $scope.hide = true;
+  }
+});
+
+app.controller('group2ModalCtrl', function($scope, $uibModal, $log) {
+  $scope.click = function() {
+    $scope.hide = true;
+  }
+});
+
 
 app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
 
