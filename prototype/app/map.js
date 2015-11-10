@@ -20,9 +20,131 @@ function afterTimeout(){
 		document.getElementById("cardArea").appendChild(newcard);
 	});
 	canvas.on('selection:cleared', function() {
-		drawAllCards(activeFilter);
+		//drawAllCards(activeFilter);
 	});
 	canvas.renderAll();
+	$("#showpeople").change(function(){
+		console.log("showpeople changed");
+		if(this.checked) {
+			activeFilter.people = true;
+		}
+		else{
+			activeFilter.people = false;
+		}
+	});
+	$("#age").change(function(){
+		console.log("age changed");
+		activeFilter.minage = this.value;
+	});
+	$("#agero").change(function(){
+		activeFilter.maxage = this.value;
+	});
+	$("#ver").change(function(){
+		if(this.checked) {
+			activeFilter.verified = true;
+		}
+		else{
+			activeFilter.verified = false;
+		}
+	});
+	$("#clean").change(function(){
+		activeFilter.cleanliness = this.value;
+	});
+	$("#noise").change(function(){
+		activeFilter.noise = this.value;
+	});
+	$("#femaleRadio").change(function(){
+		if(this.checked) {
+			if(document.getElementById("maleRadio").checked){
+				activeFilter.gender = "MF";
+			}
+			else{
+				activeFilter.gender = "F";
+			}
+		}
+		else{
+			if(document.getElementById("maleRadio").checked){
+				activeFilter.gender = "M";
+			}
+			else{
+				activeFilter.gender = "MF";
+			}
+		}
+	});
+	$("#maleRadio").change(function(){
+		if(this.checked) {
+			if(document.getElementById("femaleRadio").checked){
+				activeFilter.gender = "MF";
+			}
+			else{
+				activeFilter.gender = "M";
+			}
+		}
+		else{
+			if(document.getElementById("femaleRadio").checked){
+				activeFilter.gender = "F";
+			}
+			else{
+				activeFilter.gender = "MF";
+			}
+		}
+	});
+
+	$("#showplaces").change(function(){
+		if(this.checked) {
+			activeFilter.places = true;
+		}
+		else{
+			activeFilter.places = false;
+		}
+	});
+
+	$("#price").change(function(){
+		activeFilter.minprice = this.value;
+	});
+	$("#pricero").change(function(){
+		activeFilter.maxprice = this.value;
+	});
+
+	$(".bedtoggler").change(function(){
+		var bedf = "";
+		if(document.getElementById("1bed").checked){
+			bedf += "1";
+		}
+		if(document.getElementById("2bed").checked){
+			bedf += "2";
+		}
+		if(document.getElementById("3bed").checked){
+			bedf += "3";
+		}
+		if(document.getElementById("4bed").checked){
+			bedf += "4";
+		}
+		if(document.getElementById("5bed").checked){
+			bedf += "5";
+		}
+		activeFilter.beds = bedf;
+	});
+
+	$(".bathtoggler").change(function(){
+		var bathsf = "";
+		if(document.getElementById("1bath").checked){
+			bathsf += "1";
+		}
+		if(document.getElementById("2bath").checked){
+			bathsf += "2";
+		}
+		if(document.getElementById("3bath").checked){
+			bathsf += "3";
+		}
+		if(document.getElementById("4bath").checked){
+			bathsf += "4";
+		}
+		if(document.getElementById("5bath").checked){
+			bathsf += "5";
+		}
+		activeFilter.baths = bathsf;
+	});
 }
 
 function test(){
@@ -40,6 +162,26 @@ function test(){
 //remove bedtime, dates
 var defaultFilter = {people: true, minage:0,maxage:100, verified: false, cleanliness: 0, noise: 0, gender: "MF", places: true, minprice: 0, maxprice: 100000000, beds:"12345", baths:"12345"};
 var activeFilter = defaultFilter;
+
+
+
+function resetFilters(){
+	//activeFilter = defaultFilter;
+	//initializeMap(activeFilter);
+	//drawAllCards(activeFilter);
+	alert("Functionality Not Added");
+}
+
+function applyFilters(){
+	console.log(activeFilter);
+	initializeMap(activeFilter);
+	drawAllCards(activeFilter);
+	
+}
+
+function cycleStuff(){
+
+}
 
 function drawAllCards(filter){
 	var myNode = document.getElementById("cardArea");

@@ -10,8 +10,18 @@
 			<button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
 				Filter by ... <span class="caret"></span>
 			</button>
-			<ul class="uib-dropdown-menu" aria-labelledby="single-button">
+			<ul class="uib-dropdown-menu" style="width:300px" aria-labelledby="single-button">
+				<button type="button" class="btn btn-primary btn-block" onclick="resetFilters()">Reset</button>
 				<label class="col-sm-12 control-label"><h3><center>People</center></h3></label>
+				
+				<div class="col-sm-12">
+					<label for="verified" class="col-sm-5 control-label">Show People</label>
+					<div class="col-sm-7 checkbox">
+						<label>
+							<input type="checkbox" id="showpeople" checked>
+						</label>
+					</div>
+				</div>
 				
 				<div class="col-sm-12">
 					<label for="age" class="col-sm-5 control-label">Min Age</label>
@@ -31,29 +41,22 @@
 					<label for="verified" class="col-sm-5 control-label">Verified</label>
 					<div class="col-sm-7 checkbox">
 						<label>
-							<input type="checkbox">
+							<input type="checkbox" id="ver">
 						</label>
-					</div>
-				</div>
-
-				<div class="col-sm-12">
-					<label for="bed" class="col-sm-5 control-label">Bed Time</label>
-					<div class="col-sm-7">
-						<input type="range" id="bed" class="form-control">
 					</div>
 				</div>
 
 				<div class="col-sm-12">
 					<label for="clean" class="col-sm-5 control-label">Cleanliness</label>
 					<div class="col-sm-7">
-						<input type="range" id="clean" class="form-control">
+						<input type="range" min="1" max="10" step="1" id="clean" class="form-control">
 					</div>
 				</div>
 
 				<div class="col-sm-12">
 					<label for="noise" class="col-sm-5 control-label">Noise</label>
 					<div class="col-sm-7">
-						<input type="range" id="noise" class="form-control">
+						<input type="range" min="1" max="10" step="1"  id="noise" class="form-control">
 					</div>
 				</div>
 
@@ -61,12 +64,12 @@
 					<label class="col-sm-4 control-label">Gender</label>
 					<div class="col-sm-5">
 						<label class="checkbox-inline">
-							<input type="checkbox" id="femaleRadio" value="Female">Female
+							<input type="checkbox" id="femaleRadio" value="Female" checked>Female
 						</label>
 					</div>
 					<div class="col-sm-3">
 						<label class="checkbox-inline">
-							<input type="checkbox" id="maleRadio" value="Male">Male
+							<input type="checkbox" id="maleRadio" value="Male" checked>Male
 						</label>
 					</div>
 				</div>
@@ -80,7 +83,7 @@
 					<label for="verified" class="col-sm-5 control-label">Show Places</label>
 					<div class="col-sm-7 checkbox">
 						<label>
-							<input type="checkbox">
+							<input type="checkbox" id="showplaces"  checked>
 						</label>
 					</div>
 				</div>
@@ -89,37 +92,14 @@
 
 					<label for="price" class="col-sm-5 control-label">Min Price</label>
 					<div class="col-sm-7">
-						<input type="number" id="age" placeholder="From" class="form-control" autofocus>
+						<input type="number" id="price" placeholder="From" class="form-control" autofocus>
 					</div>
 				</div>
 
 				<div class="col-sm-12">
 					<label for="priceto" class="col-sm-5 control-label">Max Price</label>
 					<div class="col-sm-7">
-						<input type="number" id="agero" placeholder="To" class="form-control" autofocus>
-					</div>
-				</div>
-
-				<div class="col-sm-12">	
-					<label for="bookmarks" class="col-sm-5 control-label">Bookmarks</label>
-					<div class="col-sm-7 checkbox">
-						<label>
-							<input type="checkbox">
-						</label>
-					</div>
-				</div>
-
-				<div class="col-sm-12">
-					<label for="startdate" class="col-sm-5 control-label">Start Date</label>
-					<div class="col-sm-7">
-						<input type="date" id="startdate" placeholder="From" class="form-control" autofocus>
-					</div>
-				</div>
-
-				<div class="col-sm-12">
-					<label for="enddate" class="col-sm-5 control-label">End Date</label>
-					<div class="col-sm-7">
-						<input type="date" id="enddate" placeholder="To" class="form-control" autofocus>
+						<input type="number" id="pricero" placeholder="To" class="form-control" autofocus>
 					</div>
 				</div>
 
@@ -129,27 +109,27 @@
 						<div class="row">
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" id="1bed" value="1">1
+									<input type="checkbox" class="bedtoggler" id="1bed" value="1" checked>1
 								</label>
 							</div>
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" id="2bed" value="2">2
+									<input type="checkbox" class="bedtoggler" id="2bed" value="2" checked>2
 								</label>
 							</div>
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" id="3bed" value="3">3
+									<input type="checkbox" class="bedtoggler" id="3bed" value="3" checked>3
 								</label>
 							</div>
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" id="4bed" value="4">4
+									<input type="checkbox" class="bedtoggler" id="4bed" value="4" checked>4
 								</label>
 							</div>
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" id="5bed" value="5">5
+									<input type="checkbox" class="bedtoggler" id="5bed" value="5" checked>5
 								</label>
 							</div>
 						</div>
@@ -162,32 +142,33 @@
 						<div class="row">
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" id="1bath" value="1">1
+									<input type="checkbox" class="bathtoggler" id="1bath" value="1" checked>1
 								</label>
 							</div>
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" id="2bath" value="2">2
+									<input type="checkbox" class="bathtoggler" id="2bath" value="2" checked>2
 								</label>
 							</div>
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" id="3bath" value="3">3
+									<input type="checkbox" class="bathtoggler" id="3bath" value="3" checked>3
 								</label>
 							</div>
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" id="4bath" value="4">4
+									<input type="checkbox" class="bathtoggler" id="4bath" value="4" checked>4
 								</label>
 							</div>
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" id="5bath" value="5">5
+									<input type="checkbox" class="bathtoggler" id="5bath" value="5" checked>5
 								</label>
 							</div>
 						</div>
 					</div>
 				</div>
+				<button type="button" class="btn btn-primary btn-block" onclick="applyFilters()">Apply</button>
 			</ul>
 		</div>
 	</div>
