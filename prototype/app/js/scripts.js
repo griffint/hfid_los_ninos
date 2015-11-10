@@ -5,9 +5,6 @@ app.config( function($urlRouterProvider, $stateProvider){
     .state('home', {
       url: '/home',
       templateUrl: 'templates/home.html',
-      data: {
-        requreLogin: false
-      }
     })
 
     .state('map', {
@@ -36,13 +33,13 @@ app.config( function($urlRouterProvider, $stateProvider){
 
     .state('contacts', {
       url: '/contacts',
-      templateUrl: 'templates/contacts.html',
+      templateUrl: 'templates/contacted.html',
       }
     )
 
     .state('group', {
       url: '/group',
-      templateUrl: 'templates/group.html',
+      templateUrl: 'templates/groups.html',
       }
     )
 

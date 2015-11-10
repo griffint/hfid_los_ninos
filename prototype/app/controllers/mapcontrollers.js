@@ -6,14 +6,54 @@ app.controller('mapSidebarCtrl', ["$scope", "$firebaseArray",
 		$scope.cards = $firebaseArray(ref);
 		console.log($ref.cards);
 	}
-	/*
-	function($scope){
-		$scope.cards = [{ id: 0, name: "Timothy", age: "22", title: "Chef", gender: "M"}, {id: 1, name: "Jill", title: "Writer", age: "23", gender: "F"}];
-	}*/
-
 ]);
 
-app.controller('ModalCtrl', function($scope, $uibModal, $log) {
+app.controller('1ModalCtrl', function($scope, $uibModal, $log) {
+	$scope.animationsEnabled = true;
+
+	$scope.open = function (size) {
+		$scope.cards = $scope.cards;
+
+	    var modalInstance = $uibModal.open({
+	      animation: $scope.animationsEnabled,
+	      templateUrl: '/templates/bigperson.html',
+	      controller: 'ModalInstanceCtrl',
+	      windowClass: 'app-modal-window'
+	    });
+	}
+});
+
+app.controller('2ModalCtrl', function($scope, $uibModal, $log) {
+	$scope.animationsEnabled = true;
+
+	$scope.open = function (size) {
+		$scope.cards = $scope.cards;
+
+	    var modalInstance = $uibModal.open({
+	      animation: $scope.animationsEnabled,
+	      templateUrl: 'profiledetails.html',
+	      controller: 'ModalInstanceCtrl',
+	      size: size,
+	    });
+	}
+});
+
+app.controller('3ModalCtrl', function($scope, $uibModal, $log) {
+	$scope.animationsEnabled = true;
+
+	$scope.open = function (size) {
+		$scope.cards = $scope.cards;
+
+	    var modalInstance = $uibModal.open({
+	      animation: $scope.animationsEnabled,
+	      templateUrl: 'profiledetails.html',
+	      controller: 'ModalInstanceCtrl',
+	      size: size,
+	    });
+	}
+});
+
+app.controller('4ModalCtrl', function($scope, $uibModal, $log) {
 	$scope.animationsEnabled = true;
 
 	$scope.open = function (size) {
