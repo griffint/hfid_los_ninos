@@ -3,8 +3,8 @@
     
     <div class="body">Our design development page is here</div>
     	<h1>Design Refinement</h1>
-    	<h4>The button below will take you to our working prototype. Information about this assignment can be found below</h4>
-    	<a href="/prototype/index.html">Prototype</a>
+    	<h4>The link below will take you to our working prototype. Information about this assignment can be found below</h4>
+    	<a href="/prototype/">Prototype</a>
         <br>
         <h3>Prototype testing instructions</h3>
     	<br>
