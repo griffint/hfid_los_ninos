@@ -5,6 +5,25 @@
     {
       font-size: 1em;
     }
+    img
+    { 
+      display:block;
+      text-align: center;
+      margin: 0 auto;
+      width: 400px;
+    }
+    div.image:hover img.jasperimages
+    {
+      display: block;
+      text-align: center;
+      margin: 0 auto;
+      width: 900px;
+    }
+    
+    .caption{
+      text-align: center;
+      margin: 0 auto;
+    }
     </style>
     <div class="body">Our design development page is here</div>
     	<h1>Design Refinement</h1>
