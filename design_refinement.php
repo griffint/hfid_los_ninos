@@ -81,7 +81,7 @@
             echo "<li class=\"col-md-6\"><img class=\"img-responsive\" src=\"$dir$value\"></li>";
         }
         }
-        images("imgs/initialdesigns/");
+        images("imgs/wireframes/");
       ?>
       </ul>
 
