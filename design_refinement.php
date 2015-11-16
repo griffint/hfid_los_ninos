@@ -11,6 +11,9 @@
     	<h4>The link below will take you to our working prototype. Information about this assignment can be found below</h4>
     	<a href="prototype/index.html">Prototype</a>
         <br>
+        <h4>The below link will download our heuristic feedback as a pdf. </h4>
+        <a href="HeuristicEvaluationforLosNinos.pdf">Heuristic Feedback</a>
+        <br>
         <h3>Prototype testing instructions</h3>
         <br>
         <p>Our prototype is a functioning html site with a not fully functional backend. That is, you can test most interactions but your data will not be 
@@ -27,6 +30,28 @@
     	<br>
     	<h5>Wireframes</h5>
     	<p>Here we'll put some information about our wireframes</p>
+
+        <!--Code to create images of all of wireframes-->
+        <h2>Photo Gallery of Wireframes</h2>
+        <ul class="row">
+      <?php
+        function images($dir) {
+        $files1 = scandir($dir);
+        foreach ($files1 as $x=>$value)
+        {
+            if ($value == "." || $value == ".."){
+                unset($files1[$x]);
+            }
+        }
+        foreach ($files1 as $x=>$value)
+        {
+
+            echo "<li class=\"col-md-6\"><img class=\"img-responsive\" src=\"$dir$value\"></li>";
+        }
+        }
+        images("imgs/initialdesigns/");
+      ?>
+      </ul>
 
     </div>
   </body>
