@@ -93,10 +93,6 @@
 			<p class='caption'>The filters of our design</p>
 <br>
             Finally, we received lots of feedback on our filtering interaction and gained some insights into how our users would use the filtering system. One of the biggest complaints our evaluators had with the filters is that they constantly had to click apply when they updated their filters. Another issue they had was getting no results after applying their filters. From this feedback, we ascertained that they wanted a much more responsive filtering system where things updated in real time. We believe we can further improve responsiveness by listing how many things will fit a given criteria, letting the user make more educated selections in their filters. In addition to responsiveness, people raised concerns in wanting to separate searching by people and places. We believe we can incorporate this interaction in our filters by creating more separation between people and place filters, and creating bigger and more noticeable buttons to enable/disable people or places.</p>
-			<br>
-			<img src="./imgs/prototype_screenshots/filter.png">
-			<br>
-			<p>The filters of our design</p>
         <br>
 		<h3>Further Investigations</h3>
         <p>From our insights, we discovered several areas of discussion we will need to figure out by our final design. These areas include the following:</p>
