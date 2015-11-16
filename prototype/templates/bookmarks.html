@@ -6,7 +6,7 @@
       <div class="col-md-3 col-md-offset-3" style="overflow: hidden">
         <h2 class="text-center">Bookmarked Places</h2>
 		<!--CARD STARTS HERE-->
-		<div class="panel panel-default card">
+		<div ng-hide="hide" ng-controller="BerkeleyModalCtrl" class="panel panel-default card">
 			<!-- Default panel contents -->
 
 			<div class="panel-body">
@@ -26,55 +26,64 @@
 			<!-- List group -->
 			<ul class="list-group">
 				<li class="list-group-item">
-					<h4>Cozy Home in the Tenderloin District</h4>
+					<h4>Cozy Berkeley Home</h4>
 				</li>
 				<li class="list-group-item badgeContainer">
 					<div class="container-fluid">
 						<ul class="nav navbar-nav navbar-left">
 							<li><h4>Interested People</h4></li>
 						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							<li><button type="button" class="btn btn-default">Add Myself</button></li>
+						<ul ng-controller= "InterestedModalCtrl" class="nav navbar-nav navbar-right">
+							<script type="text/ng-template" id="interestedctrl.html">
+								<div class="modal-header">
+									Interested People Section
+								</div>
+								<div class="modal-body">
+									You were successfully added to the group! Now others can see that you are interested in the group.
+								</div>
+								<div class="modal-footer">
+            						<button class="btn btn-primary" type="button" ng-click="ok()">OK</button> 
+								</div>
+							</script>
+
+							<li><button type="button" ng-click="open(lg)" class="btn btn-default">Add Myself</button></li>
 						</ul>
 					</div>
+
 					<a href="#" class="thumbnail farbadge">
-						<img src="http://puu.sh/l74WX/2677ae32d7.jpg">
+						<img src="https://pbs.twimg.com/profile_images/2711772111/5579fa8742299df69b02af2c7a2a9c51.png">
 					</a>
 					<a href="#" class="thumbnail farbadge">
-						<img src="http://puu.sh/l74WX/2677ae32d7.jpg">
+						<img src="http://i.imgur.com/N4fpSXx.jpg">
 					</a>
 					<a href="#" class="thumbnail farbadge">
-						<img src="http://puu.sh/l74WX/2677ae32d7.jpg">
-					</a>
-					<a href="#" class="thumbnail farbadge">
-						<img src="http://puu.sh/l74WX/2677ae32d7.jpg">
+						<img src="https://38.media.tumblr.com/avatar_23300ab3279a_96.png">
 					</a>
 				</li>
 
-				<a href='#'><li class="list-group-item cardbutton">Remove Bookmark</li></a>
-				<div ng-controller="1ModalCtrl">
+				<a ng-click="click()"><li class="list-group-item cardbutton">Remove Bookmark</li></a>
 
-					<a ng-click="open()">
-						<li class="list-group-item cardbutton">More Info</li>
-					</a>
-				</div>
+				<a ng-click="open()">
+					<li class="list-group-item cardbutton">More Info</li>
+				</a>
 			</ul>
 		</div>
 		<!--CARD ENDS HERE-->
 		<!--CARD STARTS HERE-->
-		<div class="panel panel-default card">
+
+		<div ng-hide="hide" ng-controller="FinancialModalCtrl" class="panel panel-default card">
 			<!-- Default panel contents -->
 
 			<div class="panel-body">
 				<div class="media">
 					<div class="media-left">
 						<a href="#">
-							<img class="media-object avatar" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG" alt="...">
+							<img class="media-object avatar" src="http://www.vnrental.net/sites/default/files/styles/thumb_510x380/public/photo/product/apartment-for-rent-in-hoang-anh-gia-lai-3-district-7-in-hcm-city_7.jpg" alt="...">
 						</a>
 					</div>
 					<div class="media-body">
-						<h4 class="media-heading">$1000/Room</h4>
-						<h4 class="media-heading">3 Rooms</h4>
+						<h4 class="media-heading">$1900/Room</h4>
+						<h4 class="media-heading">2 Rooms</h4>
 					</div>
 				</div>
 			</div>
@@ -82,68 +91,61 @@
 			<!-- List group -->
 			<ul class="list-group">
 				<li class="list-group-item">
-					<h4>Cozy home in the tenderloin district</h4>
+					<h4>Nice Financial District Apartment</h4>
 				</li>
 				<li class="list-group-item badgeContainer">
 					<div class="container-fluid">
 						<ul class="nav navbar-nav navbar-left">
 							<li><h4>Interested People</h4></li>
 						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							<li><button type="button" class="btn btn-default">Add Myself</button></li>
+						<ul ng-controller= "InterestedModalCtrl" class="nav navbar-nav navbar-right">
+							<script type="text/ng-template" id="interestedctrl.html">
+								<div class="modal-header">
+									Interested People Section
+								</div>
+								<div class="modal-body">
+									You were successfully added to the group! Now others can see that you are interested in the group.
+								</div>
+								<div class="modal-footer">
+            						<button class="btn btn-primary" type="button" ng-click="ok()">OK</button> 
+								</div>
+							</script>
+
+							<li><button type="button" ng-click="open(lg)" class="btn btn-default">Add Myself</button></li>
 						</ul>
 					</div>
 					<a href="#" class="thumbnail farbadge">
-						<img src="http://puu.sh/l74WX/2677ae32d7.jpg">
+						<img src="https://pbs.twimg.com/profile_images/2711772111/5579fa8742299df69b02af2c7a2a9c51.png">
 					</a>
 					<a href="#" class="thumbnail farbadge">
-						<img src="http://puu.sh/l74WX/2677ae32d7.jpg">
-					</a>
-					<a href="#" class="thumbnail farbadge">
-						<img src="http://puu.sh/l74WX/2677ae32d7.jpg">
-					</a>
-					<a href="#" class="thumbnail farbadge">
-						<img src="http://puu.sh/l74WX/2677ae32d7.jpg">
+						<img src="http://i.imgur.com/N4fpSXx.jpg">
 					</a>
 				</li>
+				<a ng-click="click()"><li class="list-group-item cardbutton">Remove Bookmark</li></a>
+				
+				<a ng-click="open()">
+					<li class="list-group-item cardbutton">More Info</li>
+				</a>
 
-				<a href='#'><li class="list-group-item cardbutton">Remove Bookmark</li></a>
-
-				<div ng-controller="2ModalCtrl">
-					<script type="text/ng-template" id="profiledetails.html">
-						<div class="modal-header">
-							<h2 class="modal-title"> Timothy</h2>
-						<div class = "modal-body">
-							<h4> This doesnt work yet needs to sync with firebase. </h4>
-						</div>
-						<div class="modal-footer">
-				            <button class="btn btn-primary" type="button" ng-click="ok(lg)">OK</button>
-				        </div>
-				    </script>
-
-					<a ng-click="open()">
-						<li class="list-group-item cardbutton">More Info</li>
-					</a>
-				</div>
 			</ul>
 		</div>
 		<!--CARD ENDS HERE-->
       </div>
       <div class="col-md-3">
         <h2 class="text-center">Bookmarked People</h2>
-		<div class="panel panel-default card"><!--Card-->
+		<div ng-hide="hide" ng-controller="CarlyModalCtrl" class="panel panel-default card"><!--Card-->
 			<!-- Default panel contents -->
 
 			<div class="panel-body">
 				<div class="media">
 					<div class="media-left">
 						<a href="#">
-							<img class="media-object avatar" src="http://puu.sh/l74WX/2677ae32d7.jpg" alt="...">
+							<img class="media-object avatar" src="https://carlyforpresident.com/img/hp-history.jpg" alt="...">
 						</a>
 					</div>
 					<div class="media-body">
-						<h4 class="media-heading">{{card.name}}, {{card.age}} {{card.gender}}</h4>
-						<p>{{card.occupation}}</p>
+						<h4 class="media-heading">Carly, 40, F </h4>
+						<p>Politician, Former Executive</p>
 					</div>
 				</div>
 			</div>
@@ -152,43 +154,38 @@
 			<ul class="list-group">
 				<li class="list-group-item badgeContainer">
 					<h4>Badges</h4>
+
 					<a href="#" class="thumbnail farbadge">
-						<img src="https://jasminepicha.files.wordpress.com/2013/04/5.png" alt="Site Veteran">
+						<img src="http://1.bp.blogspot.com/-p6boeGo2dWQ/UqLh5tA2mcI/AAAAAAAAAjA/uNuD4PlUH9U/s1600/facebook-logo-3.png" title="image" alt="Mutual Friends">
 					</a>
+
 					<a href="#" class="thumbnail farbadge">
-						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" alt="Connected to Facebook">
+						<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR5vWbRyeHtPj79YLTnmHDAYOoAgKx437nRfO8cb5kCz0CHGrjmvxJRQVc" title="image" alt="Alma Mater">
 					</a>
-					<a href="#" class="thumbnail farbadge">
-						<img src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/matte-white-square-icons-alphanumeric/124273-matte-white-square-icon-alphanumeric-letter-g.png" alt="In Group">
-					</a>
-					<a href="#" class="thumbnail farbadge">
-						<img src="http://www.clker.com/cliparts/D/z/C/2/q/E/check-mark-md.png" alt="Verified ID">
-					</a>					
 				</li>
 
-				<a href='#'><li class="list-group-item cardbutton">Remove Bookmark</li></a>
-				<div ng-controller="ModalCtrl">
-					<script src="./app/bigplace.js"></script>
 
-					<a ng-click="open()">
-						<li class="list-group-item cardbutton">More Info</li>
-					</a>
-				</div>
+				<a ng-click="click()"><li class="list-group-item cardbutton">Remove Bookmark</li></a>
+
+				<a ng-click="open()">
+					<li class="list-group-item cardbutton">More Info</li>
+				</a>
 			</ul>
 		</div><!--Card End-->
-		<div class="panel panel-default card"><!--Card-->
+
+		<div ng-hide="hide" ng-controller="JaredModalCtrl" class="panel panel-default card"><!--Card-->
 			<!-- Default panel contents -->
 
 			<div class="panel-body">
 				<div class="media">
 					<div class="media-left">
 						<a href="#">
-							<img class="media-object avatar" src="http://puu.sh/l74WX/2677ae32d7.jpg" alt="...">
+							<img class="media-object avatar" src="https://38.media.tumblr.com/avatar_23300ab3279a_96.png" title="image" alt="...">
 						</a>
 					</div>
 					<div class="media-body">
-						<h4 class="media-heading">{{card.name}}, {{card.age}} {{card.gender}}</h4>
-						<p>{{card.occupation}}</p>
+						<h4 class="media-heading">Jared, 27, M</h4>
+						<p>Product Manager</p>
 					</div>
 				</div>
 			</div>
@@ -197,37 +194,22 @@
 			<ul class="list-group">
 				<li class="list-group-item badgeContainer">
 					<h4>Badges</h4>
-					<a href="#" class="thumbnail farbadge">
-						<img src="https://jasminepicha.files.wordpress.com/2013/04/5.png" alt="Site Veteran">
+
+					<a href="#" class="thumbnail farbadge">	
+						<img src="http://www.clker.com/cliparts/D/z/C/2/q/E/check-mark-md.png" title="image" alt="Verified">
 					</a>
+
 					<a href="#" class="thumbnail farbadge">
-						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" alt="Connected to Facebook">
-					</a>
-					<a href="#" class="thumbnail farbadge">
-						<img src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/matte-white-square-icons-alphanumeric/124273-matte-white-square-icon-alphanumeric-letter-g.png" alt="In Group">
-					</a>
-					<a href="#" class="thumbnail farbadge">
-						<img src="http://www.clker.com/cliparts/D/z/C/2/q/E/check-mark-md.png" alt="Verified ID">
-					</a>					
+						<img src="http://1.bp.blogspot.com/-p6boeGo2dWQ/UqLh5tA2mcI/AAAAAAAAAjA/uNuD4PlUH9U/s1600/facebook-logo-3.png" title="image" alt="Mutual Friends">
+					</a>				
 				</li>
 
-				<a href='#'><li class="list-group-item cardbutton">Remove Bookmark</li></a>
-				<div ng-controller="ModalCtrl">
-					<script type="text/ng-template" id="profiledetails.html">
-						<div class="modal-header">
-							<h2 class="modal-title"> Timothy</h2>
-						<div class = "modal-body">
-							<h4> This doesnt work yet needs to sync with firebase. </h4>
-						</div>
-						<div class="modal-footer">
-				            <button class="btn btn-primary" type="button" ng-click="ok(lg)">OK</button>
-				        </div>
-				    </script>
 
-					<a ng-click="open()">
-						<li class="list-group-item cardbutton">More Info</li>
-					</a>
-				</div>
+				<a ng-click="click()"><li class="list-group-item cardbutton">Remove Bookmark</li></a>
+			
+				<a ng-click="open()">
+					<li class="list-group-item cardbutton">More Info</li>
+				</a>
 			</ul>
 		</div><!--Card End-->
       </div>

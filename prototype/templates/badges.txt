@@ -1,0 +1,12 @@
+					<a href="#" class="thumbnail farbadge">
+						<img src="https://jasminepicha.files.wordpress.com/2013/04/5.png" title="image" alt="Site Veteran">
+					</a>
+					<a href="#" class="thumbnail farbadge">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" title="image" alt="Connected to Facebook">
+					</a>
+					<a href="#" class="thumbnail farbadge">
+						<img src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/matte-white-square-icons-alphanumeric/124273-matte-white-square-icon-alphanumeric-letter-g.png" title="image" alt="In Group">
+					</a>
+					<a href="#" class="thumbnail farbadge">
+						<img src="http://www.clker.com/cliparts/D/z/C/2/q/E/check-mark-md.png" title="image" alt="Verified ID">
+					</a>	
