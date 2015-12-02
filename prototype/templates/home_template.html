@@ -1,3 +1,4 @@
+
 <div ng-app="sampleApp" ng-controller="LoginCtrl" style="padding-left:130px;padding-right:200px;">
 	<div>
 		<h1 class = "hello"> Welcome.</h1>
@@ -25,6 +26,9 @@
 				</div>
 				<button type="submit" class="btn btn-primary hello" ng-click="signIn()">Sign In / Sign Up</button>
 			</fieldset>
+			<div ng-show="auth" class="hello">
+				<button type="submit" class="btn btn-primary hello" onClick="parent.location='#/map'">I'm ready to search!</button>
+			</div>		
 			<div ng-show="auth" class="hello">
 				<button type="submit" class="btn btn-primary hello" ng-click="removeUser()">Sign Out</button>
 			</div>
