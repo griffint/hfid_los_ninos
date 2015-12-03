@@ -1,11 +1,15 @@
 var canvas = 0;
-
+var current = "cool";
 function afterTimeout(){
 	canvas = new fabric.Canvas('canvas');
 	initializeMap(activeFilter);
 	drawAllCards(activeFilter);
 	canvas.on('object:selected', function(options) {
+		
+		current.strokeWidth = 0;
 		current = canvas.getActiveObject();
+		current.stroke = "#000";
+		current.strokeWidth = 2;
 		var myNode = document.getElementById("cardArea");
 		while (myNode.firstChild) {
 			myNode.removeChild(myNode.firstChild);
