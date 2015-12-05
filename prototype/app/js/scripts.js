@@ -9,11 +9,23 @@ app.config( function($urlRouterProvider, $stateProvider){
           templateUrl: 'templates/nav.html'
         },*/
         'body': {
+          templateUrl: 'templates/login.html'
+        }
+      },
+    })
+
+    .state('home', {
+      url: '/home',
+      views: {
+        'nav': {
+          templateUrl: 'templates/nav.html'
+        },
+        'body': {
           templateUrl: 'templates/home_template.html'
         }
       }
       ,
-    })
+    })        
 
     .state('map', {
       url: '/map',
@@ -73,15 +85,15 @@ app.config( function($urlRouterProvider, $stateProvider){
        }
     })
 
-    .state('notifications', {
-      url: '/notifcations',
+    .state('profile', {
+      url: '/profile',
       views: {
         'nav': {
           templateUrl: 'templates/nav.html'
         },
         'body': {      
-          templateUrl: 'templates/notifications.html'}
-        }
+          templateUrl: 'templates/profile.html'}
+      }
     })
 
     .state('basic-profile', {

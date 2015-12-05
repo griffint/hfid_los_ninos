@@ -1,7 +1,7 @@
 <div ng-app="sampleApp" ng-controller="LoginCtrl" style="padding-left:130px;padding-right:200px;">
 	<div>
-		<h1 class = "hello"> Welcome.</h1>
-		<h4 style="margin-top: 20px" class = "hello"> Find people who you feel comfortable living with. </h4>
+		<h1> Welcome.</h1>
+		<h4 style="margin-top: 20px"> Find people who you feel comfortable living with. </h4>
 	</div>
 
 	<div class="col-sm-12">
@@ -15,17 +15,17 @@
 		<div ng-show="auth" style="height: 50px">
 			<p class="hello" style="padding-top: 15px">Signed in as {{email}}</p>
 		</div>
-		<form style="width:350px hello">
-			<fieldset ng-hide="auth" class="hello">
-				<div class="form-group hello">
+		<form style="width:350px">
+			<fieldset ng-hide="auth">
+				<div class="form-group">
 					<input type="email" class="form-control" ng-model="email" placeholder="email"/>
 				</div>
-				<div class="form-group hello">
-					<input type="password" class="form-control" placeholder="password" ng-model="password" />
+				<div class="form-group">
+					<input type="password" class="form-control" placeholder="password" ng-model="password"/>
 				</div>
 				<button type="submit" class="btn btn-primary hello" ng-click="signIn()">Sign In / Sign Up</button>
 			</fieldset>
-			<div ng-show="auth" class="hello">
+			<div ng-show="auth">
 				<button type="submit" class="btn btn-primary hello" ng-click="removeUser()">Sign Out</button>
 			</div>
 		</form>

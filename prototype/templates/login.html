@@ -1,0 +1,39 @@
+
+<div class = "login" ng-app="sampleApp" ng-controller="LoginCtrl">
+	<div>
+		<h1 class = "center"> Welcome to Roomie </h1>
+		<h4 style="margin-top: 20px;" class = "center" > Find people who you feel comfortable living with. </h4>
+	</div>
+
+	<div class="col-sm-12">
+		<div class="container alert" style="height: 100px; width: 400px">
+			<div class = "container alert" ng-show="alertcheck" style="width: 400px">
+				<uib-alert type="{{alert.class}}">
+					{{alert.message}}
+				</uib-alert>
+			</div>
+		</div>
+		<div ng-show="auth" style="height: 50px">
+			<p class="center" style="padding-top: 15px">Signed in as {{email}}</p>
+		</div>
+		<form style="width:350px center">
+			<fieldset ng-hide="auth" class="center">
+				<div class="form-group center">
+					<input type="email" class="form-control" ng-model="email" placeholder="email"/>
+				</div>
+				<div class="form-group center">
+					<input type="password" class="form-control" placeholder="password" ng-model="password" />
+				</div>
+				<button type="submit" class="btn btn-primary center" ng-click="signIn()">Sign In / Sign Up</button>
+			</fieldset>
+			<div ng-show="auth" class="center">
+				<button type="submit" class="btn btn-primary center" onClick="parent.location='#/profile'">Let's fill out my profile!</button>
+			</div>
+			<br>
+			<div ng-show="auth" class="center">
+				<button type="submit" class="btn btn-primary center" ng-click="removeUser()">Sign Out</button>
+			</div>
+		</form>
+
+	</div>
+</div>
