@@ -262,12 +262,93 @@ function addIcon(value, type){
 	}));
 }
 
-function fillPlaceDialog(info){
+function convertTime(bedtime){
+	if(bedtime<13){
+		if(bedtime==0){
+			return "Midnight";
+		}
+		if(bedtime==12){
+			return "Noon";
+		}
+		return (bedtime.toString()+" AM");
+	}
+	return (bedtime.toString()+" PM");
+}
 
+function fillPlaceDialog(info){
+	document.getElementById("placeavatar").src = info.avatar;
+	document.getElementById("description").innerHTML = info.bigDescription;
+	document.getElementById("title").innerHTML = info.description;
+	document.getElementById("owner").innerHTML = info.owner;
+	document.getElementById("bedbath").innerHTML = info.rooms.toString() +" Beds, " + info.baths.toString() +" Baths";
+	document.getElementById("placeprice").innerHTML = "$"+info.price.toString()+"/Room per Month";
+	
+	var myNode = document.getElementById("biginterestedpeople");
+	while (myNode.firstChild) {
+		myNode.removeChild(myNode.firstChild);
+	}
+	$.getJSON("./app/locations.json", function(locations) {
+		var people = locations.people;
+		var thisIPList = info.interestedPeople.split(",");
+		$.each(people, function(index, value) {
+			if(thisIPList.indexOf(value.id.toString()) > -1){
+				document.getElementById("biginterestedpeople").appendChild(createIPBadge(value));
+			}
+		});
+	});
+	var myNode = document.getElementById("bigplacebadges");
+	while (myNode.firstChild) {
+		myNode.removeChild(myNode.firstChild);
+	}
+	$.getJSON("./app/locations.json", function(locations) {
+		var badges = locations.badges;
+		var thisbadgeList = info.badgelist.split(",");
+		$.each(badges, function(index, value) {
+			if(thisbadgeList.indexOf(value.id.toString()) > -1){
+				document.getElementById("bigplacebadges").appendChild(createBadge(value));
+			}
+		});
+	});
 }
 
 function fillPersonDialog(info){
-
+	document.getElementById("personavatar").src = info.avatar;
+	document.getElementById("wakeuptime").innerHTML = convertTime(info.wakeTime);
+	document.getElementById("sleeptime").innerHTML = convertTime(info.sleepTime);
+	document.getElementById("cleanp").innerHTML = info.cleanliness.toString();
+	document.getElementById("noisy").innerHTML = info.noisiness.toString();
+	document.getElementById("bignameperson").innerHTML = info.name;
+	document.getElementById("agesex").innerHTML = (info.age.toString() + ", " + info.sex);
+	document.getElementById("description").innerHTML = info.description;
+	var myNode = document.getElementById("bigpersonbadges");
+	while (myNode.firstChild) {
+		myNode.removeChild(myNode.firstChild);
+	}
+	$.getJSON("./app/locations.json", function(locations) {
+		var badges = locations.badges;
+		var thisbadgeList = info.badgelist.split(",");
+		$.each(badges, function(index, value) {
+			if(thisbadgeList.indexOf(value.id.toString()) > -1){
+				document.getElementById("bigpersonbadges").appendChild(createBadge(value));
+			}
+		});
+	});
+	var myNode = document.getElementById("hobbies");
+	while (myNode.firstChild) {
+		myNode.removeChild(myNode.firstChild);
+	}
+	$.getJSON("./app/locations.json", function(locations) {
+		var badges = locations.hobbies;
+		var thisbadgeList = info.hobbylist.split(",");
+		$.each(badges, function(index, value) {
+			if(thisbadgeList.indexOf(value.id.toString()) > -1){
+				var hobby = document.createElement("li");
+				hobby.className = "list-group-item";
+				hobby.innerHTML = value.hobby;
+				document.getElementById("hobbies").appendChild(hobby);
+			}
+		});
+	});
 }
 
 function createIPBadge(personObject){
@@ -281,6 +362,7 @@ function createIPBadge(personObject){
 function createBadge(badgeObject){
 	var lin = document.createElement("a");
 		lin.title=badgeObject.hoverText;
+		lin.style.cursor = "help";
 	var placeHolderBadge = document.createElement("img");
 		placeHolderBadge.className = "thumbnail farbadge";
 		placeHolderBadge.src = badgeObject.image;
@@ -392,6 +474,7 @@ function createHouseCard(cardHouse){
 		listGroup.appendChild(bookmarkLink);
 		
 		var moreInfoLink = document.createElement("a");
+			moreInfoLink.style.cursor = "pointer";
 			moreInfoLink.onclick = function(){
 				fillPlaceDialog(cardHouse);
 				$( "#dialogPlace" ).dialog( "open" );
@@ -399,6 +482,7 @@ function createHouseCard(cardHouse){
 			var moreInfoText = document.createElement("li");
 				moreInfoText.className = "list-group-item cardbutton";
 				moreInfoText.innerHTML = "More Info";
+			
 			moreInfoLink.appendChild(moreInfoText);
 		listGroup.appendChild(moreInfoLink);
 	cardContainer.appendChild(listGroup);
@@ -470,6 +554,7 @@ function createPersonCard(cardPerson){
 		listGroup.appendChild(bookmarkLink);
 		
 		var moreInfoLink = document.createElement("a");
+			moreInfoLink.style.cursor = "pointer";
 			moreInfoLink.className = "infoperson";
 			moreInfoLink.onclick = function(){
 				fillPersonDialog(cardPerson);
