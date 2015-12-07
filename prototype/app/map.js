@@ -1,5 +1,7 @@
 var canvas = 0;
 var current = "cool";
+var defaultFilter = {people: true, minage:0,maxage:100, verified: false, cleanliness: 0, noise: 0, gender: "MF", places: true, minprice: 0, maxprice: 100000000, beds:"12345", baths:"12345"};
+var activeFilter = defaultFilter;
 function afterTimeout(){
 	canvas = new fabric.Canvas('canvas');
 	initializeMap(activeFilter);
@@ -24,9 +26,12 @@ function afterTimeout(){
 		document.getElementById("cardArea").appendChild(newcard);
 	});
 	canvas.on('selection:cleared', function() {
-		//drawAllCards(activeFilter);
+		//current.strokeWidth = 0;
+		//resetFilters();
+		
 	});
 	canvas.renderAll();
+	$(".filters").change(function(){applyFilters();});
 	$("#showpeople").change(function(){
 		console.log("showpeople changed");
 		if(this.checked) {
@@ -182,23 +187,22 @@ function test(){
 }
 
 //remove bedtime, dates
-var defaultFilter = {people: true, minage:0,maxage:100, verified: false, cleanliness: 0, noise: 0, gender: "MF", places: true, minprice: 0, maxprice: 100000000, beds:"12345", baths:"12345"};
-var activeFilter = defaultFilter;
+
 
 
 
 function resetFilters(){
-	//activeFilter = defaultFilter;
-	//initializeMap(activeFilter);
-	//drawAllCards(activeFilter);
-	alert("Functionality Not Added, If your filters become messed up, please refresh the page, sorry");
+	activeFilter = defaultFilter;
+	//applyFilters();
+	initializeMap(defaultFilter);
+	drawAllCards(defaultFilter);
+	//alert("Functionality Not Added, If your filters become messed up, please refresh the page, sorry");
 }
 
 function applyFilters(){
 	console.log(activeFilter);
 	initializeMap(activeFilter);
 	drawAllCards(activeFilter);
-	
 }
 
 
@@ -258,6 +262,14 @@ function addIcon(value, type){
 	}));
 }
 
+function fillPlaceDialog(info){
+
+}
+
+function fillPersonDialog(info){
+
+}
+
 function createIPBadge(personObject){
 	var placeHolderBadge = document.createElement("img");
 		placeHolderBadge.className = "thumbnail farbadge";
@@ -267,11 +279,14 @@ function createIPBadge(personObject){
 }
 
 function createBadge(badgeObject){
+	var lin = document.createElement("a");
+		lin.title=badgeObject.hoverText;
 	var placeHolderBadge = document.createElement("img");
 		placeHolderBadge.className = "thumbnail farbadge";
 		placeHolderBadge.src = badgeObject.image;
-		placeHolderBadge.title = badgeObject.hoverText;
-	return placeHolderBadge;
+		//placeHolderBadge.title = badgeObject.hoverText;
+	lin.appendChild(placeHolderBadge);
+	return lin;
 }
 
 function getBadges(badgeList){
@@ -378,6 +393,7 @@ function createHouseCard(cardHouse){
 		
 		var moreInfoLink = document.createElement("a");
 			moreInfoLink.onclick = function(){
+				fillPlaceDialog(cardHouse);
 				$( "#dialogPlace" ).dialog( "open" );
 			}
 			var moreInfoText = document.createElement("li");
@@ -456,6 +472,7 @@ function createPersonCard(cardPerson){
 		var moreInfoLink = document.createElement("a");
 			moreInfoLink.className = "infoperson";
 			moreInfoLink.onclick = function(){
+				fillPersonDialog(cardPerson);
 				$( "#dialogPerson" ).dialog( "open" );
 			}
 			var moreInfoText = document.createElement("li");
