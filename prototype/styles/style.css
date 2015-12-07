@@ -86,3 +86,11 @@ float:left;
 .login {
 	margin-top: 150px;
 }
+
+#dealbreaker {
+	height: 50px;
+}
+
+.panel {
+	background-color: white;
+}
