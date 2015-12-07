@@ -20,7 +20,7 @@
 					<h2>Cleanliness</h2>
 				</div>
 				<div class="col-sm-2">
-					<h2 id="cleanp">10</h2>
+					<h2 id="cleanp">5</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -28,7 +28,7 @@
 					<h2>Noisiness</h2>
 				</div>
 				<div class="col-sm-2">
-					<h2 id="noisy">1</h2>
+					<h2 id="noisy">2</h2>
 				</div>
 			</div>
 
@@ -46,6 +46,7 @@
 			<button class="btn btn-primary btn-block">Contact</button>
 			<button class="btn btn-primary btn-block">Invite to Group</button>
 			<h2>About me</h2>
+			<h3 id="occupation">Occupation</h3>
 			<p id="description">The world's coolest software engineer is looking for a room in the Tenderloin district. I have 3 cats and they are staying with us.</p>
 			<h2>Badges</h2>
 			<div id="bigpersonbadges" class="container badgearea">
@@ -169,14 +170,14 @@
 				<div class="col-sm-12">
 					<label for="clean" class="col-sm-5 control-label">Cleanliness</label>
 					<div class="col-sm-7">
-						<input type="range" value="1" min="1" max="10" step="1" id="clean" class="filters form-control">
+						<input type="range" value="1" min="1" max="5" step="1" id="clean" class="filters form-control">
 					</div>
 				</div>
 
 				<div class="col-sm-12">
 					<label for="noise" class="col-sm-5 control-label">Noise</label>
 					<div class="col-sm-7">
-						<input type="range" value="1" min="1" max="10" step="1"  id="noise" class="filters form-control">
+						<input type="range" value="1" min="1" max="5" step="1"  id="noise" class="filters form-control">
 					</div>
 				</div>
 
@@ -290,7 +291,7 @@
 				</div>
 			</ul>
 			<button id="reset-button" type="button" onclick="resetFilters()" class="btn btn-primary">
-				Reset Filters
+				Re-List All that Apply
 			</button>
 		</div>
 	</div>

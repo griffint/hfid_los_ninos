@@ -1,6 +1,6 @@
 var canvas = 0;
 var current = "cool";
-var defaultFilter = {people: true, minage:0,maxage:100, verified: false, cleanliness: 0, noise: 0, gender: "MF", places: true, minprice: 0, maxprice: 100000000, beds:"12345", baths:"12345"};
+var defaultFilter = {people: true, minage:0,maxage:100, verified: false, cleanliness: 1, noise: 1, gender: "MF", places: true, minprice: 0, maxprice: 100000000, beds:"12345", baths:"12345"};
 var activeFilter = defaultFilter;
 function afterTimeout(){
 	canvas = new fabric.Canvas('canvas');
@@ -213,7 +213,7 @@ function drawAllCards(filter){
 	}
 	$.getJSON("./app/locations.json", function(locations) {
 		$.each(locations.people, function(index, value) {
-			if(filter.people && filter.minage<value.age && filter.maxage>value.age && ((value.badgelist.indexOf("2")>-1 && filter.verified)||!(filter.verified)) && filter.cleanliness<value.cleanliness && filter.noise<value.noisiness && filter.gender.indexOf(value.sex)>-1){
+			if(filter.people && filter.minage<value.age && filter.maxage>value.age && ((value.badgelist.indexOf("2")>-1 && filter.verified)||!(filter.verified)) && filter.cleanliness<=value.cleanliness && filter.noise<=value.noisiness && filter.gender.indexOf(value.sex)>-1){
 				document.getElementById("cardArea").appendChild(createPersonCard(value));
 			}
 		}); 
@@ -315,6 +315,7 @@ function fillPlaceDialog(info){
 function fillPersonDialog(info){
 	document.getElementById("dialogPerson").title = info.name;
 	document.getElementById("personavatar").src = info.avatar;
+	document.getElementById("occupation").innerHTML = info.occupation;
 	document.getElementById("wakeuptime").innerHTML = convertTime(info.wakeTime);
 	document.getElementById("sleeptime").innerHTML = convertTime(info.sleepTime);
 	document.getElementById("cleanp").innerHTML = info.cleanliness.toString();
