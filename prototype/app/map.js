@@ -276,6 +276,7 @@ function convertTime(bedtime){
 }
 
 function fillPlaceDialog(info){
+	document.getElementById("dialogPlace").title = info.description;
 	document.getElementById("placeavatar").src = info.avatar;
 	document.getElementById("description").innerHTML = info.bigDescription;
 	document.getElementById("title").innerHTML = info.description;
@@ -312,6 +313,7 @@ function fillPlaceDialog(info){
 }
 
 function fillPersonDialog(info){
+	document.getElementById("dialogPerson").title = info.name;
 	document.getElementById("personavatar").src = info.avatar;
 	document.getElementById("wakeuptime").innerHTML = convertTime(info.wakeTime);
 	document.getElementById("sleeptime").innerHTML = convertTime(info.sleepTime);
