@@ -3,6 +3,7 @@
         <div class="col-sm-5 row panel panel-default" style="width:520px">
             <div class="panel-heading">
                 <h2>Basic Info</h2>
+                <p>Privacy Notice: Icons marked with a <span class="glyphicon glyphicon-eye-close"></span> will not be viewable to other users unless you allow it.</p> 
             </div>
             <div class="panel-body">    
                 <form ng-submit="updateUserInfo(userinfo)" class="form-horizontal " role="form">
@@ -33,6 +34,13 @@
                             <input type="tel" id="tele" class="form-control" placeholder="Phone Number" ng-model="profile.phonenumber">
                         </div>
                         <span class="glyphicon glyphicon-eye-close"></span>
+                    </div>
+                    <div class="form-group">
+                    <label for="birthDate" class="col-sm-3 control-label">
+                        Desired Zip Code</label>
+                        <div class="col-sm-5">
+                            <input type="tel" id="tele" class="form-control" placeholder="Zip Code" ng-model="profile.phonenumber">
+                        </div>
                     </div> <!-- /.form-group -->
                     <div class="form-group">
                         <label class="col-sm-offset-1 control-label col-sm-2">Gender</label>
