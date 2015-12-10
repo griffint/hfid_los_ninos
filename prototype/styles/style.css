@@ -94,3 +94,11 @@ float:left;
 .panel {
 	background-color: white;
 }
+
+.profile {
+	width: 520px;
+}
+
+p {
+	font-size: 12px;
+}

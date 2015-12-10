@@ -1,105 +1,112 @@
 <link href="../styles/bootstrap.min.css" rel="stylesheet">
 <link href="../styles/cards.css" rel="stylesheet">
 <div style="padding-left:0px;padding-right:0px;">
-  <div class="container-fluid" style="margin: 0 auto;">
-    <div class="row">
-      <div class="col-md-3 col-md-offset-3" style="overflow: hidden">
-        <h2 class="text-center">Contacted Places</h2>
-		<!--CARD STARTS HERE-->
-		<div ng-hide="hide" ng-controller="NaturalModalCtrl" class="panel panel-default card">
-			<!-- Default panel contents -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3 col-md-offset-1" style="overflow: hidden">
+				<h2 class="text-center">Contacted Places</h2>
+				<!--CARD STARTS HERE-->
+				<div ng-hide="hide" ng-controller="NaturalModalCtrl" class="panel panel-default card">
+					<!-- Default panel contents -->
+					
+					<div class="panel-body">
+						<div class="media col-md-10">
+							<div class="media-left">
+								<a href="#">
+									<img class="media-object avatar" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQyhaAAUQGygb1AqLdfv6ni-N6R9Ej89I3Vfa_hOLDQjbYukmae" alt="...">
+								</a>
+							</div>
+							<div class="media-body">
+								<h4 class="media-heading">$1400/Room</h4>
+								<h4 class="media-heading">3 Rooms</h4>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<span class="glyphicon glyphicon-remove-sign" ng-click="click()"></span>
+						</div>
+					</div>
 
-			<div class="panel-body">
-				<div class="media">
-					<div class="media-left">
-						<a href="#">
-							<img class="media-object avatar" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQyhaAAUQGygb1AqLdfv6ni-N6R9Ej89I3Vfa_hOLDQjbYukmae" alt="...">
+					<!-- List group -->
+					<ul class="list-group">
+						<li class="list-group-item">
+							<h4>Great Apartment with Lots of Natural Light</h4>
+						</li>
+						<li class="list-group-item badgeContainer">
+							<div class="container-fluid">
+								<ul class="nav navbar-nav navbar-left">
+									<li><h4>Interested People</h4></li>
+								</ul>
+								<ul ng-controller= "InterestedModalCtrl" class="nav navbar-nav navbar-right">
+									<script type="text/ng-template" id="interestedctrl.html">
+										<div class="modal-header">
+											Congratulations!
+										</div>
+										<div class="modal-body">
+											You were successfully added to the group! Now others can see that you are interested in the group.
+										</div>
+										<div class="modal-footer">
+											<button class="btn btn-primary" type="button" ng-click="ok()">OK</button> 
+										</div>
+									</script>
+
+									<li><button type="button" ng-click="open(lg)" class="btn btn-default">Add Myself</button></li>
+								</ul>
+							</div>
+							<a href="#" class="thumbnail farbadge">
+								<img src="https://pbs.twimg.com/profile_images/2711772111/5579fa8742299df69b02af2c7a2a9c51.png">
+							</a>
+						</li>
+
+						<a ng-click="open()">
+							<li class="list-group-item cardbutton">More Info</li>
 						</a>
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">$1400/Room</h4>
-						<h4 class="media-heading">3 Rooms</h4>
-					</div>
+					</ul>
 				</div>
 			</div>
 
-			<!-- List group -->
-			<ul class="list-group">
-				<li class="list-group-item">
-					<h4>Great Apartment with Lots of Natural Light</h4>
-				</li>
-				<li class="list-group-item badgeContainer">
-					<div class="container-fluid">
-						<ul class="nav navbar-nav navbar-left">
-							<li><h4>Interested People</h4></li>
-						</ul>
-						<ul ng-controller= "InterestedModalCtrl" class="nav navbar-nav navbar-right">
-							<script type="text/ng-template" id="interestedctrl.html">
-								<div class="modal-header">
-									Congratulations!
-								</div>
-								<div class="modal-body">
-									You were successfully added to the group! Now others can see that you are interested in the group.
-								</div>
-								<div class="modal-footer">
-            						<button class="btn btn-primary" type="button" ng-click="ok()">OK</button> 
-								</div>
-							</script>
+			<div class="col-md-3">
+				<h2 class="text-center">Contacted People</h2>
+				<div ng-controller="BillModalCtrl" ng-hide="hide" class="panel panel-default card"><!--Card-->
+					<!-- Default panel contents -->
 
-							<li><button type="button" ng-click="open(lg)" class="btn btn-default">Add Myself</button></li>
-						</ul>
+					<div class="panel-body">
+						<div class="media col-md-10">
+							<div class="media-left">
+								<a href="#">
+									<img class="media-object avatar" src="http://blogs-images.forbes.com/zinamoukheiber/files/2012/03/Grant_Verstandig1.jpg" alt="...">
+								</a>
+							</div>
+							<div class="media-body">
+								<h4 class="media-heading">Bill, 22, M</h4>
+								<p>Ditch Digger</p>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<span class="glyphicon glyphicon-remove-sign" ng-click="click()"></span>
+						</div>
 					</div>
-					<a href="#" class="thumbnail farbadge">
-						<img src="https://pbs.twimg.com/profile_images/2711772111/5579fa8742299df69b02af2c7a2a9c51.png">
-					</a>
-				</li>
 
-				<a ng-click="click()"><li class="list-group-item cardbutton">Remove Contact</li></a>
-				
-				<a ng-click="open()">
-					<li class="list-group-item cardbutton">More Info</li>
-				</a>
-			</ul>
+
+					<!-- List group -->
+					<ul class="list-group">
+						<li class="list-group-item badgeContainer">
+							<h4>Badges</h4>
+							<a href="#" class="thumbnail farbadge">
+								<img src="http://www.clker.com/cliparts/D/z/C/2/q/E/check-mark-md.png" alt="Verified ID">
+							</a>					
+						</li>
+
+						<a ng-click="open()">
+							<li class="list-group-item cardbutton">More Info</li>
+						</a>
+					</ul>
+				</div><!--Card End-->
+			</div>
+
+			<div class="col-md-3">
+				<h2 class="text-center">Contact Requests</h2>
+			</div>
 		</div>
-      </div>
-
-       	<div class="col-md-3">
-        <h2 class="text-center">Contacted People</h2>
-		<div ng-controller="BillModalCtrl" ng-hide="hide" class="panel panel-default card"><!--Card-->
-			<!-- Default panel contents -->
-
-			<div class="panel-body">
-				<div class="media">
-					<div class="media-left">
-						<a href="#">
-							<img class="media-object avatar" src="http://blogs-images.forbes.com/zinamoukheiber/files/2012/03/Grant_Verstandig1.jpg" alt="...">
-						</a>
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">Bill, 22, M</h4>
-						<p>Ditch Digger</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- List group -->
-			<ul class="list-group">
-				<li class="list-group-item badgeContainer">
-					<h4>Badges</h4>
-					<a href="#" class="thumbnail farbadge">
-						<img src="http://www.clker.com/cliparts/D/z/C/2/q/E/check-mark-md.png" alt="Verified ID">
-					</a>					
-				</li>
-				
-				<a ng-click="click()"><li class="list-group-item cardbutton">Remove Contact</li></a>
-				
-				<a ng-click="open()">
-					<li class="list-group-item cardbutton">More Info</li>
-				</a>
-			</ul>
-		</div><!--Card End-->
-		
-      </div>
-    </div>
-  </div>
+	</div>
+</div>
 </div>
