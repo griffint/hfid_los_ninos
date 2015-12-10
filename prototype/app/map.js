@@ -1,11 +1,17 @@
 var canvas = 0;
-
+var current = "cool";
+var defaultFilter = {people: true, minage:0,maxage:100, verified: false, cleanliness: 1, noise: 1, gender: "MF", places: true, minprice: 0, maxprice: 100000000, beds:"12345", baths:"12345"};
+var activeFilter = defaultFilter;
 function afterTimeout(){
 	canvas = new fabric.Canvas('canvas');
 	initializeMap(activeFilter);
 	drawAllCards(activeFilter);
 	canvas.on('object:selected', function(options) {
+		
+		current.strokeWidth = 0;
 		current = canvas.getActiveObject();
+		current.stroke = "#000";
+		current.strokeWidth = 2;
 		var myNode = document.getElementById("cardArea");
 		while (myNode.firstChild) {
 			myNode.removeChild(myNode.firstChild);
@@ -20,9 +26,12 @@ function afterTimeout(){
 		document.getElementById("cardArea").appendChild(newcard);
 	});
 	canvas.on('selection:cleared', function() {
-		//drawAllCards(activeFilter);
+		//current.strokeWidth = 0;
+		//resetFilters();
+		
 	});
 	canvas.renderAll();
+	$(".filters").change(function(){applyFilters();});
 	$("#showpeople").change(function(){
 		console.log("showpeople changed");
 		if(this.checked) {
@@ -178,23 +187,22 @@ function test(){
 }
 
 //remove bedtime, dates
-var defaultFilter = {people: true, minage:0,maxage:100, verified: false, cleanliness: 0, noise: 0, gender: "MF", places: true, minprice: 0, maxprice: 100000000, beds:"12345", baths:"12345"};
-var activeFilter = defaultFilter;
+
 
 
 
 function resetFilters(){
-	//activeFilter = defaultFilter;
-	//initializeMap(activeFilter);
-	//drawAllCards(activeFilter);
-	alert("Functionality Not Added, If your filters become messed up, please refresh the page, sorry");
+	activeFilter = defaultFilter;
+	//applyFilters();
+	initializeMap(defaultFilter);
+	drawAllCards(defaultFilter);
+	//alert("Functionality Not Added, If your filters become messed up, please refresh the page, sorry");
 }
 
 function applyFilters(){
 	console.log(activeFilter);
 	initializeMap(activeFilter);
 	drawAllCards(activeFilter);
-	
 }
 
 
@@ -205,7 +213,7 @@ function drawAllCards(filter){
 	}
 	$.getJSON("./app/locations.json", function(locations) {
 		$.each(locations.people, function(index, value) {
-			if(filter.people && filter.minage<value.age && filter.maxage>value.age && ((value.badgelist.indexOf("2")>-1 && filter.verified)||!(filter.verified)) && filter.cleanliness<value.cleanliness && filter.noise<value.noisiness && filter.gender.indexOf(value.sex)>-1){
+			if(filter.people && filter.minage<value.age && filter.maxage>value.age && ((value.badgelist.indexOf("2")>-1 && filter.verified)||!(filter.verified)) && filter.cleanliness<=value.cleanliness && filter.noise<=value.noisiness && filter.gender.indexOf(value.sex)>-1){
 				document.getElementById("cardArea").appendChild(createPersonCard(value));
 			}
 		}); 
@@ -254,6 +262,98 @@ function addIcon(value, type){
 	}));
 }
 
+function convertTime(bedtime){
+	if(bedtime<13){
+		if(bedtime==0){
+			return "Midnight";
+		}
+		if(bedtime==12){
+			return "Noon";
+		}
+		return (bedtime.toString()+" AM");
+	}
+	return (bedtime.toString()+" PM");
+}
+
+function fillPlaceDialog(info){
+	document.getElementById("dialogPlace").title = info.description;
+	document.getElementById("placeavatar").src = info.avatar;
+	document.getElementById("description").innerHTML = info.bigDescription;
+	document.getElementById("title").innerHTML = info.description;
+	document.getElementById("owner").innerHTML = info.owner;
+	document.getElementById("bedbath").innerHTML = info.rooms.toString() +" Beds, " + info.baths.toString() +" Baths";
+	document.getElementById("placeprice").innerHTML = "$"+info.price.toString()+"/Room per Month";
+	
+	var myNode = document.getElementById("biginterestedpeople");
+	while (myNode.firstChild) {
+		myNode.removeChild(myNode.firstChild);
+	}
+	$.getJSON("./app/locations.json", function(locations) {
+		var people = locations.people;
+		var thisIPList = info.interestedPeople.split(",");
+		$.each(people, function(index, value) {
+			if(thisIPList.indexOf(value.id.toString()) > -1){
+				document.getElementById("biginterestedpeople").appendChild(createIPBadge(value));
+			}
+		});
+	});
+	var myNode = document.getElementById("bigplacebadges");
+	while (myNode.firstChild) {
+		myNode.removeChild(myNode.firstChild);
+	}
+	$.getJSON("./app/locations.json", function(locations) {
+		var badges = locations.badges;
+		var thisbadgeList = info.badgelist.split(",");
+		$.each(badges, function(index, value) {
+			if(thisbadgeList.indexOf(value.id.toString()) > -1){
+				document.getElementById("bigplacebadges").appendChild(createBadge(value));
+			}
+		});
+	});
+}
+
+function fillPersonDialog(info){
+	document.getElementById("dialogPerson").title = info.name;
+	document.getElementById("personavatar").src = info.avatar;
+	document.getElementById("occupation").innerHTML = info.occupation;
+	document.getElementById("wakeuptime").innerHTML = convertTime(info.wakeTime);
+	document.getElementById("sleeptime").innerHTML = convertTime(info.sleepTime);
+	document.getElementById("cleanp").innerHTML = info.cleanliness.toString();
+	document.getElementById("noisy").innerHTML = info.noisiness.toString();
+	document.getElementById("bignameperson").innerHTML = info.name;
+	document.getElementById("agesex").innerHTML = (info.age.toString() + ", " + info.sex);
+	document.getElementById("description").innerHTML = info.description;
+	var myNode = document.getElementById("bigpersonbadges");
+	while (myNode.firstChild) {
+		myNode.removeChild(myNode.firstChild);
+	}
+	$.getJSON("./app/locations.json", function(locations) {
+		var badges = locations.badges;
+		var thisbadgeList = info.badgelist.split(",");
+		$.each(badges, function(index, value) {
+			if(thisbadgeList.indexOf(value.id.toString()) > -1){
+				document.getElementById("bigpersonbadges").appendChild(createBadge(value));
+			}
+		});
+	});
+	var myNode = document.getElementById("hobbies");
+	while (myNode.firstChild) {
+		myNode.removeChild(myNode.firstChild);
+	}
+	$.getJSON("./app/locations.json", function(locations) {
+		var badges = locations.hobbies;
+		var thisbadgeList = info.hobbylist.split(",");
+		$.each(badges, function(index, value) {
+			if(thisbadgeList.indexOf(value.id.toString()) > -1){
+				var hobby = document.createElement("li");
+				hobby.className = "list-group-item";
+				hobby.innerHTML = value.hobby;
+				document.getElementById("hobbies").appendChild(hobby);
+			}
+		});
+	});
+}
+
 function createIPBadge(personObject){
 	var placeHolderBadge = document.createElement("img");
 		placeHolderBadge.className = "thumbnail farbadge";
@@ -263,11 +363,15 @@ function createIPBadge(personObject){
 }
 
 function createBadge(badgeObject){
+	var lin = document.createElement("a");
+		lin.title=badgeObject.hoverText;
+		lin.style.cursor = "help";
 	var placeHolderBadge = document.createElement("img");
 		placeHolderBadge.className = "thumbnail farbadge";
 		placeHolderBadge.src = badgeObject.image;
-		placeHolderBadge.title = badgeObject.hoverText;
-	return placeHolderBadge;
+		//placeHolderBadge.title = badgeObject.hoverText;
+	lin.appendChild(placeHolderBadge);
+	return lin;
 }
 
 function getBadges(badgeList){
@@ -373,12 +477,15 @@ function createHouseCard(cardHouse){
 		listGroup.appendChild(bookmarkLink);
 		
 		var moreInfoLink = document.createElement("a");
+			moreInfoLink.style.cursor = "pointer";
 			moreInfoLink.onclick = function(){
+				fillPlaceDialog(cardHouse);
 				$( "#dialogPlace" ).dialog( "open" );
 			}
 			var moreInfoText = document.createElement("li");
 				moreInfoText.className = "list-group-item cardbutton";
 				moreInfoText.innerHTML = "More Info";
+			
 			moreInfoLink.appendChild(moreInfoText);
 		listGroup.appendChild(moreInfoLink);
 	cardContainer.appendChild(listGroup);
@@ -450,8 +557,10 @@ function createPersonCard(cardPerson){
 		listGroup.appendChild(bookmarkLink);
 		
 		var moreInfoLink = document.createElement("a");
+			moreInfoLink.style.cursor = "pointer";
 			moreInfoLink.className = "infoperson";
 			moreInfoLink.onclick = function(){
+				fillPersonDialog(cardPerson);
 				$( "#dialogPerson" ).dialog( "open" );
 			}
 			var moreInfoText = document.createElement("li");

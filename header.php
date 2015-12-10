@@ -24,6 +24,7 @@
 					<li><a href="needsanalysis.php">Needs Analysis</a></li> 
 					<li><a href="work_distribution.php">Work Distribution</a></li>
 					<li><a href="design_development.php">Design Development</a></li>
+					<li><a href="design_refinement.php">Design Refinement</a></li>
 			      </ul>
 			 </div>
 		</nav>

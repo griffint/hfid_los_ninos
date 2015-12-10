@@ -3,11 +3,11 @@
 <img src="./app/images/house.png" id="house" style="display:none">
 <img src="./app/images/person.png" id="person" style="display:none">
 
-<div id="dialogPerson" title="Generic Person Dialog">
+<div id="dialogPerson" title="More Info">
 <div class="container">
 	<div class="row">
 		<div class="col-md-4 container" >
-			<img class="img-responsive" src="https://38.media.tumblr.com/avatar_23300ab3279a_96.png">
+			<img id="personavatar" class="img-responsive" src="https://38.media.tumblr.com/avatar_23300ab3279a_96.png">
 			<h2>Sleep Time</h2>
 			<p>Goes to sleep at</p>
 			<h4 id="wakeuptime">8 AM</h4>
@@ -20,7 +20,7 @@
 					<h2>Cleanliness</h2>
 				</div>
 				<div class="col-sm-2">
-					<h2 id="clean">10</h2>
+					<h2 id="cleanp">5</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -28,7 +28,7 @@
 					<h2>Noisiness</h2>
 				</div>
 				<div class="col-sm-2">
-					<h2 id="clean">1</h2>
+					<h2 id="noisy">2</h2>
 				</div>
 			</div>
 
@@ -36,8 +36,8 @@
 		<div class="col col-md-4 container">
 			<div class="row">
 				<div class="col-md-6">
-					<h1>Jared</h1>
-					<h2>27, Male</h2>
+					<h1 id="bignameperson">Jared</h1>
+					<h2 id="agesex">27, Male</h2>
 				</div>
 				<div class="col-md-6 text-right">
 					<label><input type="checkbox" class="bm" name="checkbox" value="value" hidden><span class="bmlabel glyphicon glyphicon-star-empty" style="font-size: 5em; margin-top: 20px;"></span></label>
@@ -46,9 +46,10 @@
 			<button class="btn btn-primary btn-block">Contact</button>
 			<button class="btn btn-primary btn-block">Invite to Group</button>
 			<h2>About me</h2>
+			<h3 id="occupation">Occupation</h3>
 			<p id="description">The world's coolest software engineer is looking for a room in the Tenderloin district. I have 3 cats and they are staying with us.</p>
 			<h2>Badges</h2>
-			<div class="container badgearea">
+			<div id="bigpersonbadges" class="container badgearea">
 				<a href="#" class="thumbnail farbadge">	
 					<img src="http://www.clker.com/cliparts/D/z/C/2/q/E/check-mark-md.png" title="image" alt="Verified">
 				</a>
@@ -70,11 +71,11 @@
 
 </div>
 
-<div id="dialogPlace" title="Generic Place Dialog">
+<div id="dialogPlace" title="More Info">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 container" >
-				<img class="img-responsive" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG">
+				<img id="placeavatar" class="img-responsive" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG">
 				<h2>Description</h2>
 				<p id="description">Private location near downtown. Cozy 2 bed 1 bath perfect for two interested people. I own the apartment but I do not live there, so you would have the place all to your own. 2 private parking spots included. Big kitchen!</p>
 				<h2>About the Owner</h2>
@@ -84,20 +85,30 @@
 			</div>
 			<div class="col col-md-6 container">
 				<div class="row">
-					<h1>Cozy Berkeley Home</h1>
+					<h1 id="title">Cozy Berkeley Home</h1>
 					<div class="col-md-10">
-					<h3>3 Bed, 2 Bath</h3>
-					<h3>$1500/Room per Month</h3>
+					<h3 id="bedbath">3 Bed, 2 Bath</h3>
+					<h3 id="placeprice">$1500/Room per Month</h3>
 					</div>
 					<div class="col-md-2 text-right">
 					 <label><input type="checkbox" class="bm" name="checkbox" value="value" hidden><span class="bmlabel glyphicon glyphicon-star-empty" style="font-size: 4.5em; margin-top: 20px;"></span></label>
 					</div>
 				</div>
-				<h2>Interested people listed on the right</h2>
-				<button class="btn btn-primary btn-block">Add Myself</button>
+				<!--h2>Interested people listed on the right</h2>
+				<button class="btn btn-primary btn-block">Add Myself</button-->
+				
+				<h2>Interested People</h2>
+				<div id="biginterestedpeople" class="container badgearea">
+					<a href="#" class="thumbnail farbadge">
+						<img src="http://www.clker.com/cliparts/D/z/C/2/q/E/check-mark-md.png" alt="Verified ID">
+					</a>
+					<a href="#" class="thumbnail farbadge">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" alt="Connected to Facebook">
+					</a>
+				</div>
 				
 				<h2>Badges</h2>
-				<div class="container badgearea">
+				<div id="bigplacebadges" class="container badgearea">
 					<a href="#" class="thumbnail farbadge">
 						<img src="http://www.clker.com/cliparts/D/z/C/2/q/E/check-mark-md.png" alt="Verified ID">
 					</a>
@@ -121,14 +132,14 @@
 				Filter by ... <span class="caret"></span>
 			</button>
 			<ul class="uib-dropdown-menu" style="width:300px" aria-labelledby="single-button">
-				<button type="button" class="btn btn-primary btn-block" onclick="resetFilters()">Reset</button>
+				<!--button type="button" class="btn btn-primary btn-block" onclick="resetFilters()">Reset</button-->
 				<label class="col-sm-12 control-label"><h3><center>People</center></h3></label>
 				
 				<div class="col-sm-12">
 					<label for="verified" class="col-sm-5 control-label">Show People</label>
 					<div class="col-sm-7 checkbox">
 						<label>
-							<input type="checkbox" id="showpeople" checked>
+							<input type="checkbox" class="filters" id="showpeople" checked>
 						</label>
 					</div>
 				</div>
@@ -136,14 +147,14 @@
 				<div class="col-sm-12">
 					<label for="age" class="col-sm-5 control-label">Min Age</label>
 					<div class="col-sm-7">
-						<input type="number" id="age" placeholder="From" class="form-control" autofocus>
+						<input type="number" id="age" placeholder="From" class="filters form-control" autofocus>
 					</div>
 				</div>
 
 				<div class="col-sm-12">
 					<label for="ageto" class="col-sm-5 control-label">Max Age</label>
 					<div class="col-sm-7">
-						<input type="number" id="agero" placeholder="To" class="form-control" autofocus>
+						<input type="number" id="agero" placeholder="To" class="filters form-control" autofocus>
 					</div>
 				</div>
 
@@ -151,7 +162,7 @@
 					<label for="verified" class="col-sm-5 control-label">Verified</label>
 					<div class="col-sm-7 checkbox">
 						<label>
-							<input type="checkbox" id="ver">
+							<input type="checkbox" class="filters" id="ver">
 						</label>
 					</div>
 				</div>
@@ -159,14 +170,14 @@
 				<div class="col-sm-12">
 					<label for="clean" class="col-sm-5 control-label">Cleanliness</label>
 					<div class="col-sm-7">
-						<input type="range" min="1" max="10" step="1" id="clean" class="form-control">
+						<input type="range" value="1" min="1" max="5" step="1" id="clean" class="filters form-control">
 					</div>
 				</div>
 
 				<div class="col-sm-12">
 					<label for="noise" class="col-sm-5 control-label">Noise</label>
 					<div class="col-sm-7">
-						<input type="range" min="1" max="10" step="1"  id="noise" class="form-control">
+						<input type="range" value="1" min="1" max="5" step="1"  id="noise" class="filters form-control">
 					</div>
 				</div>
 
@@ -174,12 +185,12 @@
 					<label class="col-sm-4 control-label">Gender</label>
 					<div class="col-sm-5">
 						<label class="checkbox-inline">
-							<input type="checkbox" id="femaleRadio" value="Female" checked>Female
+							<input type="checkbox" class="filters" id="femaleRadio" value="Female" checked>Female
 						</label>
 					</div>
 					<div class="col-sm-3">
 						<label class="checkbox-inline">
-							<input type="checkbox" id="maleRadio" value="Male" checked>Male
+							<input type="checkbox" class="filters" id="maleRadio" value="Male" checked>Male
 						</label>
 					</div>
 				</div>
@@ -193,7 +204,7 @@
 					<label for="verified" class="col-sm-5 control-label">Show Places</label>
 					<div class="col-sm-7 checkbox">
 						<label>
-							<input type="checkbox" id="showplaces"  checked>
+							<input type="checkbox" class="filters" id="showplaces"  checked>
 						</label>
 					</div>
 				</div>
@@ -202,14 +213,14 @@
 
 					<label for="price" class="col-sm-5 control-label">Min Price</label>
 					<div class="col-sm-7">
-						<input type="number" id="price" placeholder="From" class="form-control" autofocus>
+						<input type="number" id="price" placeholder="From" class="filters form-control" autofocus>
 					</div>
 				</div>
 
 				<div class="col-sm-12">
 					<label for="priceto" class="col-sm-5 control-label">Max Price</label>
 					<div class="col-sm-7">
-						<input type="number" id="pricero" placeholder="To" class="form-control" autofocus>
+						<input type="number" id="pricero" placeholder="To" class="filters form-control" autofocus>
 					</div>
 				</div>
 
@@ -219,27 +230,27 @@
 						<div class="row">
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" class="bedtoggler" id="1bed" value="1" checked>1
+									<input type="checkbox" class="filters bedtoggler" id="1bed" value="1" checked>1
 								</label>
 							</div>
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" class="bedtoggler" id="2bed" value="2" checked>2
+									<input type="checkbox" class="filters bedtoggler" id="2bed" value="2" checked>2
 								</label>
 							</div>
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" class="bedtoggler" id="3bed" value="3" checked>3
+									<input type="checkbox" class="filters bedtoggler" id="3bed" value="3" checked>3
 								</label>
 							</div>
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" class="bedtoggler" id="4bed" value="4" checked>4
+									<input type="checkbox" class="filters bedtoggler" id="4bed" value="4" checked>4
 								</label>
 							</div>
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" class="bedtoggler" id="5bed" value="5" checked>5
+									<input type="checkbox" class="filters bedtoggler" id="5bed" value="5" checked>5
 								</label>
 							</div>
 						</div>
@@ -252,34 +263,36 @@
 						<div class="row">
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" class="bathtoggler" id="1bath" value="1" checked>1
+									<input type="checkbox" class="filters bathtoggler" id="1bath" value="1" checked>1
 								</label>
 							</div>
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" class="bathtoggler" id="2bath" value="2" checked>2
+									<input type="checkbox" class="filters bathtoggler" id="2bath" value="2" checked>2
 								</label>
 							</div>
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" class="bathtoggler" id="3bath" value="3" checked>3
+									<input type="checkbox" class="filters bathtoggler" id="3bath" value="3" checked>3
 								</label>
 							</div>
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" class="bathtoggler" id="4bath" value="4" checked>4
+									<input type="checkbox" class="filters bathtoggler" id="4bath" value="4" checked>4
 								</label>
 							</div>
 							<div class="col-sm-1">
 								<label class="checkbox-inline">
-									<input type="checkbox" class="bathtoggler" id="5bath" value="5" checked>5
+									<input type="checkbox" class="filters bathtoggler" id="5bath" value="5" checked>5
 								</label>
 							</div>
 						</div>
 					</div>
 				</div>
-				<button type="button" class="btn btn-primary btn-block" onclick="applyFilters()">Apply</button>
 			</ul>
+			<button id="reset-button" type="button" onclick="resetFilters()" class="btn btn-primary">
+				Re-List All that Apply
+			</button>
 		</div>
 	</div>
 
@@ -294,7 +307,7 @@
 							
 						</div>
 					</div>
-					<div id = "cardArea" class="col-md-3">
+					<div id = "cardArea" style="height: 975px; overflow-y: scroll;" class="scrollbar col-md-3">
 						<div ui-view="sidebar"></div>
 					</div>
 				</div>
