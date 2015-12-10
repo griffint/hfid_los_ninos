@@ -1,34 +1,34 @@
-<div ng-app="sampleApp" ng-controller="LoginCtrl" style="padding-left:130px;padding-right:200px;">
-	<div>
-		<h1 class = "hello"> Welcome.</h1>
-		<h4 style="margin-top: 20px" class = "hello"> Find people who you feel comfortable living with. </h4>
-	</div>
-
+<div class = "login" ng-app="sampleApp" ng-controller="homeController">
 	<div class="col-sm-12">
-		<div class="container alert" style="height: 100px; width: 400px">
-			<div class = "container alert" ng-show="alertcheck" style="width: 400px">
-				<uib-alert type="{{alert.class}}">
-					{{alert.message}}
-				</uib-alert>
-			</div>
-		</div>
-		<div ng-show="auth" style="height: 50px">
-			<p class="hello" style="padding-top: 15px">Signed in as {{email}}</p>
-		</div>
-		<form style="width:350px hello">
-			<fieldset ng-hide="auth" class="hello">
-				<div class="form-group hello">
-					<input type="email" class="form-control" ng-model="email" placeholder="email"/>
-				</div>
-				<div class="form-group hello">
-					<input type="password" class="form-control" placeholder="password" ng-model="password" />
-				</div>
-				<button type="submit" class="btn btn-primary hello" ng-click="signIn()">Sign In / Sign Up</button>
-			</fieldset>
-			<div ng-show="auth" class="hello">
-				<button type="submit" class="btn btn-primary hello" ng-click="removeUser()">Sign Out</button>
-			</div>
-		</form>
-
+		<h3>
+		Welcome to Roomie. Our goal is to help people like you find roommates
+		to live with and places for you to live. Below are some tips for first time users.
+		</h3>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="row">
+  				<div class="col-md-4">
+    				<div class="well">
+	    				<p>Use the <b>map view</b> to find people and places in the areas you want to live!
+	    				</p>
+	    			</div>
+    			</div>
+    			<div class="col-md-4">
+    				<div class="well">
+	    				<p>
+	    				<b>Groups</b> provide a way to hunt for a house or apartment with a group of people that you want to live with!
+	    				</p>
+	    			</div>
+    			</div>
+    			<div class="col-md-4">
+    				<div class="well">
+	    				<p>Check out someone's <b>badges</b> to see the ways they're verified, or things you have in common with them!
+	    				</p>
+	    			</div>
+    			</div>
+    		</div>
+    	</div>
 	</div>
 </div>

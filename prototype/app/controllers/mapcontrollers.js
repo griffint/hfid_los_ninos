@@ -4,8 +4,6 @@ app.controller('mapSidebarCtrl', ["$scope", "$firebaseArray",
 	function($scope, $firebaseArray) {
 		var ref = new Firebase("https://hfid-los-ninos.firebaseio.com/Profiles")
 		//$scope.cards = $firebaseArray(ref);
-		$scope.cards = [{ id: 0, name: "Timothy", age: "22", title: "Chef", gender: "M"}, {id: 1, name: "Jill", title: "Writer", age: "23", gender: "F"}];
-		//console.log($ref.cards);
 	}
 ]);
 
@@ -254,6 +252,16 @@ app.factory("Auth", ["$firebaseAuth",
     return $firebaseAuth(ref);
   }
 ]);
+
+/*
+//controller for the home screen that can be viewed after login
+//this screen will mainly contain help information for users
+app.controller("homeController", ["$scope", "Auth",
+  funtion($scope, Auth) {
+
+  }
+]);
+*/
 
 app.controller("LoginCtrl", ["$scope", "Auth",
   function($scope, Auth) {

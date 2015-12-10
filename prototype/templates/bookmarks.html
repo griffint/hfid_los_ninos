@@ -1,218 +1,221 @@
 <link href="../styles/bootstrap.min.css" rel="stylesheet">
 <link href="../styles/cards.css" rel="stylesheet">
 <div style="padding-left:0px;padding-right:0px;">
-  <div class="container-fluid" style="margin: 0 auto;">
-    <div class="row">
-      <div class="col-md-3 col-md-offset-3" style="overflow: hidden">
-        <h2 class="text-center">Bookmarked Places</h2>
-		<!--CARD STARTS HERE-->
-		<div ng-hide="hide" ng-controller="BerkeleyModalCtrl" class="panel panel-default card">
-			<!-- Default panel contents -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3 col-md-offset-3" style="overflow: hidden">
+				<h2 class="text-center">Bookmarked Places</h2>
+				<!--CARD STARTS HERE-->
+				<div ng-hide="hide" ng-controller="BerkeleyModalCtrl" class="panel panel-default card">
+					<!-- Default panel contents -->
 
-			<div class="panel-body">
-				<div class="media">
-					<div class="media-left">
-						<a href="#">
-							<img class="media-object avatar" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG" alt="...">
+					<div class="panel-body">
+						<div class="media col-md-10">
+							<div class="media-left">
+								<a href="#">
+									<img class="media-object avatar" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG" alt="...">
+								</a>
+							</div>
+							<div class="media-body">
+								<h4 class="media-heading">$1500/Room</h4>
+								<h4 class="media-heading">3 Rooms</h4>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<span class="glyphicon glyphicon-remove-sign" ng-click="click()"></span>
+						</div>
+					</div>						
+
+					<!-- List group -->
+					<ul class="list-group">
+						<li class="list-group-item">
+							<h4>Cozy Berkeley Home</h4>
+						</li>
+						<li class="list-group-item badgeContainer">
+							<div class="container-fluid">
+								<ul class="nav navbar-nav navbar-left">
+									<li><h4>Interested People</h4></li>
+								</ul>
+								<ul ng-controller= "InterestedModalCtrl" class="nav navbar-nav navbar-right">
+									<script type="text/ng-template" id="interestedctrl.html">
+										<div class="modal-header">
+											Interested People Section
+										</div>
+										<div class="modal-body">
+											You were successfully added to the group! Now others can see that you are interested in the group.
+										</div>
+										<div class="modal-footer">
+											<button class="btn btn-primary" type="button" ng-click="ok()">OK</button> 
+										</div>
+									</script>
+
+									<li><button type="button" ng-click="open(lg)" class="btn btn-default">Add Myself</button></li>
+								</ul>
+							</div>
+
+							<a href="#" class="thumbnail farbadge">
+								<img src="https://pbs.twimg.com/profile_images/2711772111/5579fa8742299df69b02af2c7a2a9c51.png">
+							</a>
+							<a href="#" class="thumbnail farbadge">
+								<img src="http://i.imgur.com/N4fpSXx.jpg">
+							</a>
+							<a href="#" class="thumbnail farbadge">
+								<img src="https://38.media.tumblr.com/avatar_23300ab3279a_96.png">
+							</a>
+						</li>
+
+						<a ng-click="open()">
+							<li class="list-group-item cardbutton">More Info</li>
 						</a>
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">$1500/Room</h4>
-						<h4 class="media-heading">3 Rooms</h4>
-					</div>
+					</ul>
 				</div>
+				<!--CARD ENDS HERE-->
+				<!--CARD STARTS HERE-->
+
+				<div ng-hide="hide" ng-controller="FinancialModalCtrl" class="panel panel-default card">
+					<!-- Default panel contents -->
+
+					<div class="panel-body">
+						<div class="media col-md-10">
+							<div class="media-left">
+								<a href="#">
+									<img class="media-object avatar" src="http://www.vnrental.net/sites/default/files/styles/thumb_510x380/public/photo/product/apartment-for-rent-in-hoang-anh-gia-lai-3-district-7-in-hcm-city_7.jpg" alt="...">
+								</a>
+							</div>
+							<div class="media-body">
+								<h4 class="media-heading">$1900/Room</h4>
+								<h4 class="media-heading">2 Rooms</h4>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<span class="glyphicon glyphicon-remove-sign" ng-click="click()"></span>
+						</div>
+					</div>						
+
+					<!-- List group -->
+					<ul class="list-group">
+						<li class="list-group-item">
+							<h4>Nice Financial District Apartment</h4>
+						</li>
+						<li class="list-group-item badgeContainer">
+							<div class="container-fluid">
+								<ul class="nav navbar-nav navbar-left">
+									<li><h4>Interested People</h4></li>
+								</ul>
+								<ul ng-controller= "InterestedModalCtrl" class="nav navbar-nav navbar-right">
+									<script type="text/ng-template" id="interestedctrl.html">
+										<div class="modal-header">
+											Interested People Section
+										</div>
+										<div class="modal-body">
+											You were successfully added to the group! Now others can see that you are interested in the group.
+										</div>
+										<div class="modal-footer">
+											<button class="btn btn-primary" type="button" ng-click="ok()">OK</button> 
+										</div>
+									</script>
+
+									<li><button type="button" ng-click="open(lg)" class="btn btn-default">Add Myself</button></li>
+								</ul>
+							</div>
+							<a href="#" class="thumbnail farbadge">
+								<img src="https://pbs.twimg.com/profile_images/2711772111/5579fa8742299df69b02af2c7a2a9c51.png">
+							</a>
+							<a href="#" class="thumbnail farbadge">
+								<img src="http://i.imgur.com/N4fpSXx.jpg">
+							</a>
+						</li>
+
+						<a ng-click="open()">
+							<li class="list-group-item cardbutton">More Info</li>
+						</a>
+
+					</ul>
+				</div>
+				<!--CARD ENDS HERE-->
 			</div>
+			<div class="col-md-3">
+				<h2 class="text-center">Bookmarked People</h2>
+				<div ng-hide="hide" ng-controller="CarlyModalCtrl" class="panel panel-default card"><!--Card-->
+					<!-- Default panel contents -->
 
-			<!-- List group -->
-			<ul class="list-group">
-				<li class="list-group-item">
-					<h4>Cozy Berkeley Home</h4>
-				</li>
-				<li class="list-group-item badgeContainer">
-					<div class="container-fluid">
-						<ul class="nav navbar-nav navbar-left">
-							<li><h4>Interested People</h4></li>
-						</ul>
-						<ul ng-controller= "InterestedModalCtrl" class="nav navbar-nav navbar-right">
-							<script type="text/ng-template" id="interestedctrl.html">
-								<div class="modal-header">
-									Interested People Section
-								</div>
-								<div class="modal-body">
-									You were successfully added to the group! Now others can see that you are interested in the group.
-								</div>
-								<div class="modal-footer">
-            						<button class="btn btn-primary" type="button" ng-click="ok()">OK</button> 
-								</div>
-							</script>
+					<div class="panel-body">
+						<div class="media col-md-10">
+							<div class="media-left">
+								<a href="#">
+									<img class="media-object avatar" src="https://carlyforpresident.com/img/hp-history.jpg" alt="...">
+								</a>
+							</div>
+							<div class="media-body">
+								<h4 class="media-heading">Carly, 40, F </h4>
+								<p>Politician, Former Executive</p>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<span class="glyphicon glyphicon-remove-sign" ng-click="click()"></span>
+						</div>
+					</div>						
 
-							<li><button type="button" ng-click="open(lg)" class="btn btn-default">Add Myself</button></li>
-						</ul>
+					<!-- List group -->
+					<ul class="list-group">
+						<li class="list-group-item badgeContainer">
+							<h4>Badges</h4>
+
+							<a href="#" class="thumbnail farbadge">
+								<img src="http://1.bp.blogspot.com/-p6boeGo2dWQ/UqLh5tA2mcI/AAAAAAAAAjA/uNuD4PlUH9U/s1600/facebook-logo-3.png" title="image" alt="Mutual Friends">
+							</a>
+
+							<a href="#" class="thumbnail farbadge">
+								<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR5vWbRyeHtPj79YLTnmHDAYOoAgKx437nRfO8cb5kCz0CHGrjmvxJRQVc" title="image" alt="Alma Mater">
+							</a>
+						</li>
+
+						<a ng-click="open()">
+							<li class="list-group-item cardbutton">More Info</li>
+						</a>
+					</ul>
+				</div><!--Card End-->
+
+				<div ng-hide="hide" ng-controller="JaredModalCtrl" class="panel panel-default card"><!--Card-->
+					<!-- Default panel contents -->
+
+					<div class="panel-body">
+						<div class="media col-md-10">
+							<div class="media-left">
+								<a href="#">
+									<img class="media-object avatar" src="https://38.media.tumblr.com/avatar_23300ab3279a_96.png" title="image" alt="...">
+								</a>
+							</div>
+							<div class="media-body">
+								<h4 class="media-heading">Jared, 27, M</h4>
+								<p>Product Manager</p>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<span class="glyphicon glyphicon-remove-sign" ng-click="click()"></span>
+						</div>					
 					</div>
 
-					<a href="#" class="thumbnail farbadge">
-						<img src="https://pbs.twimg.com/profile_images/2711772111/5579fa8742299df69b02af2c7a2a9c51.png">
-					</a>
-					<a href="#" class="thumbnail farbadge">
-						<img src="http://i.imgur.com/N4fpSXx.jpg">
-					</a>
-					<a href="#" class="thumbnail farbadge">
-						<img src="https://38.media.tumblr.com/avatar_23300ab3279a_96.png">
-					</a>
-				</li>
+					<!-- List group -->
+					<ul class="list-group">
+						<li class="list-group-item badgeContainer">
+							<h4>Badges</h4>
 
-				<a ng-click="click()"><li class="list-group-item cardbutton">Remove Bookmark</li></a>
+							<a href="#" class="thumbnail farbadge">	
+								<img src="http://www.clker.com/cliparts/D/z/C/2/q/E/check-mark-md.png" title="image" alt="Verified">
+							</a>
 
-				<a ng-click="open()">
-					<li class="list-group-item cardbutton">More Info</li>
-				</a>
-			</ul>
+							<a href="#" class="thumbnail farbadge">
+								<img src="http://1.bp.blogspot.com/-p6boeGo2dWQ/UqLh5tA2mcI/AAAAAAAAAjA/uNuD4PlUH9U/s1600/facebook-logo-3.png" title="image" alt="Mutual Friends">
+							</a>				
+						</li>
+
+						<a ng-click="open()">
+							<li class="list-group-item cardbutton">More Info</li>
+						</a>
+					</ul>
+				</div><!--Card End-->
+			</div>
 		</div>
-		<!--CARD ENDS HERE-->
-		<!--CARD STARTS HERE-->
-
-		<div ng-hide="hide" ng-controller="FinancialModalCtrl" class="panel panel-default card">
-			<!-- Default panel contents -->
-
-			<div class="panel-body">
-				<div class="media">
-					<div class="media-left">
-						<a href="#">
-							<img class="media-object avatar" src="http://www.vnrental.net/sites/default/files/styles/thumb_510x380/public/photo/product/apartment-for-rent-in-hoang-anh-gia-lai-3-district-7-in-hcm-city_7.jpg" alt="...">
-						</a>
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">$1900/Room</h4>
-						<h4 class="media-heading">2 Rooms</h4>
-					</div>
-				</div>
-			</div>
-
-			<!-- List group -->
-			<ul class="list-group">
-				<li class="list-group-item">
-					<h4>Nice Financial District Apartment</h4>
-				</li>
-				<li class="list-group-item badgeContainer">
-					<div class="container-fluid">
-						<ul class="nav navbar-nav navbar-left">
-							<li><h4>Interested People</h4></li>
-						</ul>
-						<ul ng-controller= "InterestedModalCtrl" class="nav navbar-nav navbar-right">
-							<script type="text/ng-template" id="interestedctrl.html">
-								<div class="modal-header">
-									Interested People Section
-								</div>
-								<div class="modal-body">
-									You were successfully added to the group! Now others can see that you are interested in the group.
-								</div>
-								<div class="modal-footer">
-            						<button class="btn btn-primary" type="button" ng-click="ok()">OK</button> 
-								</div>
-							</script>
-
-							<li><button type="button" ng-click="open(lg)" class="btn btn-default">Add Myself</button></li>
-						</ul>
-					</div>
-					<a href="#" class="thumbnail farbadge">
-						<img src="https://pbs.twimg.com/profile_images/2711772111/5579fa8742299df69b02af2c7a2a9c51.png">
-					</a>
-					<a href="#" class="thumbnail farbadge">
-						<img src="http://i.imgur.com/N4fpSXx.jpg">
-					</a>
-				</li>
-				<a ng-click="click()"><li class="list-group-item cardbutton">Remove Bookmark</li></a>
-				
-				<a ng-click="open()">
-					<li class="list-group-item cardbutton">More Info</li>
-				</a>
-
-			</ul>
-		</div>
-		<!--CARD ENDS HERE-->
-      </div>
-      <div class="col-md-3">
-        <h2 class="text-center">Bookmarked People</h2>
-		<div ng-hide="hide" ng-controller="CarlyModalCtrl" class="panel panel-default card"><!--Card-->
-			<!-- Default panel contents -->
-
-			<div class="panel-body">
-				<div class="media">
-					<div class="media-left">
-						<a href="#">
-							<img class="media-object avatar" src="https://carlyforpresident.com/img/hp-history.jpg" alt="...">
-						</a>
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">Carly, 40, F </h4>
-						<p>Politician, Former Executive</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- List group -->
-			<ul class="list-group">
-				<li class="list-group-item badgeContainer">
-					<h4>Badges</h4>
-
-					<a href="#" class="thumbnail farbadge">
-						<img src="http://1.bp.blogspot.com/-p6boeGo2dWQ/UqLh5tA2mcI/AAAAAAAAAjA/uNuD4PlUH9U/s1600/facebook-logo-3.png" title="image" alt="Mutual Friends">
-					</a>
-
-					<a href="#" class="thumbnail farbadge">
-						<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR5vWbRyeHtPj79YLTnmHDAYOoAgKx437nRfO8cb5kCz0CHGrjmvxJRQVc" title="image" alt="Alma Mater">
-					</a>
-				</li>
-
-
-				<a ng-click="click()"><li class="list-group-item cardbutton">Remove Bookmark</li></a>
-
-				<a ng-click="open()">
-					<li class="list-group-item cardbutton">More Info</li>
-				</a>
-			</ul>
-		</div><!--Card End-->
-
-		<div ng-hide="hide" ng-controller="JaredModalCtrl" class="panel panel-default card"><!--Card-->
-			<!-- Default panel contents -->
-
-			<div class="panel-body">
-				<div class="media">
-					<div class="media-left">
-						<a href="#">
-							<img class="media-object avatar" src="https://38.media.tumblr.com/avatar_23300ab3279a_96.png" title="image" alt="...">
-						</a>
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">Jared, 27, M</h4>
-						<p>Product Manager</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- List group -->
-			<ul class="list-group">
-				<li class="list-group-item badgeContainer">
-					<h4>Badges</h4>
-
-					<a href="#" class="thumbnail farbadge">	
-						<img src="http://www.clker.com/cliparts/D/z/C/2/q/E/check-mark-md.png" title="image" alt="Verified">
-					</a>
-
-					<a href="#" class="thumbnail farbadge">
-						<img src="http://1.bp.blogspot.com/-p6boeGo2dWQ/UqLh5tA2mcI/AAAAAAAAAjA/uNuD4PlUH9U/s1600/facebook-logo-3.png" title="image" alt="Mutual Friends">
-					</a>				
-				</li>
-
-
-				<a ng-click="click()"><li class="list-group-item cardbutton">Remove Bookmark</li></a>
-			
-				<a ng-click="open()">
-					<li class="list-group-item cardbutton">More Info</li>
-				</a>
-			</ul>
-		</div><!--Card End-->
-      </div>
-    </div>
-  </div>
+	</div>
 </div>
