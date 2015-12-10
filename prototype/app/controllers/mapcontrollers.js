@@ -253,6 +253,16 @@ app.factory("Auth", ["$firebaseAuth",
   }
 ]);
 
+/*
+//controller for the home screen that can be viewed after login
+//this screen will mainly contain help information for users
+app.controller("homeController", ["$scope", "Auth",
+  funtion($scope, Auth) {
+
+  }
+]);
+*/
+
 app.controller("LoginCtrl", ["$scope", "Auth",
   function($scope, Auth) {
     $scope.alert = {};
