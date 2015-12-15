@@ -25,6 +25,7 @@
 					<li><a href="work_distribution.php">Work Distribution</a></li>
 					<li><a href="design_development.php">Design Development</a></li>
 					<li><a href="design_refinement.php">Design Refinement</a></li>
+					<li><a href="final_writeup.php">Final Writeup</a></li>
 			      </ul>
 			 </div>
 		</nav>
