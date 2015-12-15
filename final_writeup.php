@@ -176,5 +176,4 @@ Over the course of the semester, we have interviewed users, determined their nee
 
     </div>
   </body>
-  <script src="photo-gallery.js"></script>
 </html>
