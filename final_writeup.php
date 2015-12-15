@@ -70,7 +70,7 @@ Finally, our users have important financial needs. They are generally looking fo
 When a user first uses Roomie, they will first view the login screen. The login screen contains a few pointers on how to use the website. It also contains a section to sign up or sign in to access the rest of the website. If they are a new user, they will view the profile screen next where they can update their basic information, such as their name, date of birth and phone number, and also their interests and characteristics to improve the roommate finding experience.
 </p>
 <br>
-<div class = "image"><img src="./imgs/final/profile.png" class='jasperimages'></div><br>
+<div class = "image"><img src="./imgs/final/profile.PNG" class='jasperimages'></div><br>
 <p class='caption'>Profile fields</p>
 <br>
 	
@@ -131,21 +131,21 @@ When the user is ready to learn more about somebody, they can click the "More In
 Badges were included in the profile view in order to help users feel more secure in contacting others. The badges are icons that represent verification such as information on mutual Facebook friends, site verification, and whether or not the users went to the same school. The badges themselves will likely require more user research to flesh out, but the current badges are based on user feedback that said that the badges should only represent verification information to maximize their usefulness.
 </p>
 <br>
-<div class = "image"><img src="./imgs/final/bookmarks.png" class='jasperimages'></div><br>
+<div class = "image"><img src="./imgs/final/bookmarks.PNG" class='jasperimages'></div><br>
 <p class='caption'>Bookmarks screen</p>
 <br>
 <p>
 If a user has decided that they are interested in another user's profile, they can bookmark them or even contact them. Bookmarks were an interaction created to address the issues some of our users had with the Facebook and Craigslist alternatives. In order to shortlist listings on the alternative sites, our interviewees would have to open up lots of tabs, go through each one, and bookmark the ones they liked while closing the ones they did not. With built in bookmarking functionality, the users are not inconvenienced by missing functionality that they must use their browser to supplement.
 </p>
 <br>
-<div class = "image"><img src="./imgs/final/contacted.png" class='jasperimages'></div><br>
+<div class = "image"><img src="./imgs/final/contacted.PNG" class='jasperimages'></div><br>
 <p class='caption'>Contacted users screen</p>
 <br>
 <p>
 When the user has decided they are ready to contact people, they may select people and contact them individually. The options for contacting others include mutual confirmations before sharing emails or phone numbers, or a built in chat feature for users who are uncomfortable giving out personal information. While sites like craigslist require users to publicly list contact information, our site keeps it all private and lets the user explicitly choose who they share it with, directly addressing the security concerns our interviewees had with craigslist.
 </p>
 <br>
-<div class = "image"><img src="./imgs/final/group.png" class='jasperimages'></div><br>
+<div class = "image"><img src="./imgs/final/group.PNG" class='jasperimages'></div><br>
 <p class='caption'>Groups view</p>
 <br>
 <p>
