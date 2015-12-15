@@ -25,23 +25,7 @@
       margin: 0 auto;
     }
     </style>
-      <?php
-        function images($dir) {
-        $files1 = scandir($dir);
-        foreach ($files1 as $x=>$value)
-        {
-            if ($value == "." || $value == ".."){
-                unset($files1[$x]);
-            }
-        }
-        foreach ($files1 as $x=>$value)
-        {
 
-            echo "<li class=\"col-md-6\"><img class=\"img-responsive\" src=\"$dir$value\"></li>";
-        }
-        }
-        images("imgs/wireframes/");
-      ?>
       
 <h2>Link to Our Prototype</h2>
 <h3><a href='hfid.olin.edu/sa2016/losninos/hfid_los_ninos/prototype/'>Click here for our prototype</a></h3>
